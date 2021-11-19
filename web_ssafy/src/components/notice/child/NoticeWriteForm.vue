@@ -13,7 +13,6 @@
             :disabled="isUserid"
             v-model="notice.userid"
             type="text"
-            readonly
           ></b-form-input>
         </b-form-group>
 
