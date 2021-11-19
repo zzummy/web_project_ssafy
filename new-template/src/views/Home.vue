@@ -1,25 +1,27 @@
 <template>
   <div class="container-fluid">
     <!-- Header -->
+    
     <div class="row mb-5">
+    <div>
+      <mainhead/>
+    </div>
     <lefthead class="lefthead col-sm ps-4"/>
     <righthead class="righthead col-sm d-none d-md-block "/>
     </div>
-    <!-- Section -->
-    <Section class="row Section-bg" :style="{ 'backgroundImage': 'url(' + imgsrc + ')' }" />
   </div>
 </template>
 <script>
 import righthead from '../layouts/header/righthead.vue'
 import lefthead from '../layouts/header/lefthead.vue'
-import Section from '../components/Section.vue'
+import mainhead from '../layouts/header/mainhead.vue'
 import { ref } from 'vue'
 export default {
   name: 'Home',
   components:{
     righthead,
     lefthead,
-    Section
+    mainhead,
   }, 
   setup(){
             let imgsrc;
@@ -33,7 +35,7 @@ export default {
                 return{
                 imgsrc
                 }
-        }
+  }
 }
 </script>
 <style scoped>

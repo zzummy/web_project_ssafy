@@ -60,15 +60,27 @@ import login from "../views/login.vue";
 import SignUp from "../views/SignUp.vue";
 export default {
   name: "auth",
-  setup() {
-    //shown component
-    const activeform = ref("login");
-    //hide or show Forgot password link and create account link
-    const links = true;
+  data() {
     return {
-      activeform,
-      links,
-    };
+      activeform: ref("login"),
+      links: true,
+    }
+  },
+  created() {
+    if (window.location.pathname == '/auth/signup') {
+      this.activeform = ref("SignUp");
+      this.links = false;
+    }
+  },
+  updated() {
+    if (window.location.pathname == '/auth/signup') {
+      this.activeform = ref("SignUp");
+      this.links = false;
+    }
+    else {
+      this.activeform = ref("login");
+      this.links = true;
+    }
   },
   components: {
     SignUp,

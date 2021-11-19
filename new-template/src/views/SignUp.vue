@@ -1,42 +1,5 @@
 <template>
-  <div>
-    <!-- head -->
-    <p class="fw-bold text-secondary">Sign up with</p>
-    <div class="row px-4">
-      <a
-        href="#"
-        class="
-          text-decoration-none text-dark
-          fw-normal
-          col-sm
-          bg-light
-          p-1
-          rounded
-          px-0
-          me-sm-4
-          mt-2 mt-md-2 mt-lg-0
-        "
-        ><fa :icon="['fab', 'github']" class="fs-5 me-1" />Githube</a
-      >
-      <a
-        href="#"
-        class="
-          text-decoration-none text-dark
-          fw-normal
-          col-sm
-          bg-light
-          p-1
-          rounded
-          px-0
-          ms-sm-4
-          mt-2 mt-md-2 mt-lg-0
-        "
-        ><fa :icon="['fab', 'google']" class="fs-5 me-1 text-danger" />Google</a
-      >
-    </div>
-  </div>
-  <hr />
-  <h6 class="mb-4">Or sign up with credentials</h6>
+  <h2 class="fw-bold text-secondary">Sign up</h2>
   <!-- Sing Up form -->
   <form action="" method="" class="text-secondary">
     <!-- User Name -->
@@ -49,13 +12,13 @@
         required
       />
     </div>
-    <!-- Email Address -->
+    <!-- User ID -->
     <div class="form-group text-start py-2">
-      <label for="email">Email adress</label>
+      <label for="Name">User ID</label>
       <input
-        type="email"
+        type="text"
         class="form-control shadow"
-        placeholder="Enter Email"
+        placeholder="Enter UserID"
         required
       />
     </div>
@@ -66,6 +29,16 @@
         type="password"
         class="form-control shadow"
         placeholder="Password"
+        required
+      />
+    </div>
+    <!-- Email Address -->
+    <div class="form-group text-start py-2">
+      <label for="email">Email adress</label>
+      <input
+        type="email"
+        class="form-control shadow"
+        placeholder="Enter Email"
         required
       />
     </div>

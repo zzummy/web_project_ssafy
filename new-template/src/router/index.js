@@ -18,14 +18,26 @@ const routes = [
         component: () => import("../views/About"),
       },
       {
-        path: "/Contact",
+        path: "/contact",
         name: "Contact",
         component: () => import("../views/Contact"),
       },
       {
-        path: "/auth/login",
+        path: "/auth",
         name: "login",
         component: () => import("../layouts/auth"),
+        children: [
+          {
+            path: "login",
+            name: "login",
+            component: () => import("../views/login"),
+          },
+          {
+            path: "signup",
+            name: "SignUp",
+            component: () => import("../views/SignUp"),
+          }
+        ]
       },
     ],
   },

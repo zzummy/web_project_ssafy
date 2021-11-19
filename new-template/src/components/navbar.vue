@@ -12,11 +12,18 @@
             </li>
             <!-- Contact Us -->
             <li class="nav-item">
-              <router-link to="/Contact" class="nav-link fw-bold" tag="button"  active-class="active">Contact Us</router-link> 
+              <router-link to="/Contact" class="nav-link fw-bold" tag="button"  active-class="active">공지사항</router-link> 
             </li>
             <!-- About Us -->
             <li class="nav-item">
-              <router-link to="/about" class="nav-link fw-bold" tag="button"  active-class="active">About Us</router-link>
+              <router-link to="/about" class="nav-link fw-bold" tag="button"  active-class="active">아파트 실거래가</router-link>
+            </li>
+            <!-- About Us -->
+            <li class="nav-item">
+              <router-link to="/about" class="nav-link fw-bold" tag="button"  active-class="active">관심 지역</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/about" class="nav-link fw-bold" tag="button"  active-class="active">QnA</router-link>
             </li>
           </ul>
           <div class="d-sm-flex text-center pe-sm-5 me-sm-5 my-4 my-md-0">
@@ -31,7 +38,7 @@
               <!-- Sign in -->
                <router-link to="/auth/login" class="btn btn hpink"  tag="button">Sign in</router-link>
               <!-- Sing Up -->
-               <router-link to="/auth/login" class="btn btn hblue"  tag="button">Sign Up</router-link>
+               <router-link to="/auth/signup" class="btn btn hblue"  tag="button">Sign Up</router-link>
             </div>
         </div>
       </div>
