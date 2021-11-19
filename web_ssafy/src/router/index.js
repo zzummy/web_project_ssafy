@@ -18,6 +18,13 @@ import House from "@/views/House.vue";
 
 import store from "@/store/index.js";
 
+// 공지사항
+import Notice from "@/views/Notice.vue";
+import NoticeList from "@/components/notice/NoticeList.vue";
+import NoticeWrite from "@/components/notice/NoticeWrite.vue";
+import NoticeView from "@/components/notice/NoticeView.vue";
+import NoticeUpdate from "@/components/notice/NoticeUpdate.vue";
+
 Vue.use(VueRouter);
 
 // https://router.vuejs.org/kr/guide/advanced/navigation-guards.html
@@ -108,6 +115,37 @@ const routes = [
     path: "/house",
     name: "House",
     component: House,
+  },
+  {
+    path: "/notice",
+    name: "Notice",
+    component: Notice,
+    redirect: "/notice/list",
+    children: [
+      {
+        path: "list",
+        name: "NoticeList",
+        component: NoticeList,
+      },
+      {
+        path: "write",
+        name: "NoticeWrite",
+        beforeEnter: onlyAuthUser,
+        component: NoticeWrite,
+      },
+      {
+        path: "detail/:articleno",
+        name: "NoticeView",
+        beforeEnter: onlyAuthUser,
+        component: NoticeView,
+      },
+      {
+        path: "update/:articleno",
+        name: "NoticeUpdate",
+        beforeEnter: onlyAuthUser,
+        component: NoticeUpdate,
+      },
+    ],
   },
   {
     path: "*",
