@@ -102,6 +102,9 @@ export default {
       if (this.article.userid == this.userInfo.userid) {
         this.canDelete = true;
       }
+      if (this.userInfo.userid == "admin") {
+        this.canDelete = true;
+      }
     });
     http.get(`/board/memo/${this.$route.params.articleno}`).then(({ data }) => {
       this.memos = data;
