@@ -1,8 +1,7 @@
 <template>
   <b-container class="bv-example-row mt-3 text-center">
     <h3 class="underline-steelblue">
-      <b-icon icon="house">
-      </b-icon>
+      <b-icon icon="house"></b-icon>
       HappyHouse
     </h3>
     <b-row>

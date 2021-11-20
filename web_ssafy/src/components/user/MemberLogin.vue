@@ -7,7 +7,7 @@
     </b-row>
     <b-row>
       <b-col></b-col>
-      <b-col cols="8">
+      <b-col cols="5">
         <b-card class="text-center mt-3" style="max-width: 40rem" align="left">
           <b-form class="text-left">
             <b-alert show variant="danger" v-if="isLoginError"
@@ -18,7 +18,7 @@
                 id="userid"
                 v-model="user.userid"
                 required
-                placeholder="아이디 입력...."
+                placeholder="User ID"
                 @keyup.enter="confirm"
               ></b-form-input>
             </b-form-group>
@@ -28,7 +28,7 @@
                 id="userpwd"
                 v-model="user.userpwd"
                 required
-                placeholder="비밀번호 입력...."
+                placeholder="Password"
                 @keyup.enter="confirm"
               ></b-form-input>
             </b-form-group>
