@@ -9,7 +9,7 @@
       <b-col class="text-left">
         <b-button variant="outline-primary" @click="listNotice">목록</b-button>
       </b-col>
-      <b-col class="text-right">
+      <b-col class="text-right" v-if="isAdmin">
         <b-button
           variant="outline-info"
           size="sm"
@@ -43,7 +43,9 @@
 <script>
 // import moment from "moment";
 import { getNotice, deleteNotice } from "@/api/notice";
+import { mapState } from "vuex";
 
+const memberStore = "memberStore";
 export default {
   data() {
     return {
@@ -51,6 +53,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(memberStore, ["userInfo"]),
     message() {
       if (this.notice.content)
         return this.notice.content.split("\n").join("<br>");
@@ -72,6 +75,9 @@ export default {
         console.log("삭제시 에러발생!!", error);
       }
     );
+    if (this.userInfo.userid == "admin") {
+      this.isAdmin = true;
+    }
   },
   methods: {
     listNotice() {
