@@ -61,7 +61,9 @@ import NoticeListRow from "@/components/notice/child/NoticeListRow";
 import { listNotice } from "@/api/notice.js";
 //import axios from "axios";
 import http from "@/util/http-common";
+import { mapState } from "vuex";
 
+const memberStore = "memberStore";
 export default {
   name: "NoticeList",
   components: {
@@ -81,6 +83,9 @@ export default {
       isAdmin: false,
     };
   },
+  computed: {
+    ...mapState(memberStore, ["userInfo"]),
+  },
   created() {
     let param = {
       pg: 1,
@@ -92,12 +97,15 @@ export default {
       param,
       (response) => {
         this.notices = response.data;
-        //sconsole.log("k , w " + this.key + this.word);
+        //console.log("k , w " + this.key + this.word);
       },
       (error) => {
         console.log(error);
       }
     );
+    if (this.userInfo.userid == "admin") {
+      this.isAdmin = true;
+    }
   },
   methods: {
     moveWrite() {
