@@ -22,8 +22,8 @@
           v-model="word"
         />
         <b-button variant="outline-info" @click="searchNotice()" class="mr-2"
-          >검색</b-button
-        >
+          >검색
+        </b-button>
         <b-button variant="outline-primary" @click="moveWrite()" v-if="isAdmin"
           >글쓰기</b-button
         >

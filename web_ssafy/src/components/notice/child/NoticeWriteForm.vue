@@ -2,17 +2,14 @@
   <b-row class="mb-1">
     <b-col style="text-align: left">
       <b-form @submit="onSubmit" @reset="onReset">
-        <b-form-group
-          id="userid-group"
-          label="작성자:"
-          label-for="userid"
-          description="작성자를 입력하세요."
-        >
+        <b-form-group id="userid-group" label="작성자:" label-for="userid">
           <b-form-input
             id="userid"
             :disabled="isUserid"
             v-model="notice.userid"
             type="text"
+            placeholder="admin"
+            readonly
           ></b-form-input>
         </b-form-group>
 
@@ -66,7 +63,7 @@ export default {
     return {
       notice: {
         noticeno: 0,
-        userid: "",
+        userid: "admin",
         subject: "",
         content: "",
       },
