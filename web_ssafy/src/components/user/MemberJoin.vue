@@ -11,16 +11,22 @@
       <b-col></b-col>
       <b-col cols="5">
         <b-card class="text-center mt-3" style="max-width: 40rem" align="left">
-          <b-form class="text-left">
-            <b-alert show variant="danger" v-if="isLoginError"
-              >아이디 또는 비밀번호를 확인하세요.</b-alert
-            >
+          <b-form class="text-left" @submit="onSubmit" @reset="onReset">
             <b-form-group label="아이디" label-for="userid">
               <b-form-input
                 id="userid"
                 v-model="user.userid"
                 required
                 placeholder="User ID"
+                @keyup.enter="confirm"
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group label="이름" label-for="username">
+              <b-form-input
+                id="username"
+                v-model="user.username"
+                required
+                placeholder="User Name"
                 @keyup.enter="confirm"
               ></b-form-input>
             </b-form-group>
@@ -66,18 +72,10 @@
               ></b-form-input>
             </b-form-group>
             <br />
-            <b-button
-              type="button"
-              variant="success"
-              class="m-1"
-              @click="confirm"
+            <b-button type="submit" variant="success" class="m-1"
               >회원가입</b-button
             >
-            <b-button
-              type="button"
-              variant="danger"
-              class="m-1"
-              @click="onReset"
+            <b-button type="reset" variant="danger" class="m-1"
               >초기화</b-button
             >
           </b-form>
@@ -89,6 +87,7 @@
 </template>
 
 <script>
+import http from "@/util/http-common";
 import { mapState, mapActions } from "vuex";
 
 const memberStore = "memberStore";
@@ -99,6 +98,7 @@ export default {
     return {
       user: {
         userid: null,
+        username: null,
         userpwd: null,
         email: null,
       },
@@ -119,12 +119,53 @@ export default {
         this.$router.push({ name: "Home" });
       }
     },
+    onSubmit(event) {
+      event.preventDefault();
+      let err = true;
+      let msg = "";
+      !this.user.userid &&
+        ((msg = "ID를 입력해주세요"), (err = false), this.$refs.userid.focus());
+      err &&
+        !this.user.username &&
+        ((msg = "이름을 입력해주세요"),
+        (err = false),
+        this.$refs.username.focus());
+      err &&
+        !this.user.email &&
+        ((msg = "이메일을 입력해주세요"),
+        (err = false),
+        this.$refs.email.focus());
+
+      if (!err) alert(msg);
+      else this.registerMember();
+    },
     onReset(event) {
       event.preventDefault();
       this.user.userid = null;
+      this.user.username = null;
       this.user.userpwd = null;
       this.userpwdcheck = null;
       this.user.email = null;
+    },
+    registerMember() {
+      http
+        .post(`/user/register`, {
+          userid: this.user.userid,
+          username: this.user.username,
+          userpwd: this.user.userpwd,
+          email: this.user.email,
+        })
+        .then(({ data }) => {
+          let msg = "등록 처리시 문제가 발생했습니다.";
+          console.log(data);
+          if (data === "success") {
+            msg = "등록이 완료되었습니다.";
+            this.$router.push({ name: "SignIn" });
+          } else if (data === "duplicate") {
+            msg = "중복된 아이디";
+          }
+          alert(msg);
+        });
     },
   },
   updated() {

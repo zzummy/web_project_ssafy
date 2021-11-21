@@ -66,6 +66,28 @@ public class MemberController {
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 	
+	@ApiOperation(value = "회원가입", notes = "회원가입 결과를 가져온다", response = String.class)
+	@PostMapping("/register")
+	public ResponseEntity<String> registerMember(
+			@RequestBody @ApiParam(value = "회원 가입 정보(아이디, 이름, 비밀번호, 이메일).", required = true) MemberDto memberDto) {
+		HttpStatus status = HttpStatus.ACCEPTED;
+		try {
+			MemberDto user = memberService.userInfo(memberDto.getUserid());
+			if (user == null && memberService.registerMember(memberDto)) {
+				logger.info("회원가입 성공 : {}", memberDto.getUserid());
+				return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+			}
+			else {
+				logger.error("회원가입 실패 : {} 존재", user.getUserid());
+				return new ResponseEntity<String>("duplicate", status);
+			}
+		} catch (Exception e) {
+			logger.error("회원가입 실패 : {}", e);
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		return new ResponseEntity<String>(FAIL, status);
+	}
+	
 	@ApiOperation(value = "회원인증", notes = "회원 정보를 담은 Token을 반환한다.", response = Map.class)
 	@GetMapping("/info/{userid}")
 	public ResponseEntity<Map<String, Object>> getInfo(
