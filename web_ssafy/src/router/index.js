@@ -123,6 +123,7 @@ const routes = [
     redirect: "/notice/list",
     children: [
       {
+        // 검색
         path: "list",
         name: "NoticeList",
         component: NoticeList,
@@ -134,13 +135,13 @@ const routes = [
         component: NoticeWrite,
       },
       {
-        path: "detail/:articleno",
+        path: "detail/:noticeno",
         name: "NoticeView",
         beforeEnter: onlyAuthUser,
         component: NoticeView,
       },
       {
-        path: "update/:articleno",
+        path: "update/:noticeno",
         name: "NoticeUpdate",
         beforeEnter: onlyAuthUser,
         component: NoticeUpdate,

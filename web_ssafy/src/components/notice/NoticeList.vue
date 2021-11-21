@@ -7,7 +7,24 @@
     </b-row>
     <b-row class="mb-1">
       <b-col class="text-right">
-        <b-button variant="outline-primary" @click="moveWrite()"
+        <b-form-select
+          class="mr-2"
+          v-model="key"
+          size="ms"
+          id="select"
+          :options="options"
+        ></b-form-select>
+        <input
+          type="text"
+          id="word"
+          @keyup.enter="searchNotice()"
+          class="mr-2"
+          v-model="word"
+        />
+        <b-button variant="outline-info" @click="searchNotice()" class="mr-2"
+          >검색</b-button
+        >
+        <b-button variant="outline-primary" @click="moveWrite()" v-if="isAdmin"
           >글쓰기</b-button
         >
       </b-col>
@@ -42,28 +59,40 @@
 <script>
 import NoticeListRow from "@/components/notice/child/NoticeListRow";
 import { listNotice } from "@/api/notice.js";
+//import axios from "axios";
+import http from "@/util/http-common";
 
 export default {
-  name: "BoardList",
+  name: "NoticeList",
   components: {
     NoticeListRow,
   },
   data() {
     return {
+      // 검색
+      key: null,
+      options: [
+        { value: null, text: "선택" },
+        { value: "subject", text: "제목" },
+        { value: "content", text: "내용" },
+      ],
+      word: "",
       notices: [],
+      isAdmin: false,
     };
   },
   created() {
     let param = {
       pg: 1,
       spp: 20,
-      key: null,
-      word: null,
+      key: this.key,
+      word: this.word,
     };
     listNotice(
       param,
       (response) => {
         this.notices = response.data;
+        //sconsole.log("k , w " + this.key + this.word);
       },
       (error) => {
         console.log(error);
@@ -73,6 +102,38 @@ export default {
   methods: {
     moveWrite() {
       this.$router.push({ name: "NoticeWrite" });
+    },
+    // 검색
+    searchNotice() {
+      http
+        .get(
+          `http://localhost:9999/vue/notice?key=${this.key}&word=${this.word}`
+        )
+        .then(({ data }) => {
+          console.log(data);
+          // let msg = "검색 처리시 문제가 발생했습니다.";
+          // if (data === "success") {
+          //   msg = "검색이 완료되었습니다.";
+          //   this.notices = data;
+          //   this.$router.push({ name: "NoticeListRow", params: this.notices });
+          // }
+          // alert(msg);
+          let param = {
+            pg: 1,
+            spp: 20,
+            key: this.key,
+            word: this.word,
+          };
+          listNotice(
+            param,
+            (response) => {
+              this.notices = response.data;
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        });
     },
   },
 };
@@ -86,5 +147,12 @@ export default {
 .tdSubject {
   width: 300px;
   text-align: left;
+}
+#select {
+  width: 100px;
+}
+input {
+  vertical-align: middle;
+  height: 35px;
 }
 </style>
