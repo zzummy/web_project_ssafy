@@ -56,7 +56,6 @@
     </b-row>
     <memo-write-form v-if="isShowMemo"></memo-write-form>
     <memo-list-row v-for="(memo, index) in memos" :key="index" v-bind="memo" />
-    <div v-for="(memo, index) in memos" :key="index">{{ memo.memoid }}</div>
   </b-container>
 </template>
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.vue.model.mapper.MemoMapper">
+ 
+	<insert id="writeMemo" parameterType="MemoDto">
+		insert into memo (userid, comment, memotime, articleno)
+		values (#{userid}, #{comment}, now(), #{articleno})
+	</insert>
+
+	<select id="listMemo" parameterType="int" resultType="MemoDto">
+		select memono, userid, comment, memotime, articleno,
+				case when date_format(memotime, '%Y%m%d') = date_format(now(), '%Y%m%d')
+				then date_format(memotime, '%H:%i:%s')
+				else date_format(memotime, '%y.%m.%d')
+				end memotime
+		from memo
+		where articleno = #{articleno}
+		order by articleno
+	</select>
+	
+	<delete id="deleteMemo" parameterType="int">
+		delete from memo
+		where memono = #{memono}
+	</delete>
+<!-- 
+	<select id="getTotalCount" parameterType="map" resultType="int">
+		select count(articleno)
+		from board
+		<if test="word != null and word != ''">
+			<if test="key == 'subject'">
+				where subject like concat('%', #{word}, '%')
+			</if>
+			<if test="key != 'subject'">
+				where ${key} = #{word}
+			</if>
+		</if>
+	</select>
+	
+	<select id="getArticle" parameterType="int" resultType="boardDto">
+		select articleno, userid, subject, content, hit, regtime
+		from board
+		where articleno = #{articleno}
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		update board
+		set hit = hit + 1
+		where articleno = #{articleno}
+	</update>
+	
+	<update id="modifyArticle" parameterType="boardDto">
+		update board
+		set subject = #{subject}, content = #{content}
+		where articleno = #{articleno}
+	</update>
+	
+	<delete id="deleteArticle" parameterType="int">
+		delete from board
+		where articleno = #{articleno}
+	</delete>
+ -->
+</mapper>
+
