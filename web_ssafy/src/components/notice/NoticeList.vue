@@ -47,12 +47,22 @@
               v-for="(notice, index) in notices"
               :key="index"
               v-bind="notice"
+              :per-page="perPage"
+              :current-page="currentPage"
             />
           </tbody>
         </b-table-simple>
       </b-col>
       <b-col v-else class="text-center">공지사항이 없습니다.</b-col>
     </b-row>
+    <!-- Pagination 처리 -->
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="notice-list"
+      align="center"
+    ></b-pagination>
   </b-container>
 </template>
 
@@ -64,6 +74,7 @@ import http from "@/util/http-common";
 import { mapState } from "vuex";
 
 const memberStore = "memberStore";
+
 export default {
   name: "NoticeList",
   components: {
@@ -81,15 +92,23 @@ export default {
       word: "",
       notices: [],
       isAdmin: false,
+      perPage: 10,
+      currentPage: 1,
     };
   },
   computed: {
     ...mapState(memberStore, ["userInfo"]),
+    rows() {
+      console.log("길이 : " + this.notices.length);
+      return this.notices.length;
+    },
   },
   created() {
     let param = {
-      pg: 1,
-      spp: 20,
+      pg: this.currentPage,
+      spp: this.perPage,
+      // pg: 1,
+      // spp: 2,
       key: this.key,
       word: this.word,
     };
@@ -97,7 +116,7 @@ export default {
       param,
       (response) => {
         this.notices = response.data;
-        //console.log("k , w " + this.key + this.word);
+        console.log(response.data);
       },
       (error) => {
         console.log(error);
@@ -119,16 +138,11 @@ export default {
         )
         .then(({ data }) => {
           console.log(data);
-          // let msg = "검색 처리시 문제가 발생했습니다.";
-          // if (data === "success") {
-          //   msg = "검색이 완료되었습니다.";
-          //   this.notices = data;
-          //   this.$router.push({ name: "NoticeListRow", params: this.notices });
-          // }
-          // alert(msg);
           let param = {
-            pg: 1,
-            spp: 20,
+            pg: this.pg,
+            spp: this.spp,
+            // pg: 1,
+            // spp: 10,
             key: this.key,
             word: this.word,
           };

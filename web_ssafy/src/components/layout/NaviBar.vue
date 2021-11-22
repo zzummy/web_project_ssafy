@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+  <div id="nav1">
+    <b-navbar toggleable="lg">
       <b-navbar-brand href="#">
         <router-link to="/">
           <img
-            src="@/assets/ssafy_logo.png"
+            src="@/assets/logo2.png"
             class="d-inline-block align-middle"
-            width="90px"
+            width="110px"
             alt="Kitten"
           />
         </router-link>
@@ -16,11 +16,11 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#"
+          <!-- <b-nav-item href="#"
             ><router-link :to="{ name: 'Home' }" class="link"
               ><b-icon icon="house" font-scale="1"></b-icon> HOME</router-link
             ></b-nav-item
-          >
+          > -->
           <b-nav-item href="#"
             ><router-link :to="{ name: 'Notice' }" class="link"
               ><b-icon icon="journal" font-scale="1"></b-icon>
@@ -33,12 +33,12 @@
               게시판</router-link
             ></b-nav-item
           >
-          <b-nav-item href="#"
+          <!-- <b-nav-item href="#"
             ><router-link :to="{ name: 'Instargram' }" class="link"
               ><b-icon icon="instagram" font-scale="1"></b-icon>
               인별그램</router-link
             ></b-nav-item
-          >
+          > -->
           <b-nav-item href="#"
             ><router-link :to="{ name: 'House' }" class="link"
               ><b-icon icon="house-fill" font-scale="1"></b-icon>
@@ -113,4 +113,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#nav1 {
+  align-items: center;
+  padding: 0px 100px;
+}
+.link {
+  color: #426289;
+  font-weight: bold;
+}
+</style>
