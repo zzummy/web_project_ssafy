@@ -1,16 +1,23 @@
 <template>
   <b-container class="bv-example-row mt-3">
-    <b-row>
+    <!-- <b-row>
       <b-col></b-col>
       <b-col cols="5">
         <b-alert variant="secondary" show><h3>로그인</h3></b-alert>
       </b-col>
       <b-col></b-col>
-    </b-row>
+    </b-row> -->
     <b-row>
       <b-col></b-col>
-      <b-col cols="5">
-        <b-card class="text-center mt-3" style="max-width: 40rem" align="left">
+      <b-col cols="5" style="margin-top: 100px">
+        <b-card
+          class="text-center"
+          style="max-width: 40rem; padding: 20px"
+          align="left"
+        >
+          <p style="text-align: left; font-weight: bold; color: #426289">
+            로그인
+          </p>
           <b-form class="text-left">
             <b-alert show variant="danger" v-if="isLoginError"
               >아이디 또는 비밀번호를 확인하세요.</b-alert

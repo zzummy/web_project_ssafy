@@ -1,13 +1,16 @@
 <template>
-  <b-container class="bv-example-row mt-3 text-center">
-    <h3 class="underline-steelblue">
-      <b-icon icon="house"></b-icon>
-      HappyHouse
-    </h3>
+  <b-container class="bv-example-row mt-3 text-center" id="container">
+    <img
+      src="@/assets/house1.png"
+      class="d-inline-block align-middle"
+      width="100%"
+      alt="Kitten"
+      id="bg"
+    />
     <b-row>
       <b-col></b-col>
       <b-col cols="10">
-        <b-jumbotron
+        <!-- <b-jumbotron
           bg-variant="muted"
           text-variant="dark"
           border-variant="dark"
@@ -25,7 +28,7 @@
           <p>Bootstrap-vue는 버전 <b>4.5.3</b>을 권장합니다.</p>
           <p><b>BoardList.vue</b>를 바꿔가면서 테스트하세요.</p>
           <p>Bootstrap의 <b>table</b> 사용법을 익히게됩니다.</p>
-        </b-jumbotron>
+        </b-jumbotron> -->
       </b-col>
       <b-col></b-col>
     </b-row>
@@ -42,12 +45,11 @@ export default {
 </script>
 
 <style scoped>
-.underline-steelblue {
-  display: inline-block;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 70%,
-    rgba(72, 190, 233, 0.3) 30%
-  );
+#bg {
+  position: absolute;
+  top: 118px;
+  left: 0;
+  min-width: 100%;
+  height: 70%;
 }
 </style>
