@@ -15,14 +15,23 @@
           style="max-width: 40rem; padding: 20px"
           align="left"
         >
-          <p style="text-align: left; font-weight: bold; color: #426289">
+          <p
+            style="
+              text-align: left;
+              font-weight: bold;
+              color: #426289;
+              font-size: 25px;
+            "
+          >
             로그인
           </p>
+          <br />
           <b-form class="text-left">
             <b-alert show variant="danger" v-if="isLoginError"
               >아이디 또는 비밀번호를 확인하세요.</b-alert
             >
-            <b-form-group label="아이디:" label-for="userid">
+            <br />
+            <b-form-group label="아이디" label-for="userid">
               <b-form-input
                 id="userid"
                 v-model="user.userid"
@@ -31,7 +40,8 @@
                 @keyup.enter="confirm"
               ></b-form-input>
             </b-form-group>
-            <b-form-group label="비밀번호:" label-for="userpwd">
+            <br />
+            <b-form-group label="비밀번호" label-for="userpwd">
               <b-form-input
                 type="password"
                 id="userpwd"
@@ -41,18 +51,11 @@
                 @keyup.enter="confirm"
               ></b-form-input>
             </b-form-group>
-            <b-button
-              type="button"
-              variant="primary"
-              class="m-1"
-              @click="confirm"
+            <br /><br />
+            <b-button type="button" class="m-1" @click="confirm" id="loginBtn"
               >로그인</b-button
             >
-            <b-button
-              type="button"
-              variant="success"
-              class="m-1"
-              @click="movePage"
+            <b-button type="button" class="m-1" @click="movePage" id="joinBtn"
               >회원가입</b-button
             >
           </b-form>
@@ -98,4 +101,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#loginBtn {
+  border: 0px;
+  background-color: #426289;
+}
+#joinBtn {
+  border: 0px;
+  background-color: #8999ac;
+}
+</style>

@@ -2,15 +2,23 @@
   <b-container class="bv-example-row mt-3">
     <b-row>
       <b-col></b-col>
-      <b-col cols="5">
-        <b-alert variant="secondary" show><h3>회원가입</h3></b-alert>
-      </b-col>
-      <b-col></b-col>
-    </b-row>
-    <b-row>
-      <b-col></b-col>
-      <b-col cols="5">
-        <b-card class="text-center mt-3" style="max-width: 40rem" align="left">
+      <b-col cols="5" style="margin-top: 100px">
+        <b-card
+          class="text-center"
+          style="max-width: 40rem; padding: 20px"
+          align="left"
+        >
+          <p
+            style="
+              text-align: left;
+              font-weight: bold;
+              color: #426289;
+              font-size: 25px;
+            "
+          >
+            회원가입
+          </p>
+          <br />
           <b-form class="text-left" @submit="onSubmit" @reset="onReset">
             <b-form-group label="아이디" label-for="userid">
               <b-form-input
@@ -21,6 +29,7 @@
                 @keyup.enter="confirm"
               ></b-form-input>
             </b-form-group>
+
             <b-form-group label="이름" label-for="username">
               <b-form-input
                 id="username"
@@ -72,12 +81,8 @@
               ></b-form-input>
             </b-form-group>
             <br />
-            <b-button type="submit" variant="success" class="m-1"
-              >회원가입</b-button
-            >
-            <b-button type="reset" variant="danger" class="m-1"
-              >초기화</b-button
-            >
+            <b-button type="submit" class="m-1" id="joinBtn">회원가입</b-button>
+            <b-button type="reset" class="m-1" id="resetBtn">초기화</b-button>
           </b-form>
         </b-card>
       </b-col>
@@ -178,4 +183,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#joinBtn {
+  border: 0px;
+  background-color: #426289;
+}
+#resetBtn {
+  border: 0px;
+  background-color: #8999ac;
+}
+</style>
