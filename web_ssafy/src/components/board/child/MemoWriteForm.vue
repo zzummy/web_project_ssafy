@@ -12,11 +12,15 @@
           ></b-form-textarea>
         </b-form-group>
 
-        <b-button type="submit" variant="primary" class="m-1"
+        <b-button type="submit" style="border: 0px; background-color: #426289"
           >댓글 작성</b-button
         >
 
-        <b-button type="reset" variant="danger" class="m-1">초기화</b-button>
+        <b-button
+          type="reset"
+          style="border: 0px; background-color: #8999ac; margin-left: 8px"
+          >초기화</b-button
+        >
       </b-form>
     </b-col>
   </b-row>

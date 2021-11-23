@@ -1,7 +1,7 @@
 <template>
   <b-container class="bv-example-row mt-3 text-center" id="container">
     <img
-      src="@/assets/house1.jpg"
+      src="@/assets/house1.png"
       style="opacity: 0.8"
       class="d-inline-block align-middle"
       width="100%"

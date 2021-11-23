@@ -44,15 +44,21 @@
 
         <b-button
           type="submit"
-          variant="primary"
-          class="m-1"
+          style="border: 0px; background-color: #426289"
           v-if="this.type === 'register'"
           >글작성</b-button
         >
-        <b-button type="submit" variant="primary" class="m-1" v-else
+        <b-button
+          type="submit"
+          style="border: 0px; background-color: #426289"
+          v-else
           >글수정</b-button
         >
-        <b-button type="reset" variant="danger" class="m-1">초기화</b-button>
+        <b-button
+          type="reset"
+          style="border: 0px; background-color: #8999ac; margin-left: 8px"
+          >초기화</b-button
+        >
       </b-form>
     </b-col>
   </b-row>

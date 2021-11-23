@@ -2,18 +2,27 @@
   <b-container class="mt-4" v-if="userInfo">
     <b-row>
       <b-col>
-        <b-alert variant="secondary" show><h3>내정보</h3></b-alert>
+        <p
+          style="
+            font-weight: bold;
+            font-size: 2em;
+            color: #3b3838;
+            margin: 80px 0px;
+          "
+        >
+          마이페이지
+        </p>
       </b-col>
     </b-row>
     <b-row>
       <b-col></b-col>
       <b-col cols="8">
         <b-jumbotron>
-          <template #header>My Page</template>
+          <!-- <template #header>My Page</template>
 
-          <template #lead> 내 정보 확인페이지입니다. </template>
+          <template #lead> 내 정보 확인페이지입니다. </template> -->
 
-          <hr class="my-4" />
+          <!-- <hr class="my-4" /> -->
 
           <b-container class="mt-4">
             <b-row>
@@ -45,12 +54,17 @@
               <b-col cols="2"></b-col>
             </b-row>
           </b-container>
+          <br />
           <hr class="my-4" />
 
-          <b-button variant="primary" @click="updateInfo" class="mr-1"
+          <b-button
+            style="border: 0px; background-color: #426289"
+            @click="updateInfo"
             >정보수정</b-button
           >
-          <b-button variant="danger" @click="onClickWithdrawal"
+          <b-button
+            style="border: 0px; background-color: #8999ac; margin-left: 8px"
+            @click="onClickWithdrawal"
             >회원탈퇴</b-button
           >
         </b-jumbotron>

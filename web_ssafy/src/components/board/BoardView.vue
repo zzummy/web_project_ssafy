@@ -2,26 +2,41 @@
   <b-container class="bv-example-row mt-3">
     <b-row>
       <b-col>
-        <b-alert show><h3>글보기</h3></b-alert>
+        <p
+          style="
+            font-weight: bold;
+            font-size: 2em;
+            color: #3b3838;
+            margin: 80px 0px;
+          "
+        >
+          게시판
+        </p>
       </b-col>
     </b-row>
     <b-row class="mb-1">
       <b-col class="text-left">
-        <b-button variant="outline-primary" @click="listArticle">목록</b-button>
+        <b-button
+          style="border: 0px; background-color: #8999ac"
+          @click="listArticle"
+          >목록</b-button
+        >
       </b-col>
       <b-col class="text-right" v-show="canDelete">
         <b-button
-          variant="outline-info"
-          size="sm"
-          @click="moveModifyArticle"
           class="mr-2"
+          style="border: 0px; background-color: #426289"
+          @click="moveModifyArticle"
           >글수정</b-button
         >
-        <b-button variant="outline-danger" size="sm" @click="deleteArticle"
+        <b-button
+          style="border: 0px; background-color: #8999ac"
+          @click="deleteArticle"
           >글삭제</b-button
         >
       </b-col>
     </b-row>
+    <br />
     <b-row class="mb-1">
       <b-col>
         <b-card
@@ -44,12 +59,14 @@
       <b-col class="text-right">
         <b-button
           v-if="!isShowMemo"
-          variant="outline-info"
-          size="sm"
+          style="border: 0px; background-color: #426289"
           @click="writeMemo"
           >댓글(QnA) 작성 쓰기</b-button
         >
-        <b-button v-else variant="outline-info" size="sm" @click="writeMemo"
+        <b-button
+          v-else
+          style="border: 0px; background-color: #8999ac"
+          @click="writeMemo"
           >댓글(QnA) 작성 취소</b-button
         >
       </b-col>
