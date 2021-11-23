@@ -47,8 +47,12 @@
           </b-container>
           <hr class="my-4" />
 
-          <b-button variant="primary" href="#" class="mr-1">정보수정</b-button>
-          <b-button variant="danger" href="#">회원탈퇴</b-button>
+          <b-button variant="primary" @click="updateInfo" class="mr-1"
+            >정보수정</b-button
+          >
+          <b-button variant="danger" @click="onClickWithdrawal"
+            >회원탈퇴</b-button
+          >
         </b-jumbotron>
       </b-col>
       <b-col></b-col>
@@ -71,9 +75,6 @@ export default {
   methods: {
     ...mapMutations(memberStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),
     onClickWithdrawal() {
-      this.SET_IS_LOGIN(false);
-      this.SET_USER_INFO(null);
-      sessionStorage.removeItem("access-token");
       let msg = "회원 탈퇴 완료했습니다.";
       withdrawal(
         this.userInfo.userid,
@@ -81,12 +82,18 @@ export default {
           if (data === "success") {
             alert(msg);
             this.$router.push({ name: "Home" });
+          } else {
+            msg = "회원 탈퇴 오류";
+            alert(msg);
           }
         },
         (error) => {
           console.log(error);
         }
       );
+    },
+    updateInfo() {
+      this.$router.push({ name: "updateInfo" });
     },
   },
 };

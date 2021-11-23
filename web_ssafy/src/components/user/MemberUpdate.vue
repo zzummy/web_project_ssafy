@@ -26,6 +26,7 @@
                 v-model="user.userid"
                 required
                 placeholder="User ID"
+                readonly
                 @keyup.enter="confirm"
               ></b-form-input>
             </b-form-group>
@@ -81,7 +82,7 @@
               ></b-form-input>
             </b-form-group>
             <br />
-            <b-button type="submit" class="m-1" id="joinBtn">회원가입</b-button>
+            <b-button type="submit" class="m-1" id="joinBtn">회원수정</b-button>
             <b-button type="reset" class="m-1" id="resetBtn">초기화</b-button>
           </b-form>
         </b-card>
@@ -112,16 +113,21 @@ export default {
     };
   },
   computed: {
-    ...mapState(memberStore, ["isLogin", "isLoginError"]),
+    ...mapState(memberStore, ["isLogin", "userInfo"]),
   },
   methods: {
-    ...mapActions(memberStore, ["userConfirm", "getUserInfo"]),
+    ...mapActions(memberStore, [
+      "userConfirm",
+      "getUserInfo",
+      "SET_USER_INFO",
+      "SET_IS_LOGIN",
+    ]),
     async confirm() {
       await this.userConfirm(this.user);
       let token = sessionStorage.getItem("access-token");
       if (this.isLogin) {
         await this.getUserInfo(token);
-        this.$router.push({ name: "Home" });
+        this.$router.push({ name: "MyPage" });
       }
     },
     onSubmit(event) {
@@ -136,42 +142,58 @@ export default {
         (err = false),
         this.$refs.username.focus());
       err &&
+        !this.user.userpwd &&
+        ((msg = "비밀번호를 입력해주세요"),
+        (err = false),
+        this.$refs.userpwd.focus());
+      err &&
+        this.wrongPwd &&
+        ((msg = "비밀번호가 일치하지 않습니다"),
+        (err = false),
+        this.$refs.userpwdcheck.focus());
+      err &&
         !this.user.email &&
         ((msg = "이메일을 입력해주세요"),
         (err = false),
         this.$refs.email.focus());
 
       if (!err) alert(msg);
-      else this.registerMember();
+      else this.updateMember();
     },
     onReset(event) {
       event.preventDefault();
-      this.user.userid = null;
-      this.user.username = null;
+      this.user.username = this.userInfo.username;
       this.user.userpwd = null;
       this.userpwdcheck = null;
-      this.user.email = null;
+      this.user.email = this.userInfo.email;
     },
-    registerMember() {
+    updateMember() {
       http
-        .post(`/user/register`, {
+        .post(`/user/update`, {
           userid: this.user.userid,
           username: this.user.username,
           userpwd: this.user.userpwd,
           email: this.user.email,
         })
         .then(({ data }) => {
-          let msg = "등록 처리시 문제가 발생했습니다.";
+          let msg = "회원 정보 수정 처리시 문제가 발생했습니다.";
           console.log(data);
           if (data === "success") {
-            msg = "등록이 완료되었습니다.";
-            this.$router.push({ name: "SignIn" });
-          } else if (data === "duplicate") {
-            msg = "중복된 아이디";
+            msg = "회원 정보 수정이 완료되었습니다.";
+            this.SET_IS_LOGIN(false);
+            this.SET_USER_INFO(null);
+            sessionStorage.removeItem("access-token");
+            this.confirm();
           }
           alert(msg);
         });
     },
+  },
+  created() {
+    this.user.userid = this.userInfo.userid;
+    this.user.username = this.userInfo.username;
+    this.user.userpwd = null;
+    this.user.email = this.userInfo.email;
   },
   updated() {
     if (this.user.userpwd != this.userpwdcheck) {

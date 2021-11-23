@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -88,6 +89,27 @@ public class MemberController {
 		return new ResponseEntity<String>(FAIL, status);
 	}
 	
+	@ApiOperation(value = "회원정보 수정", notes = "회원정보 수정을 한다", response = String.class)
+	@PostMapping("/update")
+	public ResponseEntity<String> updateMember(
+			@RequestBody @ApiParam(value = "회원 수정 정보(이름, 비밀번호, 이메일).", required = true) MemberDto memberDto) {
+		HttpStatus status = HttpStatus.ACCEPTED;
+		try {
+			MemberDto user = memberService.userInfo(memberDto.getUserid());
+			if (user != null && memberService.updateMember(memberDto)) {
+				logger.info("회원정보 수정 성공 : {}", memberDto.getUserid());
+				return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+			}
+			else {
+				logger.error("회원정보 수정 실패 : {} 없음", user.getUserid());
+			}
+		} catch (Exception e) {
+			logger.error("회원정보 수정 실패 : {}", e);
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		return new ResponseEntity<String>(FAIL, status);
+	}
+	
 	@ApiOperation(value = "회원인증", notes = "회원 정보를 담은 Token을 반환한다.", response = Map.class)
 	@GetMapping("/info/{userid}")
 	public ResponseEntity<Map<String, Object>> getInfo(
@@ -115,6 +137,26 @@ public class MemberController {
 			status = HttpStatus.ACCEPTED;
 		}
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
+	
+	@ApiOperation(value = "회원인증", notes = "회원 정보를 담은 Token을 반환한다.", response = Map.class)
+	@DeleteMapping("/info/{userid}")
+	public ResponseEntity<String> deleteMember(
+			@PathVariable("userid") @ApiParam(value = "인증할 회원의 아이디.", required = true) String userid,
+			HttpServletRequest request) {
+//		logger.debug("userid : {} ", userid);
+		String result = FAIL;
+		HttpStatus status = HttpStatus.ACCEPTED;
+		try {
+			if (memberService.deleteMember(userid)) {
+				logger.info("회원 삭제 완료 : {}", userid);
+				result = SUCCESS;
+			}
+		} catch (Exception e) {
+			logger.error("정보조회 실패 : {}", e);
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		return new ResponseEntity<String>(result, status);
 	}
 
 }
