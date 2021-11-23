@@ -136,6 +136,16 @@ export default {
         (err = false),
         this.$refs.username.focus());
       err &&
+        !this.user.userpwd &&
+        ((msg = "비밀번호를 입력해주세요"),
+        (err = false),
+        this.$refs.userpwd.focus());
+      err &&
+        this.wrongPwd &&
+        ((msg = "비밀번호가 일치하지 않습니다"),
+        (err = false),
+        this.$refs.userpwd.focus());
+      err &&
         !this.user.email &&
         ((msg = "이메일을 입력해주세요"),
         (err = false),

@@ -6,6 +6,7 @@ import Member from "@/views/Member.vue";
 import MemberLogin from "@/components/user/MemberLogin.vue";
 import MemberJoin from "@/components/user/MemberJoin.vue";
 import MemberMyPage from "@/components/user/MemberMyPage.vue";
+import MemberUpdate from "@/components/user/MemberUpdate.vue";
 
 import Board from "@/views/Board.vue";
 import BoardList from "@/components/board/BoardList.vue";
@@ -72,6 +73,12 @@ const routes = [
         name: "MyPage",
         beforeEnter: onlyAuthUser,
         component: MemberMyPage,
+      },
+      {
+        path: "mypage/update",
+        name: "updateInfo",
+        beforeEnter: onlyAuthUser,
+        component: MemberUpdate,
       },
     ],
   },

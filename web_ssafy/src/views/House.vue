@@ -20,7 +20,7 @@
       </b-col>
     </b-row>
     <house-list />
-    <!-- <b-row>
+    <b-row>
       <b-col cols="4" align="left">
         <house-list />
       </b-col>
@@ -28,23 +28,23 @@
         <br />
         <house-map />
         <house-detail />
-      </b-col> 
-    </b-row>-->
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 <script>
 import HouseSearchBar from "@/components/house/HouseSearchBar.vue";
 import HouseList from "@/components/house/HouseList.vue";
-//import HouseDetail from "@/components/house/HouseDetail.vue";
-//import HouseMap from "@/components/house/HouseMap.vue";
+import HouseDetail from "@/components/house/HouseDetail.vue";
+//import HospitalList from "@/components/hospital/HospitalList.vue";
 
 export default {
   name: "House",
   components: {
     HouseSearchBar,
     HouseList,
-    //HouseDetail,
-    //HouseMap,
+    HouseDetail,
+    //HospitalList,
   },
 };
 </script>

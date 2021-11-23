@@ -11,6 +11,10 @@ async function findById(userid, success, fail) {
   await api.get(`/user/info/${userid}`).then(success).catch(fail);
 }
 
+async function withdrawal(userid, success, fail) {
+  await api.delete(`/user/info/${userid}`).then(success).catch(fail);
+}
+
 // function logout(success, fail)
 
-export { login, findById };
+export { login, findById, withdrawal };
