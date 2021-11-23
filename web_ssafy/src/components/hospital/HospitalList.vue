@@ -1,39 +1,8 @@
 <template>
   <b-container fluid>
-    <!-- User Interface controls -->
-    <b-row>
-      <b-col sm="5" md="6" class="my-1">
-        <b-form-group
-          label="한번에 보이는 줄 수"
-          label-for="per-page-select"
-          label-cols-sm="6"
-          label-cols-md="4"
-          label-cols-lg="3"
-          label-align-sm="right"
-          label-size="sm"
-          class="mb-0"
-        >
-          <b-form-select
-            id="per-page-select"
-            v-model="perPage"
-            :options="pageOptions"
-            size="sm"
-          ></b-form-select>
-        </b-form-group>
-      </b-col>
-
-      <b-col sm="7" md="6" class="my-1">
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="totalRows"
-          :per-page="perPage"
-          align="fill"
-          size="sm"
-          class="my-0"
-        ></b-pagination>
-      </b-col>
-    </b-row>
-
+    <div>
+      <h3>코로나 선별 진료소</h3>
+    </div>
     <b-table
       :items="hospitals"
       :fields="fields"
@@ -44,6 +13,7 @@
       :sort-direction="sortDirection"
       stacked="md"
       small
+      caption-top
     >
       <template #cell(name)="row">
         {{ row.value.first }} {{ row.value.last }}
@@ -51,20 +21,34 @@
 
       <template #cell(actions)="row">
         <b-button size="sm" @click="row.toggleDetails">
-          {{ row.detailsShowing ? "Hide" : "Show" }} Details
+          상세정보 {{ row.detailsShowing ? "숨기기" : "보기" }}
         </b-button>
       </template>
 
       <template #row-details="row">
         <b-card class="text-left">
-          <ul>
-            <li v-for="(value, key) in row.item" :key="key">
-              {{ key }}: {{ value }}
-            </li>
-          </ul>
+          <li>평일 운영시간 : {{ row.item.optimeWeekday }}</li>
+          <li>토요일 운영시간 : {{ row.item.optimeSat }}</li>
+          <li>일요일/공휴일 운영시간 : {{ row.item.optimeSun }}</li>
+          <li>기타사항 : {{ row.item.etc }}</li>
         </b-card>
       </template>
     </b-table>
+    <!-- User Interface controls -->
+    <b-row>
+      <b-col></b-col>
+      <b-col sm="7" md="6" class="my-1">
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="totalRows"
+          :per-page="perPage"
+          align="fill"
+          size="sm"
+          class="my-0"
+        ></b-pagination>
+      </b-col>
+      <b-col></b-col>
+    </b-row>
   </b-container>
 </template>
 
@@ -101,29 +85,31 @@ export default {
         },
         { key: "actions", label: "상세정보" },
       ],
+      details: [
+        {
+          key: "optimeWeekday",
+          label: "평일 운영시간",
+        },
+        {
+          key: "optimeSat",
+          label: "토요일 운영시간",
+        },
+        {
+          key: "optimeSun",
+          label: "일요일/공휴일 운영시간",
+        },
+        {
+          key: "etc",
+          label: "기타사항",
+        },
+      ],
       totalRows: 1,
       currentPage: 1,
       perPage: 3,
-      pageOptions: [3, 5, 10],
       sortBy: "",
       sortDesc: false,
       sortDirection: "asc",
-      infoModal: {
-        id: "info-modal",
-        title: "",
-        content: "",
-      },
     };
-  },
-  computed: {
-    sortOptions() {
-      // Create an options list from our fields
-      return this.fields
-        .filter((f) => f.sortable)
-        .map((f) => {
-          return { text: f.label, value: f.key };
-        });
-    },
   },
   created() {
     http
@@ -134,10 +120,9 @@ export default {
       .then(({ data }) => {
         if (data != null) {
           this.hospitals = data;
-          console.log(this.hospitals);
+          this.totalRows = this.hospitals.length;
         }
       });
-    this.totalRows = this.hospitals.length;
   },
 };
 </script>

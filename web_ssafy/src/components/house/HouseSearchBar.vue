@@ -37,6 +37,7 @@
         v-bind:gugunName="gugunName"
       ></hospital-list>
     </b-row>
+    <br />
   </b-container>
 </template>
 
