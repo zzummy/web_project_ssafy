@@ -57,7 +57,8 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
+import { withdrawal } from "@/api/member";
 
 const memberStore = "memberStore";
 
@@ -66,6 +67,27 @@ export default {
   components: {},
   computed: {
     ...mapState(memberStore, ["userInfo"]),
+  },
+  methods: {
+    ...mapMutations(memberStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),
+    onClickWithdrawal() {
+      this.SET_IS_LOGIN(false);
+      this.SET_USER_INFO(null);
+      sessionStorage.removeItem("access-token");
+      let msg = "회원 탈퇴 완료했습니다.";
+      withdrawal(
+        this.userInfo.userid,
+        ({ data }) => {
+          if (data === "success") {
+            alert(msg);
+            this.$router.push({ name: "Home" });
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
   },
 };
 </script>
