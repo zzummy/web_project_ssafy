@@ -15,12 +15,12 @@
     >
       <p>We always be with you</p>
     </b-jumbotron>
-    <b-jumbotron
-      id="mainText"
-      header="HappyHouse"
-      lead="마음에 드는 집을 사는 그날까지"
-    >
-      <p>We'll always be with you</p>
+    <b-jumbotron header="ㅇㅇㅇ">
+      <p>우앵~~~~~~~~~~</p>
+      <p>우앵~~~~~~~~~~</p>
+      <p>우앵~~~~~~~~~~</p>
+      <p>우앵~~~~~~~~~~</p>
+      <p>우앵~~~~~~~~~~</p>
     </b-jumbotron>
   </b-container>
 </template>
@@ -41,6 +41,8 @@ export default {
   top: 118px;
   left: 0;
   width: 100%;
+  height: 500px;
+  min-height: 400px;
 }
 #mainText {
   z-index: 2;
