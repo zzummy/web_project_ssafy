@@ -29,7 +29,9 @@ a.router-link-exact-active {
   color: #8999ac;
 }
 
-#main {
-  height: 1300px;
+footer-bar {
+  z-index: 3;
+  position: relative;
+  height: auto;
 }
 </style>

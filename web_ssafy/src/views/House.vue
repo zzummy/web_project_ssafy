@@ -19,15 +19,13 @@
         <house-search-bar></house-search-bar>
       </b-col>
     </b-row>
-    <house-list />
     <b-row>
-      <b-col cols="4" align="left">
+      <b-col cols="12" align="left">
         <house-list />
       </b-col>
       <b-col cols="8">
-        <br />
-        <house-map />
-        <house-detail />
+        <div><house-map /></div>
+        <div><house-detail /></div>
       </b-col>
     </b-row>
   </b-container>
