@@ -52,6 +52,8 @@ public class NoticeController {
 	@GetMapping
 	public ResponseEntity<List<NoticeDto>> listNotice(@ApiParam(value = "공지사항을 얻기위한 부가정보.", required = true) NoticeParameterDto noticeParameterDto) throws Exception {
 		logger.info("listNotice - 호출");
+		noticeService.makePageNavigation(noticeParameterDto);
+		int totalPageCount = noticeService.makePageNavigation(noticeParameterDto).getTotalPageCount();
 		return new ResponseEntity<List<NoticeDto>>(noticeService.listNotice(noticeParameterDto), HttpStatus.OK);
 	}
 	

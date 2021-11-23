@@ -2,26 +2,41 @@
   <b-container class="bv-example-row mt-3">
     <b-row>
       <b-col>
-        <b-alert show><h3>글보기</h3></b-alert>
+        <p
+          style="
+            font-weight: bold;
+            font-size: 2em;
+            color: #3b3838;
+            margin: 80px 0px;
+          "
+        >
+          공지사항
+        </p>
       </b-col>
     </b-row>
     <b-row class="mb-1">
       <b-col class="text-left">
-        <b-button variant="outline-primary" @click="listNotice">목록</b-button>
+        <b-button
+          @click="listNotice"
+          style="border: 0px; background-color: #8999ac"
+          >목록</b-button
+        >
       </b-col>
       <b-col class="text-right" v-if="isAdmin">
         <b-button
-          variant="outline-info"
-          size="sm"
           @click="moveModifyNotice"
           class="mr-2"
+          style="border: 0px; background-color: #426289"
           >글수정</b-button
         >
-        <b-button variant="outline-danger" size="sm" @click="removeNotice"
+        <b-button
+          @click="removeNotice"
+          style="border: 0px; background-color: #8999ac"
           >글삭제</b-button
         >
       </b-col>
     </b-row>
+    <br />
     <b-row class="mb-1">
       <b-col>
         <b-card

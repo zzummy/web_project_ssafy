@@ -29,7 +29,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public List<NoticeDto> listNotice(NoticeParameterDto noticeParameterDto) throws Exception {
 		int start = noticeParameterDto.getPg() == 0 ? 0 : (noticeParameterDto.getPg() - 1) * noticeParameterDto.getSpp();
-		noticeParameterDto.setStart(start);
+		noticeParameterDto.setStart(start);		
 		return sqlSession.getMapper(NoticeMapper.class).listNotice(noticeParameterDto);
 	}
 
@@ -48,6 +48,8 @@ public class NoticeServiceImpl implements NoticeService {
 		boolean endRange = (totalPageCount - 1) / naviSize * naviSize < noticeParameterDto.getPg();
 		pageNavigation.setEndRange(endRange);
 		pageNavigation.makeNavigator();
+//		System.out.println("totalCount : "+ totalCount);
+//		System.out.println("totalPageCount : "+ totalPageCount);
 		return pageNavigation;
 	}
 

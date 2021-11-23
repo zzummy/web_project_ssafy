@@ -1,4 +1,5 @@
 <template>
+  <!-- <router-link :to="{ name: 'HouseDetail' }"> -->
   <b-row
     class="m-2"
     @click="selectHouse"
@@ -6,26 +7,29 @@
     @mouseout="colorChange(false)"
     :class="{ 'mouse-over-bgcolor': isColor }"
   >
-    <b-col cols="2" class="text-center align-self-center">
-      <b-img
-        thumbnail
-        src="https://picsum.photos/250/250/?image=58"
-        alt="Image 1"
-      ></b-img>
-    </b-col>
-    <b-col cols="10" class="align-self-center">
-      [{{ house.일련번호 }}] {{ house.아파트 }}
+    <b-col cols="10" class="align-self-center" style="padding: 10px">
+      <p style="font-size: 12px">{{ house.일련번호 }}</p>
+      <span style="font-weight: bold" class="underline">{{
+        house.아파트
+      }}</span>
+      <span style="font-size: 12px"> ({{ house.층 }}층)</span> <br />
+      거래금액 : {{ house.거래금액 }}
     </b-col>
   </b-row>
+  <!-- </router-link> -->
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
+//import HouseDetail from "@/components/house/HouseDetail.vue";
 
 const houseStore = "houseStore";
 
 export default {
   name: "HouseListRow",
+  // components: {
+  //   HouseDetail,
+  // },
   data() {
     return {
       isColor: false,
@@ -36,8 +40,10 @@ export default {
   },
   methods: {
     ...mapActions(houseStore, ["detailHouse"]),
+    ...mapMutations(houseStore, ["CLEAR_DETAIL_HOUSE"]),
+
     selectHouse() {
-      // console.log("listRow : ", this.house);
+      console.log("listRow : ", this.house);
       // this.$store.dispatch("getHouse", this.house);
       this.detailHouse(this.house);
     },
@@ -53,6 +59,14 @@ export default {
   width: 50px;
 }
 .mouse-over-bgcolor {
-  background-color: lightblue;
+  background-color: #c0c4ca;
+}
+.underline {
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(45, 72, 121, 0.3) 30%
+  );
 }
 </style>

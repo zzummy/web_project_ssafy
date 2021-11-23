@@ -2,20 +2,32 @@
   <b-container class="bv-example-row mt-3">
     <b-row>
       <b-col>
-        <b-alert show><h3>글목록</h3></b-alert>
+        <p
+          style="
+            font-weight: bold;
+            font-size: 2em;
+            color: #3b3838;
+            margin: 80px 0px;
+          "
+        >
+          게시판
+        </p>
       </b-col>
     </b-row>
     <b-row class="mb-1">
       <b-col class="text-right">
-        <b-button variant="outline-primary" @click="moveWrite()"
+        <b-button
+          @click="moveWrite()"
+          style="border: 0px; background-color: #426289"
           >글쓰기</b-button
         >
       </b-col>
     </b-row>
+    <br />
     <b-row>
       <b-col v-if="articles.length">
         <b-table-simple hover responsive>
-          <b-thead head-variant="dark">
+          <b-thead style="background-color: #f2f4f8">
             <b-tr>
               <b-th>글번호</b-th>
               <b-th>제목</b-th>

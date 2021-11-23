@@ -10,18 +10,18 @@
     <b-col class="sm-3" align="left">
       <b-button variant="outline-primary" @click="sendKeyword">검색</b-button>
     </b-col> -->
-    <b-col class="sm-3">
+    <b-col cols="3" class="text-center align-self-center">
       <b-form-select
         v-model="sidoCode"
         :options="sidos"
         @change="gugunList"
       ></b-form-select>
     </b-col>
-    <b-col class="sm-3">
+    <b-col cols="3" class="text-center align-self-center">
       <b-form-select
         v-model="gugunCode"
         :options="guguns"
-        @change="searchApt"
+        @change="searchApt()"
       ></b-form-select>
     </b-col>
   </b-row>
@@ -48,10 +48,23 @@ export default {
     return {
       sidoCode: null,
       gugunCode: null,
+      //dongCode: null,
+      positions: this.$store.positions,
     };
   },
   computed: {
-    ...mapState(houseStore, ["sidos", "guguns"]),
+    ...mapState(houseStore, [
+      "houses",
+      "sidos",
+      "guguns",
+      "positions",
+      // "houses",
+      // "map",
+      // "ps",
+      // "geocoder",
+      // "infowindow",
+      // "customOverlay",
+    ]),
     // sidos() {
     //   return this.$store.state.sidos;
     // },
@@ -63,8 +76,25 @@ export default {
     this.getSido();
   },
   methods: {
-    ...mapActions(houseStore, ["getSido", "getGugun", "getHouseList"]),
-    ...mapMutations(houseStore, ["CLEAR_SIDO_LIST", "CLEAR_GUGUN_LIST"]),
+    ...mapActions(houseStore, [
+      "getSido",
+      "getGugun",
+      "getHouseList",
+      //"getDong",
+      // "detailHouse",
+      // "displayMarkers",
+      // "addMarker",
+      // // //"removeMarker",
+      // "getListItem",
+      // "displayInfowindow",
+      // "removeAllChildNods",
+    ]),
+    ...mapMutations(houseStore, [
+      "CLEAR_SIDO_LIST",
+      "CLEAR_GUGUN_LIST",
+      //"CLEAR_DONG_LIST",
+      "CLEAR_DETAIL_HOUSE",
+    ]),
     // sidoList() {
     //   this.getSido();
     // },
@@ -74,9 +104,25 @@ export default {
       this.gugunCode = null;
       if (this.sidoCode) this.getGugun(this.sidoCode);
     },
+    // dongList() {
+    //   this.CLEAR_DONG_LIST();
+    //   this.dongCode = null;
+    //   if (this.gugunCode) this.getDong(this.gugunCode);
+    // },
     searchApt() {
-      if (this.gugunCode) this.getHouseList(this.gugunCode);
+      this.CLEAR_DETAIL_HOUSE();
+      if (this.gugunCode) {
+        this.getHouseList(this.gugunCode);
+        //this.displayMarkers(this.positions);
+      }
     },
+    // searchApt() {
+    //   this.CLEAR_DETAIL_HOUSE();
+    //   if (this.dongCode) {
+    //     this.getHouseList(this.dongCode);
+    //     this.displayMarkers(this.houses);
+    //   }
+    // },
   },
 };
 </script>
