@@ -52,10 +52,18 @@
               ></b-form-input>
             </b-form-group>
             <br /><br />
-            <b-button type="button" class="m-1" @click="confirm" id="loginBtn"
+            <b-button
+              type="button"
+              class="m-1"
+              @click="confirm"
+              style="border: 0px; background-color: #426289"
               >로그인</b-button
             >
-            <b-button type="button" class="m-1" @click="movePage" id="joinBtn"
+            <b-button
+              type="button"
+              class="m-1"
+              @click="movePage"
+              style="border: 0px; background-color: #8999ac"
               >회원가입</b-button
             >
           </b-form>
@@ -101,13 +109,4 @@ export default {
 };
 </script>
 
-<style>
-#loginBtn {
-  border: 0px;
-  background-color: #426289;
-}
-#joinBtn {
-  border: 0px;
-  background-color: #8999ac;
-}
-</style>
+<style></style>

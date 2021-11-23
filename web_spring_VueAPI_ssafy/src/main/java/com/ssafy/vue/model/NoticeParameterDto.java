@@ -19,7 +19,7 @@ public class NoticeParameterDto {
 	
 	public NoticeParameterDto() {
 		pg = 1;
-		spp = 20;
+		spp = 10;	// 이거 수정
 	}
 
 	public int getPg() {

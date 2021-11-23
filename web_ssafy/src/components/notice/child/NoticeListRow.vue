@@ -4,6 +4,7 @@
     <b-th class="text-left">
       <router-link
         :to="{ name: 'NoticeView', params: { noticeno: noticeno } }"
+        style="color: #426289"
         >{{ subject }}</router-link
       >
     </b-th>

@@ -2,7 +2,16 @@
   <b-container class="bv-example-row mt-3">
     <b-row>
       <b-col>
-        <b-alert show><h3>글목록</h3></b-alert>
+        <p
+          style="
+            font-weight: bold;
+            font-size: 2em;
+            color: #3b3838;
+            margin: 80px 0px;
+          "
+        >
+          공지사항
+        </p>
       </b-col>
     </b-row>
     <b-row class="mb-1">
@@ -21,18 +30,25 @@
           class="mr-2"
           v-model="word"
         />
-        <b-button variant="outline-info" @click="searchNotice()" class="mr-2"
+        <b-button
+          @click="searchNotice()"
+          class="mr-2"
+          style="border: 0px; background-color: #426289"
           >검색
         </b-button>
-        <b-button variant="outline-primary" @click="moveWrite()" v-if="isAdmin"
+        <b-button
+          @click="moveWrite()"
+          v-if="isAdmin"
+          style="border: 0px; background-color: #8999ac"
           >글쓰기</b-button
         >
       </b-col>
     </b-row>
+    <br />
     <b-row>
       <b-col v-if="notices.length">
         <b-table-simple hover responsive>
-          <b-thead head-variant="dark">
+          <b-thead style="background-color: #f2f4f8">
             <b-tr>
               <b-th>글번호</b-th>
               <b-th>제목</b-th>
@@ -60,7 +76,7 @@
       v-model="currentPage"
       :total-rows="rows"
       :per-page="perPage"
-      aria-controls="notice-list"
+      aria-controls="itmes"
       align="center"
     ></b-pagination>
   </b-container>
@@ -94,6 +110,7 @@ export default {
       isAdmin: false,
       perPage: 10,
       currentPage: 1,
+      //items: this.notices,
     };
   },
   computed: {

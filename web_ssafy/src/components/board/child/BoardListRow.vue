@@ -4,10 +4,11 @@
     <b-th class="text-left">
       <router-link
         :to="{ name: 'BoardView', params: { articleno: articleno } }"
+        style="color: #426289"
         >{{ subject }}</router-link
       >
     </b-th>
-    <b-td>{{ hit }}</b-td>
+    <b-td id="a">{{ hit }}</b-td>
     <b-td>{{ userid }}</b-td>
     <b-td>{{ regtime }}</b-td>
   </b-tr>

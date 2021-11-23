@@ -68,10 +68,23 @@ export default {
       gugunCode: null,
       gugunName: null,
       showHospital: false,
+      //dongCode: null,
+      positions: this.$store.positions,
     };
   },
   computed: {
-    ...mapState(houseStore, ["sidos", "guguns"]),
+    ...mapState(houseStore, [
+      "houses",
+      "sidos",
+      "guguns",
+      "positions",
+      // "houses",
+      // "map",
+      // "ps",
+      // "geocoder",
+      // "infowindow",
+      // "customOverlay",
+    ]),
     // sidos() {
     //   return this.$store.state.sidos;
     // },
@@ -83,8 +96,25 @@ export default {
     this.getSido();
   },
   methods: {
-    ...mapActions(houseStore, ["getSido", "getGugun", "getHouseList"]),
-    ...mapMutations(houseStore, ["CLEAR_SIDO_LIST", "CLEAR_GUGUN_LIST"]),
+    ...mapActions(houseStore, [
+      "getSido",
+      "getGugun",
+      "getHouseList",
+      //"getDong",
+      // "detailHouse",
+      // "displayMarkers",
+      // "addMarker",
+      // // //"removeMarker",
+      // "getListItem",
+      // "displayInfowindow",
+      // "removeAllChildNods",
+    ]),
+    ...mapMutations(houseStore, [
+      "CLEAR_SIDO_LIST",
+      "CLEAR_GUGUN_LIST",
+      //"CLEAR_DONG_LIST",
+      "CLEAR_DETAIL_HOUSE",
+    ]),
     // sidoList() {
     //   this.getSido();
     // },
@@ -96,6 +126,11 @@ export default {
       console.log(this.sidoName);
       if (this.sidoCode) this.getGugun(this.sidoCode);
     },
+    // dongList() {
+    //   this.CLEAR_DONG_LIST();
+    //   this.dongCode = null;
+    //   if (this.gugunCode) this.getDong(this.gugunCode);
+    // },
     searchApt() {
       this.showHospital = false;
       this.getGugunName();

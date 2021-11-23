@@ -66,4 +66,5 @@ public class NoticeDto {
 		this.regtime = regtime;
 	}
 
+
 }
