@@ -22,6 +22,7 @@
 import HouseSearchBar from "@/components/house/HouseSearchBar.vue";
 import HouseList from "@/components/house/HouseList.vue";
 import HouseDetail from "@/components/house/HouseDetail.vue";
+//import HospitalList from "@/components/hospital/HospitalList.vue";
 
 export default {
   name: "House",
@@ -29,6 +30,7 @@ export default {
     HouseSearchBar,
     HouseList,
     HouseDetail,
+    //HospitalList,
   },
 };
 </script>
