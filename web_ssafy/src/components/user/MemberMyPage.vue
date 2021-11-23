@@ -75,7 +75,7 @@ export default {
   methods: {
     ...mapMutations(memberStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),
     onClickWithdrawal() {
-      let msg = "회원 탈퇴 완료했습니다.";
+      let msg = "회원 탈퇴를 완료했습니다";
       withdrawal(
         this.userInfo.userid,
         ({ data }) => {
