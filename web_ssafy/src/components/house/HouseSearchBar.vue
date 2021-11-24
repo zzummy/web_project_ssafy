@@ -61,6 +61,7 @@ var map;
 // var overlay;
 //var marker;
 var markers = [];
+
 export default {
   name: "HouseSearchBar",
   components: {

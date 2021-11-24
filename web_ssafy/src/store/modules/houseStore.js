@@ -139,7 +139,6 @@ const houseStore = {
       return 0;
     },
     detailHouse: ({ commit }, house) => {
-      // 나중에 house.일련번호를 이용하여 API 호출
       commit("SET_DETAIL_HOUSE", house);
     },
   },
