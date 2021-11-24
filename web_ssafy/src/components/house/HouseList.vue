@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-col cols="5" align="left">
+    <b-col align="left">
       <b-container
         v-if="houses && houses.length != 0"
         class="bv-example-row mt-3"
@@ -63,9 +63,11 @@
 
 <script>
 import HouseListRow from "@/components/house/HouseListRow.vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
+//import HouseMap from "@/components/house/HouseMap.vue";
 
 const houseStore = "houseStore";
+//var map;
 
 export default {
   name: "HouseList",
@@ -95,7 +97,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(houseStore, ["houses"]),
+    ...mapState(houseStore, ["houses", "sidos", "guguns"]),
     // houses() {
     //   return this.$store.state.houses;
     // },
@@ -105,7 +107,91 @@ export default {
     console.log(this.totalRows);
   },
   methods: {
-    ...mapActions(houseStore, ["getHouseList"]),
+    ...mapActions(houseStore, ["getSido", "getGugun", "getHouseList"]),
+    ...mapMutations(houseStore, ["CLEAR_SIDO_LIST", "CLEAR_GUGUN_LIST"]),
+
+    // initMap() {
+    //   const mapContainer = document.getElementById("map");
+    //   const mapOption = {
+    //     center: new kakao.maps.LatLng(33.450701, 126.570667),
+    //     level: 5,
+    //   };
+
+    //   map = new kakao.maps.Map(mapContainer, mapOption);
+    // },
+    // changeSize(size) {
+    //   const container = document.getElementById("map");
+    //   container.style.width = `${size}px`;
+    //   container.style.height = `${size}px`;
+    //   map.relayout();
+    // },
+    // displayMarker(houses) {
+    //   if (this.markers.length > 0) {
+    //     this.markers.forEach((marker) => marker.setMap(null));
+    //   }
+
+    //   // var markerPositions = [];
+    //   // houses.forEach((house) => {
+    //   //   markerPositions.push([house.아파트명, house.lng]);
+    //   //   addrs.push(house);
+    //   // });
+    //   var geocoder = new kakao.maps.services.Geocoder();
+
+    //   geocoder.addressSearch(
+    //     "제주특별자치도 제주시 첨단로 242",
+    //     function (result, status) {
+    //       // 정상적으로 검색이 완료됐으면
+    //       if (status === kakao.maps.services.Status.OK) {
+    //         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+    //         // 결과값으로 받은 위치를 마커로 표시합니다
+    //         var marker = new kakao.maps.Marker({
+    //           map: map,
+    //           position: coords,
+    //         });
+
+    //         // 인포윈도우로 장소에 대한 설명을 표시합니다
+    //         var infowindow = new kakao.maps.InfoWindow({
+    //           content:
+    //             '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>',
+    //         });
+    //         infowindow.open(map, marker);
+
+    //         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+    //         map.setCenter(coords);
+    //       }
+    //     }
+    //   );
+    // var markerPositions = [];
+    // var addrs = [];
+    // houses.forEach((house) => {
+    //   markerPositions.push([house.lat, house.lng]);
+    //   addrs.push(house);
+    // });
+
+    // const positions = markerPositions.map(
+    //   (position) => new kakao.maps.LatLng(...position)
+    // );
+
+    // console.log(houses[0].lat);
+
+    // if (positions.length > 0) {
+    //   this.markers = positions.map(
+    //     (position) =>
+    //       new kakao.maps.Marker({
+    //         map: this.map,
+    //         position,
+    //       })
+    //   );
+
+    //   const bounds = positions.reduce(
+    //     (bounds, latlng) => bounds.extend(latlng),
+    //     new kakao.maps.LatLngBounds()
+    //   );
+
+    //   map.setBounds(bounds);
+    // }
+    //},
   },
 };
 </script>
@@ -118,5 +204,9 @@ export default {
     rgba(255, 255, 255, 0) 70%,
     rgba(45, 72, 121, 0.3) 30%
   );
+}
+#map {
+  width: 100%;
+  height: 450px;
 }
 </style>
