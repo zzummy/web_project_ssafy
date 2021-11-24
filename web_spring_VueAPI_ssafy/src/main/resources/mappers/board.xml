@@ -25,7 +25,6 @@
 			</if>
 		</if>
 		order by articleno desc
-		limit #{start}, #{spp}
 	</select>
 	
 	<select id="getTotalCount" parameterType="map" resultType="int">
