@@ -32,4 +32,9 @@
 		where userid = #{userid}
 	</update>
 	
+	<select id="listMember" resultType="memberDto">
+		select username, userid, email, joindate
+		from ssafy_member
+	</select>
+	
 </mapper>

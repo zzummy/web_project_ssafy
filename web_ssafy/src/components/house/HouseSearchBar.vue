@@ -82,7 +82,6 @@ export default {
   },
   computed: {
     ...mapState(houseStore, [
-      "houses",
       "sidos",
       "guguns",
       "houses",

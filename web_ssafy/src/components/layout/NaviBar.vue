@@ -46,6 +46,13 @@
             >{{ userInfo.username }}({{ userInfo.userid }})님
             환영합니다.</b-nav-item
           >
+          <b-nav-item v-if="isAdmin" class="align-self-center"
+            ><router-link
+              :to="{ name: 'Manage' }"
+              class="link align-self-center"
+              >회원관리</router-link
+            ></b-nav-item
+          >
           <b-nav-item class="align-self-center"
             ><router-link
               :to="{ name: 'MyPage' }"
@@ -83,6 +90,11 @@ const memberStore = "memberStore";
 
 export default {
   name: "NaviBar",
+  data() {
+    return {
+      isAdmin: false,
+    };
+  },
   computed: {
     ...mapState(memberStore, ["isLogin", "userInfo"]),
   },
@@ -94,6 +106,11 @@ export default {
       sessionStorage.removeItem("access-token");
       if (this.$route.path != "/") this.$router.push({ name: "Home" });
     },
+  },
+  created() {
+    if (this.userInfo.userid == "admin") {
+      this.isAdmin = true;
+    }
   },
 };
 </script>
