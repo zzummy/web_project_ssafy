@@ -47,6 +47,7 @@ export default {
       // this.$store.dispatch("getHouse", this.house);
       this.detailHouse(this.house);
     },
+
     colorChange(flag) {
       this.isColor = flag;
     },
