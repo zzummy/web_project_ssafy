@@ -94,6 +94,7 @@ export default {
   created() {
     // this.$store.dispatch("getSido");
     // this.sidoList();
+    this.CLEAR_DETAIL_HOUSE();
     this.CLEAR_SIDO_LIST();
     this.getSido();
   },
@@ -201,6 +202,7 @@ export default {
         params,
         (response) => {
           // console.log(response.data.response.body.items.item);
+          this.CLEAR_DETAIL_HOUSE();
           this.houses = response.data.response.body.items.item;
           this.SET_HOUSE_LIST(this.houses);
           this.listkey *= -1;
