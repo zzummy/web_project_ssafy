@@ -17,8 +17,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssafy.vue.model.BaseAddressDto;
+import com.ssafy.vue.model.UserLocDto;
+import com.ssafy.vue.model.service.InterestService;
 import com.ssafy.vue.model.MemberDto;
 import com.ssafy.vue.model.service.JwtServiceImpl;
 import com.ssafy.vue.model.service.MemberService;
@@ -171,6 +176,41 @@ public class MemberController {
 			logger.error("회원정보 조회 에러");
 			return null;
 		}
+	}
+	
+	@Autowired
+	private InterestService interestService;
+	
+	@ApiOperation(value = "관심 목록 등록", notes = "관심 목록을 등록한다.", response = String.class)
+	@PostMapping("/interest/register")
+	public ResponseEntity<String> interest(@RequestParam("dong") String dong, @RequestParam("userid") String userId) throws Exception {
+		UserLocDto userLocDto = new UserLocDto(userId, dong);
+		try {
+			if (interestService.interestCheck(userLocDto) == 0) {
+				interestService.registerInterest(userLocDto);
+				logger.info("관심 목록 등록 성공 : {}", dong);
+				return new ResponseEntity<String>(SUCCESS, HttpStatus.ACCEPTED);
+			}
+			else {
+				logger.error("관심 목록 등록 실패");
+				return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
+			}
+		} catch (Exception e) {
+			logger.error("관심 목록 등록 에러");
+			return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
+		}
+	}
+	
+	@ApiOperation(value = "관심 목록", notes = "관심 목록을 반환한다.", response = List.class)
+	@GetMapping("/interest/list")
+	public ResponseEntity<List<BaseAddressDto>> interests(@RequestParam("userid") String userId) throws Exception {
+		return new ResponseEntity<List<BaseAddressDto>>(interestService.getInterests(userId), HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "top 관심 목록", notes = "top 관심 목록을 반환한다.", response = List.class)
+	@GetMapping("/interest/top")
+	public ResponseEntity<List<BaseAddressDto>> tops() throws Exception {
+		return new ResponseEntity<List<BaseAddressDto>>(interestService.getTops(), HttpStatus.OK);
 	}
 
 }

@@ -7,11 +7,13 @@ public class UserLocDto {
 	
 	private String userId;
 	private String dongCode;
+	private int hit;
 	
-	public UserLocDto(String userId, String dongCode) {
+	public UserLocDto(String userId, String dongCode, int hit) {
 		super();
 		this.userId = userId;
 		this.dongCode = dongCode;
+		this.setHit(hit);
 	}
 	public String getUserId() {
 		return userId;
@@ -24,5 +26,11 @@ public class UserLocDto {
 	}
 	public void setDongCode(String dongCode) {
 		this.dongCode = dongCode;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 }
