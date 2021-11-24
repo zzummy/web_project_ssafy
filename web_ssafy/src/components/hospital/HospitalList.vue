@@ -13,7 +13,6 @@
       :sort-direction="sortDirection"
       stacked="md"
       small
-      caption-top
     >
       <template #cell(name)="row">
         {{ row.value.first }} {{ row.value.last }}
