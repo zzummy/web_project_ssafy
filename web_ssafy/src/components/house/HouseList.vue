@@ -12,8 +12,8 @@
           :house="house"
           style="border-bottom: 1px solid #c0c4ca"
         />
+
         <b-row>
-          <b-col></b-col>
           <b-col>
             <!-- Pagination 처리 -->
             <b-pagination
@@ -46,6 +46,7 @@ const houseStore = "houseStore";
 
 export default {
   name: "HouseList",
+
   components: {
     HouseListRow,
   },

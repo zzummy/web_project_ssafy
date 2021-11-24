@@ -23,7 +23,7 @@
           > -->
           <b-nav-item href="#"
             ><router-link :to="{ name: 'NoticeList' }" class="link"
-              ><b-icon icon="journal" font-scale="1"></b-icon>
+              ><b-icon icon="magnifier" font-scale="1"></b-icon>
               공지사항</router-link
             ></b-nav-item
           >
