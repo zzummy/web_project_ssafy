@@ -79,14 +79,14 @@ export default {
       showHospital: false,
       //houses: [],
       //dongCode: null,
-      markers: [],
+      //markers: [],
       // map에서 쓸 안자른 이름
       sidoName2: null,
       //gugunName2: null,
     };
   },
   computed: {
-    ...mapState(houseStore, ["sidos", "guguns", "houses"]),
+    ...mapState(houseStore, ["sidos", "guguns", "houses", "map", "markers"]),
     // sidos() {
     //   return this.$store.state.sidos;
     // },
@@ -98,6 +98,9 @@ export default {
     this.getSido();
   },
   mounted() {
+    // this.$nextTick(function () {
+    //   this.getSido();
+    // });
     if (window.kakao && window.kakao.maps) {
       this.initMap();
     } else {
@@ -120,6 +123,7 @@ export default {
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
       "CLEAR_DETAIL_HOUSE",
+      "CLEAR_MAP",
     ]),
     // sidoList() {
     //   this.getSido();
@@ -130,7 +134,7 @@ export default {
       this.gugunCode = null;
       this.getSidoName();
       console.log(this.sidoName);
-
+      this.CLEAR_MAP();
       if (this.sidoCode) {
         this.getGugun(this.sidoCode);
       }
@@ -142,9 +146,10 @@ export default {
 
       if (this.gugunCode) {
         //console.log("gugunCode -> " + this.gugunCode);
+        this.CLEAR_MAP();
         this.getHouseList(this.gugunCode);
         console.log("houses ");
-        console.log(this.houses);
+        this.setMarker();
         this.displayMarker(this.houses);
         console.log(this.houses);
       }
