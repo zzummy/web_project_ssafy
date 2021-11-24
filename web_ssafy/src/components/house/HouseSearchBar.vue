@@ -1,43 +1,51 @@
 <template>
-  <b-container class="bv-example-row mt-3 text-center">
+  <div class="text-center" style="padding: 0px 100px">
     <b-row class="mt-4 mb-4 text-center">
-      <b-col class="sm-3">
+      <b-col cols="2" class="sm-3">
         <b-form-select
           v-model="sidoCode"
           :options="sidos"
           @change="gugunList"
         ></b-form-select>
       </b-col>
-      <b-col class="sm-3">
+      <b-col cols="2" class="sm-3">
         <b-form-select
           v-model="gugunCode"
           :options="guguns"
           @change="searchApt"
         ></b-form-select>
       </b-col>
-      <b-col>
-        <b-button type="button" @click="showHospitalList"
-          >코로나 선별 진료소</b-button
-        >
-      </b-col>
     </b-row>
-    <b-row v-if="showHospital">
-      <hospital-list
-        v-bind:sidoName="sidoName"
-        v-bind:gugunName="gugunName"
-      ></hospital-list>
-    </b-row>
-    <br />
+
     <b-row>
       <b-col cols="4" align="left">
         <house-list :key="listkey" />
       </b-col>
       <b-col cols="8">
         <div id="map"></div>
+
+        <div align="right" style="margin: 15px 3px">
+          <b-button
+            type="button"
+            @click="showHospitalList"
+            style="background-color: #8999ac; border: 0px"
+            ><b-icon icon="geo-alt-fill"></b-icon> 코로나 선별 진료소
+          </b-button>
+        </div>
+        <div>
+          <b-row v-if="showHospital">
+            <hospital-list
+              v-bind:sidoName="sidoName"
+              v-bind:gugunName="gugunName"
+            ></hospital-list>
+          </b-row>
+        </div>
+
         <div><house-detail /></div>
       </b-col>
     </b-row>
-  </b-container>
+    <br /><br />
+  </div>
 </template>
 
 <script>

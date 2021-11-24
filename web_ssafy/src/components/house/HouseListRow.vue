@@ -7,7 +7,7 @@
     @mouseout="colorChange(false)"
     :class="{ 'mouse-over-bgcolor': isColor }"
   >
-    <b-col cols="10" class="align-self-center" style="padding: 10px">
+    <b-col align="left" style="margin: 10px 0px">
       <p style="font-size: 12px">{{ house.일련번호 }}</p>
       <span style="font-weight: bold" class="underline">{{
         house.아파트

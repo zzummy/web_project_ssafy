@@ -129,3 +129,18 @@
 [2m2021-11-25 02:21:08.597[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-8][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
 [2m2021-11-25 02:25:21.858[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[io-9999-exec-10][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
 [2m2021-11-25 02:25:24.324[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 02:30:02.151[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat initialized with port(s): 9999 (http)
+[2m2021-11-25 02:30:02.167[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mw.s.c.ServletWebServerApplicationContext[0;39m [2m:[0;39m Root WebApplicationContext: initialization completed in 309 ms
+[2m2021-11-25 02:30:02.338[0;39m [33m WARN[0;39m [35m24944[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.d.a.OptionalLiveReloadServer      [0;39m [2m:[0;39m Unable to start LiveReload server
+[2m2021-11-25 02:30:02.385[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat started on port(s): 9999 (http) with context path '/vue'
+[2m2021-11-25 02:30:02.438[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.ConditionEvaluationDeltaLoggingListener[0;39m [2m:[0;39m Condition evaluation unchanged
+[2m2021-11-25 02:31:34.968[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m:[0;39m Initializing Servlet 'dispatcherServlet'
+[2m2021-11-25 02:31:34.971[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m:[0;39m Completed initialization in 2 ms
+[2m2021-11-25 02:31:34.973[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 02:31:51.545[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-2][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 02:32:52.028[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 02:32:54.235[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 02:34:13.188[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 02:34:16.131[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 02:48:16.462[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-9][0;39m [36mc.s.vue.controller.HospitalController   [0;39m [2m:[0;39m hospital sido - 서울
+[2m2021-11-25 02:48:16.462[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-9][0;39m [36mc.s.vue.controller.HospitalController   [0;39m [2m:[0;39m hospital gugun - 종로구

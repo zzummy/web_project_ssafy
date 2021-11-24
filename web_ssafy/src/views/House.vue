@@ -1,5 +1,5 @@
 <template>
-  <b-container class="bv-example-row mt-3 text-center">
+  <div class="text-center" style="display: inline-block; width: 1500px">
     <b-row>
       <b-col>
         <p
@@ -28,7 +28,7 @@
         <div><house-detail /></div>
       </b-col>
     </b-row> -->
-  </b-container>
+  </div>
 </template>
 <script>
 import HouseSearchBar from "@/components/house/HouseSearchBar.vue";

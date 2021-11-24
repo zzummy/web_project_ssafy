@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" style="text-align: center">
     <navi-bar />
-    <div id="main"><router-view /></div>
+    <div id="main" style="margin-top: 16px">
+      <router-view />
+    </div>
     <footer-bar />
   </div>
 </template>

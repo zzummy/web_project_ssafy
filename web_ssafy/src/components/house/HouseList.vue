@@ -12,20 +12,29 @@
           :house="house"
           style="border-bottom: 1px solid #c0c4ca"
         />
-
-        <b-row>
-          <b-col>
-            <!-- Pagination 처리 -->
-            <b-pagination
+        <br /><br />
+        <b-col>
+          <!-- Pagination 처리 -->
+          <!-- <b-pagination
               v-model="currentPage"
               :total-rows="totalrows"
               :per-page="perPage"
               align="center"
               @page-click="pageClick"
-            ></b-pagination>
-          </b-col>
-          <b-col></b-col>
-        </b-row>
+            ></b-pagination> -->
+
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="totalrows"
+            :per-page="perPage"
+            class="my-0"
+            pills
+            align="center"
+            @page-click="pageClick"
+          ></b-pagination>
+          <br /><br /><br />
+        </b-col>
+        <b-col></b-col>
       </b-container>
       <b-container v-else class="bv-example-row mt-3">
         <b-row>
@@ -68,7 +77,7 @@ export default {
         { key: "actions", label: "상세정보" },
       ],
       slicedhouses: [],
-      perPage: 7,
+      perPage: 10,
       currentPage: 1,
       totalrows: 0,
     };

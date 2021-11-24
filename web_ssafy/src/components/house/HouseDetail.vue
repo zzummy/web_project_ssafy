@@ -5,7 +5,7 @@
     <span
       style="
         font-weight: bold;
-        font-size: 25px;
+        font-size: 23px;
         color: #3b3838;
         margin: 0px 8px;
       "
@@ -20,28 +20,28 @@
           {{ house.일련번호 }}
         </b-col>
       </b-row>
-      <br />
+
       <b-row>
         <b-col cols="2"> 아파트명 </b-col>
         <b-col cols="10">
           {{ house.아파트 }}
-        </b-col> </b-row
-      ><br />
+        </b-col>
+      </b-row>
       <b-row
         ><b-col cols="2"> 층 수 </b-col>
         <b-col cols="2">
           {{ house.층 }}
         </b-col></b-row
-      ><br />
+      >
       <b-row
         ><b-col cols="2"> 건축년도 </b-col>
         <b-col cols="2"> {{ house.건축년도 }} </b-col></b-row
-      ><br />
+      >
       <b-row
         ><b-col cols="2"> 전용면적 </b-col>
         <b-col cols="2"> {{ house.전용면적 }}㎡</b-col></b-row
       >
-      <br />
+
       <b-row>
         <b-col cols="2"> 거래금액 </b-col>
         <b-col cols="8">

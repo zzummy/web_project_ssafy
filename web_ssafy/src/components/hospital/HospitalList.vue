@@ -1,8 +1,19 @@
 <template>
   <b-container fluid>
-    <div>
-      <h3>코로나 선별 진료소</h3>
+    <div align="left">
+      <b-icon icon="map" scale="1.5"></b-icon>
+      <span
+        style="
+          font-weight: bold;
+          font-size: 23px;
+          color: #3b3838;
+          margin: 0px 8px;
+        "
+      >
+        코로나 선별 진료소
+      </span>
     </div>
+    <br />
     <b-table
       :items="hospitals"
       :fields="fields"
@@ -13,14 +24,19 @@
       :sort-direction="sortDirection"
       stacked="md"
       small
+      head-variant="light"
     >
       <template #cell(name)="row">
         {{ row.value.first }} {{ row.value.last }}
       </template>
 
       <template #cell(actions)="row">
-        <b-button size="sm" @click="row.toggleDetails">
-          상세정보 {{ row.detailsShowing ? "숨기기" : "보기" }}
+        <b-button
+          size="sm"
+          @click="row.toggleDetails"
+          style="background-color: #c0c4ca; border: 0px"
+        >
+          상세정보 {{ row.detailsShowing ? "접기" : "보기" }}
         </b-button>
       </template>
 
@@ -41,10 +57,18 @@
           v-model="currentPage"
           :total-rows="totalRows"
           :per-page="perPage"
+          class="my-0"
+          pills
+          align="center"
+        ></b-pagination>
+        <!-- <b-pagination
+          v-model="currentPage"
+          :total-rows="totalRows"
+          :per-page="perPage"
           align="fill"
           size="sm"
           class="my-0"
-        ></b-pagination>
+        ></b-pagination> -->
       </b-col>
       <b-col></b-col>
     </b-row>
@@ -125,3 +149,5 @@ export default {
   },
 };
 </script>
+
+<style scoped></style>
