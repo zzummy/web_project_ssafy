@@ -216,10 +216,6 @@ export default {
     },
     //검색 결과 목록과 마커를 표출하는 함수입니다
     displayMarker(houses) {
-      console.log("마커지워줘");
-      console.log(houses);
-      // console.log(this.markers.length);
-
       // 지도에 표시되고 있는 마커를 제거합니다
       this.removeMarker();
 
