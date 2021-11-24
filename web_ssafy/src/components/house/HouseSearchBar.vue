@@ -59,6 +59,8 @@ import HouseDetail from "@/components/house/HouseDetail.vue";
 */
 const houseStore = "houseStore";
 var map;
+//var marker;
+//var markers = [];
 
 export default {
   name: "HouseSearchBar",
@@ -78,19 +80,13 @@ export default {
       //houses: [],
       //dongCode: null,
       markers: [],
+      // map에서 쓸 안자른 이름
+      sidoName2: null,
+      //gugunName2: null,
     };
   },
   computed: {
-    ...mapState(houseStore, [
-      "sidos",
-      "guguns",
-      "houses",
-      // "map",
-      // "ps",
-      // "geocoder",
-      // "infowindow",
-      // "customOverlay",
-    ]),
+    ...mapState(houseStore, ["sidos", "guguns", "houses"]),
     // sidos() {
     //   return this.$store.state.sidos;
     // },
@@ -114,11 +110,15 @@ export default {
     }
   },
   methods: {
-    ...mapActions(houseStore, ["getSido", "getGugun", "getHouseList"]),
+    ...mapActions(houseStore, [
+      "getSido",
+      "getGugun",
+      "getHouseList",
+      "setMarker",
+    ]),
     ...mapMutations(houseStore, [
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
-      //"CLEAR_DONG_LIST",
       "CLEAR_DETAIL_HOUSE",
     ]),
     // sidoList() {
@@ -130,16 +130,23 @@ export default {
       this.gugunCode = null;
       this.getSidoName();
       console.log(this.sidoName);
-      if (this.sidoCode) this.getGugun(this.sidoCode);
+
+      if (this.sidoCode) {
+        this.getGugun(this.sidoCode);
+      }
     },
     searchApt() {
       this.showHospital = false;
       this.getGugunName();
       console.log(this.gugunName);
+
       if (this.gugunCode) {
+        //console.log("gugunCode -> " + this.gugunCode);
         this.getHouseList(this.gugunCode);
-        this.displayMarker(this.houses);
       }
+      console.log("houses ");
+      console.log(this.houses);
+      this.displayMarker(this.houses);
     },
     showHospitalList() {
       if (this.sidoName != null && this.gugunName != null) {
@@ -152,6 +159,7 @@ export default {
       this.sidos.forEach((sido) => {
         if (sido.value === this.sidoCode) {
           this.sidoName = sido.text.substring(0, 2);
+          this.sidoName2 = sido.text;
         }
       });
     },
@@ -166,7 +174,7 @@ export default {
       const mapContainer = document.getElementById("map");
       const mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667),
-        level: 6,
+        level: 5,
       };
 
       map = new kakao.maps.Map(mapContainer, mapOption);
@@ -177,7 +185,8 @@ export default {
       container.style.height = `${size}px`;
       map.relayout();
     },
-    displayMarker(houses) {
+    //검색 결과 목록과 마커를 표출하는 함수입니다
+    async displayMarker(houses) {
       if (this.markers.length > 0) {
         this.markers.forEach((marker) => marker.setMap(null));
       }
@@ -187,11 +196,17 @@ export default {
       }
       this.markers = [];
 
+      // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+      // var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
       var positions = [];
 
-      houses.forEach((house) => {
+      await houses.forEach((house) => {
+        console.log("forEach->house");
         console.log(house);
-        const sido = this.sidoName;
+        const sido = this.sidoName2;
+        // const sido = this.sidoName;
+        console.log(sido);
         //const gugun = this.gugunName;
         //const dong = house.법정동;
         const street = house.도로명;
@@ -209,33 +224,42 @@ export default {
       // 주소 -> 좌표 변환 라이브러리
       var geocoder = new kakao.maps.services.Geocoder();
 
-      positions.forEach(function (addr, index) {
-        geocoder.addressSearch(addr, function (result, status) {
-          console.log(result);
-          console.log(addr);
+      if (positions.length > 0) {
+        positions.forEach(function (addr, index) {
+          geocoder.addressSearch(addr, function (result, status) {
+            //console.log(result);
+            console.log(status);
 
-          // 정상적으로 검색이 완료됐으면
-          if (status === kakao.maps.services.Status.OK) {
-            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            // 정상적으로 검색이 완료됐으면
+            if (status === kakao.maps.services.Status.OK) {
+              var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-            // 결과값으로 받은 위치를 마커로 표시합니다
-            var marker = new kakao.maps.Marker({
-              map: map,
-              position: coords,
-            });
+              var imageSrc =
+                "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+              var imageSize = new kakao.maps.Size(24, 35);
+              var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+              // 결과값으로 받은 위치를 마커로 표시합니다
+              var marker = new kakao.maps.Marker({
+                map: map,
+                position: coords,
+                image: markerImage, // 마커이미지 설정
+              });
 
-            marker.setMap(map);
+              marker.setMap(map);
 
-            var infowindow = new kakao.maps.InfoWindow({
-              content:
-                '<div style="width:150px;text-align:center;padding:6px 0;">' +
-                positions[index] +
-                "</div>",
-            });
-            infowindow.open(map, marker);
-          }
+              var infowindow = new kakao.maps.InfoWindow({
+                content:
+                  '<div style="width:150px;text-align:center;padding:6px 0;">' +
+                  positions[index] +
+                  "</div>",
+              });
+              infowindow.open(map, marker);
+              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+              map.setCenter(coords);
+            }
+          });
         });
-      });
+      }
     },
   },
 };

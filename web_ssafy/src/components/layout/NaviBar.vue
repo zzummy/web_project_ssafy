@@ -46,7 +46,7 @@
             >{{ userInfo.username }}({{ userInfo.userid }})님
             환영합니다.</b-nav-item
           >
-          <b-nav-item v-if="isAdmin" class="align-self-center"
+          <b-nav-item class="align-self-center" v-if="isAdmin"
             ><router-link
               :to="{ name: 'Manage' }"
               class="link align-self-center"
@@ -92,7 +92,7 @@ export default {
   name: "NaviBar",
   data() {
     return {
-      isAdmin: false,
+      isAdmin: true,
     };
   },
   computed: {
@@ -108,7 +108,7 @@ export default {
     },
   },
   created() {
-    if (this.userInfo.userid == "admin") {
+    if (this.userInfo.userid === "admin") {
       this.isAdmin = true;
     } else this.isAdmin = false;
   },

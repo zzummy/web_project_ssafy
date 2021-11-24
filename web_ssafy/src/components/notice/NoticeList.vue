@@ -71,6 +71,7 @@
       </b-col>
       <b-col v-else class="text-center">공지사항이 없습니다.</b-col>
     </b-row>
+    <br />
     <!-- Pagination 처리 -->
     <b-pagination
       v-model="currentPage"
