@@ -6,6 +6,7 @@
         class="bv-example-row mt-3"
       >
         <p style="color: #3b3838">검색결과 : {{ houses.length }}</p>
+        <!--
         <b-table
           :items="houses"
           :fields="fields"
@@ -29,13 +30,14 @@
               <li>일요일/공휴일 운영시간 : {{ row.item.optimeSun }}</li>
               <li>기타사항 : {{ row.item.etc }}</li>
             </b-card>
-          </template>
-          <house-list-row
-            :house="row"
-            style="border-bottom: 1px solid #c0c4ca"
-          />
-        </b-table>
-        <!-- pagination -->
+          </template> -->
+        <house-list-row
+          v-for="(house, index) in houses"
+          :key="index"
+          :house="house"
+          style="border-bottom: 1px solid #c0c4ca"
+        />
+        <!-- </b-table> pagination 
         <b-row>
           <b-col></b-col>
           <b-col sm="7" md="6" class="my-1">
@@ -50,7 +52,7 @@
             ></b-pagination>
           </b-col>
           <b-col></b-col>
-        </b-row>
+        </b-row> -->
       </b-container>
       <b-container v-else class="bv-example-row mt-3">
         <b-row>
