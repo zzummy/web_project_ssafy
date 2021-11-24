@@ -32,6 +32,11 @@ public class NoticeServiceImpl implements NoticeService {
 		noticeParameterDto.setStart(start);		
 		return sqlSession.getMapper(NoticeMapper.class).listNotice(noticeParameterDto);
 	}
+	
+	@Override
+	public List<NoticeDto> listNoticeAll() throws Exception {
+		return sqlSession.getMapper(NoticeMapper.class).listNoticeAll();
+	}
 
 	@Override
 	public PageNavigation makePageNavigation(NoticeParameterDto noticeParameterDto) throws Exception {

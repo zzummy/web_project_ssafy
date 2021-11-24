@@ -47,7 +47,7 @@
     <br />
     <b-row>
       <b-col v-if="notices.length">
-        <b-table-simple hover responsive>
+        <b-table-simple hover responsive id="items">
           <b-thead style="background-color: #f2f4f8">
             <b-tr>
               <b-th>글번호</b-th>
@@ -60,31 +60,36 @@
           <tbody>
             <!-- 하위 component인 ListRow에 데이터 전달(props) -->
             <notice-list-row
-              v-for="(notice, index) in notices"
+              v-for="(notice, index) in slicednotices"
               :key="index"
               v-bind="notice"
-              :per-page="perPage"
-              :current-page="currentPage"
             />
           </tbody>
         </b-table-simple>
       </b-col>
       <b-col v-else class="text-center">공지사항이 없습니다.</b-col>
     </b-row>
-    <!-- Pagination 처리 -->
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      aria-controls="itmes"
-      align="center"
-    ></b-pagination>
+    <b-row>
+      <b-col></b-col>
+      <b-col>
+        <!-- Pagination 처리 -->
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="totalrows"
+          :per-page="perPage"
+          aria-controls="items"
+          align="center"
+          @page-click="pageClick"
+        ></b-pagination>
+      </b-col>
+      <b-col></b-col>
+    </b-row>
   </b-container>
 </template>
 
 <script>
 import NoticeListRow from "@/components/notice/child/NoticeListRow";
-import { listNotice } from "@/api/notice.js";
+import { listNotice, listNoticeAll } from "@/api/notice.js";
 //import axios from "axios";
 import http from "@/util/http-common";
 import { mapState } from "vuex";
@@ -107,33 +112,26 @@ export default {
       ],
       word: "",
       notices: [],
+      slicednotices: [],
       isAdmin: false,
-      perPage: 10,
+      perPage: 5,
       currentPage: 1,
+      totalrows: 0,
       //items: this.notices,
     };
   },
   computed: {
     ...mapState(memberStore, ["userInfo"]),
-    rows() {
-      console.log("길이 : " + this.notices.length);
-      return this.notices.length;
-    },
   },
   created() {
-    let param = {
-      pg: this.currentPage,
-      spp: this.perPage,
-      // pg: 1,
-      // spp: 2,
-      key: this.key,
-      word: this.word,
-    };
-    listNotice(
-      param,
+    listNoticeAll(
       (response) => {
         this.notices = response.data;
-        console.log(response.data);
+        this.totalrows = this.notices.length;
+        this.slicednotices = this.notices.slice(
+          (this.currentPage - 1) * this.perPage,
+          this.currentPage * this.perPage
+        );
       },
       (error) => {
         console.log(error);
@@ -167,12 +165,25 @@ export default {
             param,
             (response) => {
               this.notices = response.data;
+              this.totalrows = this.notices.length;
+              this.currentPage = 1;
+              this.slicednotices = this.notices.slice(
+                (this.currentPage - 1) * this.perPage,
+                this.currentPage * this.perPage
+              );
             },
             (error) => {
               console.log(error);
             }
           );
         });
+    },
+    pageClick: function (button, page) {
+      this.currentPage = page;
+      this.slicednotices = this.notices.slice(
+        (this.currentPage - 1) * this.perPage,
+        this.currentPage * this.perPage
+      );
     },
   },
 };
