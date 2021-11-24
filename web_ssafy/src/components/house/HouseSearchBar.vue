@@ -138,8 +138,8 @@ export default {
       console.log(this.gugunName);
       if (this.gugunCode) {
         this.getHouseList(this.gugunCode);
+        this.displayMarker(this.houses);
       }
-      this.displayMarker(this.houses);
     },
     showHospitalList() {
       if (this.sidoName != null && this.gugunName != null) {
@@ -166,7 +166,7 @@ export default {
       const mapContainer = document.getElementById("map");
       const mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667),
-        level: 5,
+        level: 6,
       };
 
       map = new kakao.maps.Map(mapContainer, mapOption);
@@ -182,13 +182,38 @@ export default {
         this.markers.forEach((marker) => marker.setMap(null));
       }
 
+      for (var i = 0; i < this.markers.length; i++) {
+        this.markers[i].setMap(null);
+      }
+      this.markers = [];
+
+      var positions = [];
+
+      houses.forEach((house) => {
+        console.log(house);
+        const sido = this.sidoName;
+        //const gugun = this.gugunName;
+        //const dong = house.법정동;
+        const street = house.도로명;
+        const jibun = house.도로명건물본번호코드;
+
+        const addr = sido + " " + street + " " + jibun;
+        // const addr = sido + " " + gugun + dong + " " + jibun;
+        //console.log(addr);
+
+        positions.push(addr);
+      });
+
+      console.log(positions);
+
+      // 주소 -> 좌표 변환 라이브러리
       var geocoder = new kakao.maps.services.Geocoder();
 
-      //var addrs = [];
+      positions.forEach(function (addr, index) {
+        geocoder.addressSearch(addr, function (result, status) {
+          console.log(result);
+          console.log(addr);
 
-      geocoder.addressSearch(
-        "제주특별자치도 제주시 첨단로 242",
-        function (result, status) {
           // 정상적으로 검색이 완료됐으면
           if (status === kakao.maps.services.Status.OK) {
             var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -199,48 +224,18 @@ export default {
               position: coords,
             });
 
-            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            marker.setMap(map);
+
             var infowindow = new kakao.maps.InfoWindow({
               content:
-                '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>',
+                '<div style="width:150px;text-align:center;padding:6px 0;">' +
+                positions[index] +
+                "</div>",
             });
             infowindow.open(map, marker);
-
-            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-            map.setCenter(coords);
           }
-        }
-      );
-
-      var markerPositions = [];
-      // var addrs = [];
-      // houses.forEach((house) => {
-      //   markerPositions.push([house.아파트명]);
-      //   addrs.push(house);
-      // });
-
-      const positions = markerPositions.map(
-        (position) => new kakao.maps.LatLng(...position)
-      );
-
-      console.log(houses[0].lat);
-
-      if (positions.length > 0) {
-        this.markers = positions.map(
-          (position) =>
-            new kakao.maps.Marker({
-              map: this.map,
-              position,
-            })
-        );
-
-        const bounds = positions.reduce(
-          (bounds, latlng) => bounds.extend(latlng),
-          new kakao.maps.LatLngBounds()
-        );
-
-        map.setBounds(bounds);
-      }
+        });
+      });
     },
   },
 };
