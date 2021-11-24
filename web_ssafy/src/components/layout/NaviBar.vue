@@ -110,7 +110,7 @@ export default {
   created() {
     if (this.userInfo.userid == "admin") {
       this.isAdmin = true;
-    }
+    } else this.isAdmin = false;
   },
 };
 </script>
