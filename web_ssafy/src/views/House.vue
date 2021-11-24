@@ -19,29 +19,29 @@
         <house-search-bar></house-search-bar>
       </b-col>
     </b-row>
-    <b-row>
+    <!-- <b-row>
       <b-col cols="12" align="left">
         <house-list />
       </b-col>
       <b-col cols="8">
-        <div><house-map /></div>
+
         <div><house-detail /></div>
       </b-col>
-    </b-row>
+    </b-row> -->
   </b-container>
 </template>
 <script>
 import HouseSearchBar from "@/components/house/HouseSearchBar.vue";
-import HouseList from "@/components/house/HouseList.vue";
-import HouseDetail from "@/components/house/HouseDetail.vue";
+//import HouseList from "@/components/house/HouseList.vue";
+//import HouseDetail from "@/components/house/HouseDetail.vue";
 //import HospitalList from "@/components/hospital/HospitalList.vue";
 
 export default {
   name: "House",
   components: {
     HouseSearchBar,
-    HouseList,
-    HouseDetail,
+    // HouseList,
+    // HouseDetail,
     //HospitalList,
   },
 };

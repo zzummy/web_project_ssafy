@@ -1,13 +1,13 @@
 <template>
   <div>
     <div id="map"></div>
-    <div>{{ houses }}</div>
+    <div>houses : {{ house.아파트명 }}</div>
   </div>
 </template>
 
 <script>
 //import { mapState, mapActions } from "vuex";
-import { mapState, mapActions, mapMutations } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 const houseStore = "houseStore";
 
@@ -21,12 +21,11 @@ export default {
       infowindow: "",
       customOverlay: [],
       markers: [],
-      positions: [],
       addrs: [],
     };
   },
   props: {
-    houses: Array,
+    house: Object,
   },
   computed: {
     ...mapState(houseStore, [
@@ -56,7 +55,6 @@ export default {
   },
   methods: {
     ...mapActions(houseStore, ["getSido", "getGugun"]),
-    ...mapMutations(houseStore, ["SET_POSI_LIST"]),
     //   "CLEAR_SIDO_LIST",
     //   "CLEAR_GUGUN_LIST",
     //   "CLEAR_DETAIL_HOUSE",
@@ -82,7 +80,6 @@ export default {
       //주소-좌표 변환 객체를 생성합니다
       var geocoder = new kakao.maps.services.Geocoder();
 
-      this.SET_POSI_LIST();
       console.log(this.positions.length);
       for (let index = 0; index < this.positions.length; index++) {
         this.addrs[index] =

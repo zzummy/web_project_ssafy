@@ -15,16 +15,6 @@
           @change="searchApt"
         ></b-form-select>
       </b-col>
-      <!-- <b-col class="sm-3">
-      <b-form-input
-        v-model.trim="dongCode"
-        placeholder="동코드 입력...(예 : 11110)"
-        @keypress.enter="sendKeyword"
-      ></b-form-input>
-    </b-col>
-    <b-col class="sm-3" align="left">
-      <b-button variant="outline-primary" @click="sendKeyword">검색</b-button>
-    </b-col> -->
       <b-col>
         <b-button type="button" @click="showHospitalList"
           >코로나 선별 진료소</b-button
@@ -38,12 +28,24 @@
       ></hospital-list>
     </b-row>
     <br />
+    <b-row>
+      <b-col cols="4" align="left">
+        <house-list />
+      </b-col>
+      <b-col cols="8">
+        <div id="map"></div>
+        <div><house-detail /></div>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
 import HospitalList from "@/components/hospital/HospitalList.vue";
+// import HouseMap from "@/components/house/HouseMap.vue";
+import HouseList from "@/components/house/HouseList.vue";
+import HouseDetail from "@/components/house/HouseDetail.vue";
 
 /*
   namespaced: true를 사용했기 때문에 선언해줍니다.
@@ -56,11 +58,15 @@ import HospitalList from "@/components/hospital/HospitalList.vue";
   }  
 */
 const houseStore = "houseStore";
+var map;
 
 export default {
   name: "HouseSearchBar",
   components: {
     HospitalList,
+    // HouseMap,
+    HouseList,
+    HouseDetail,
   },
   data() {
     return {
@@ -69,8 +75,9 @@ export default {
       gugunCode: null,
       gugunName: null,
       showHospital: false,
+      //houses: [],
       //dongCode: null,
-      positions: this.$store.positions,
+      markers: [],
     };
   },
   computed: {
@@ -78,8 +85,7 @@ export default {
       "houses",
       "sidos",
       "guguns",
-      "positions",
-      // "houses",
+      "houses",
       // "map",
       // "ps",
       // "geocoder",
@@ -96,20 +102,20 @@ export default {
     this.CLEAR_SIDO_LIST();
     this.getSido();
   },
+  mounted() {
+    if (window.kakao && window.kakao.maps) {
+      this.initMap();
+    } else {
+      const script = document.createElement("script");
+      script.onload = () => kakao.maps.load(this.initMap);
+      script.src =
+        "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=915cffed372954b7b44804ed422b9cf0&libraries=services";
+
+      document.head.appendChild(script);
+    }
+  },
   methods: {
-    ...mapActions(houseStore, [
-      "getSido",
-      "getGugun",
-      "getHouseList",
-      //"getDong",
-      // "detailHouse",
-      // "displayMarkers",
-      // "addMarker",
-      // // //"removeMarker",
-      // "getListItem",
-      // "displayInfowindow",
-      // "removeAllChildNods",
-    ]),
+    ...mapActions(houseStore, ["getSido", "getGugun", "getHouseList"]),
     ...mapMutations(houseStore, [
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
@@ -127,16 +133,14 @@ export default {
       console.log(this.sidoName);
       if (this.sidoCode) this.getGugun(this.sidoCode);
     },
-    // dongList() {
-    //   this.CLEAR_DONG_LIST();
-    //   this.dongCode = null;
-    //   if (this.gugunCode) this.getDong(this.gugunCode);
-    // },
     searchApt() {
       this.showHospital = false;
       this.getGugunName();
       console.log(this.gugunName);
-      if (this.gugunCode) this.getHouseList(this.gugunCode);
+      if (this.gugunCode) {
+        this.getHouseList(this.gugunCode);
+      }
+      this.displayMarker(this.houses);
     },
     showHospitalList() {
       if (this.sidoName != null && this.gugunName != null) {
@@ -158,6 +162,86 @@ export default {
           this.gugunName = gugun.text;
         }
       });
+    },
+    initMap() {
+      const mapContainer = document.getElementById("map");
+      const mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 5,
+      };
+
+      map = new kakao.maps.Map(mapContainer, mapOption);
+    },
+    changeSize(size) {
+      const container = document.getElementById("map");
+      container.style.width = `${size}px`;
+      container.style.height = `${size}px`;
+      map.relayout();
+    },
+    displayMarker(houses) {
+      if (this.markers.length > 0) {
+        this.markers.forEach((marker) => marker.setMap(null));
+      }
+
+      // var geocoder = new kakao.maps.services.Geocoder();
+
+      // geocoder.addressSearch(
+      //   "제주특별자치도 제주시 첨단로 242",
+      //   function (result, status) {
+      //     // 정상적으로 검색이 완료됐으면
+      //     if (status === kakao.maps.services.Status.OK) {
+      //       var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+      //       // 결과값으로 받은 위치를 마커로 표시합니다
+      //       var marker = new kakao.maps.Marker({
+      //         map: map,
+      //         position: coords,
+      //       });
+
+      //       // 인포윈도우로 장소에 대한 설명을 표시합니다
+      //       var infowindow = new kakao.maps.InfoWindow({
+      //         content:
+      //           '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>',
+      //       });
+      //       infowindow.open(map, marker);
+
+      //       // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+      //       map.setCenter(coords);
+      //     }
+      //   }
+      // );
+
+      var markerPositions = [];
+      var addrs = [];
+      houses.forEach((house) => {
+        markerPositions.push([house.lat, house.lng]);
+        addrs.push(house);
+      });
+
+      console.log("addrs");
+      console.log(markerPositions);
+      const positions = markerPositions.map(
+        (position) => new kakao.maps.LatLng(...position)
+      );
+
+      console.log(houses[0].lat);
+
+      if (positions.length > 0) {
+        this.markers = positions.map(
+          (position) =>
+            new kakao.maps.Marker({
+              map: this.map,
+              position,
+            })
+        );
+
+        const bounds = positions.reduce(
+          (bounds, latlng) => bounds.extend(latlng),
+          new kakao.maps.LatLngBounds()
+        );
+
+        map.setBounds(bounds);
+      }
     },
   },
 };
