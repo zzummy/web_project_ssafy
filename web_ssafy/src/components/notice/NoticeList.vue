@@ -69,17 +69,6 @@
       </b-col>
       <b-col v-else class="text-center">공지사항이 없습니다.</b-col>
     </b-row>
-<<<<<<< HEAD
-    <br />
-    <!-- Pagination 처리 -->
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      aria-controls="itmes"
-      align="center"
-    ></b-pagination>
-=======
     <b-row>
       <b-col></b-col>
       <b-col>
@@ -95,7 +84,6 @@
       </b-col>
       <b-col></b-col>
     </b-row>
->>>>>>> c3a6e4f2b344b9a5f4e7a7007439705e57e3fa55
   </b-container>
 </template>
 
