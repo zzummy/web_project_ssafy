@@ -59,7 +59,8 @@ import { houseList } from "@/api/house.js";
 const houseStore = "houseStore";
 var map;
 //var marker;
-//var markers = [];
+var markers = [];
+
 export default {
   name: "HouseSearchBar",
   components: {
@@ -258,6 +259,7 @@ export default {
                 position: coords,
                 image: markerImage, // 마커이미지 설정
               });
+              markers.push(marker);
               marker.setMap(map);
               var infowindow = new kakao.maps.InfoWindow({
                 content:
@@ -297,12 +299,10 @@ export default {
     //   return marker;
     // }, // 지도 위에 표시되고 있는 마커를 모두 제거합니다
     removeMarker() {
-      console.log("removeMarker");
-      console.log(this.markers.length);
-      for (var i = 0; i < this.markers.length; i++) {
-        this.markers[i].setMap(null);
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
       }
-      this.markers = [];
+      markers = [];
     },
   },
 };
