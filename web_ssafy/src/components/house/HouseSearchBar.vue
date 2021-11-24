@@ -61,10 +61,7 @@ var map;
 // var overlay;
 //var marker;
 var markers = [];
-<<<<<<< HEAD
 
-=======
->>>>>>> 9c2f306cd3ac032e8bcd19d59afb45d4b0011d0d
 export default {
   name: "HouseSearchBar",
   components: {
@@ -274,10 +271,7 @@ export default {
                 image: markerImage, // 마커이미지 설정
                 clickable: true,
               });
-<<<<<<< HEAD
-=======
 
->>>>>>> 9c2f306cd3ac032e8bcd19d59afb45d4b0011d0d
               markers.push(marker);
               marker.setMap(map);
 
@@ -323,11 +317,8 @@ export default {
 
     // }, // 지도 위에 표시되고 있는 마커를 모두 제거합니다
     removeMarker() {
-<<<<<<< HEAD
-=======
       // console.log("removeMarker");
       // console.log(markers.length);
->>>>>>> 9c2f306cd3ac032e8bcd19d59afb45d4b0011d0d
       for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
       }
