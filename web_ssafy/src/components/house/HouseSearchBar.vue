@@ -46,6 +46,7 @@ import HospitalList from "@/components/hospital/HospitalList.vue";
 // import HouseMap from "@/components/house/HouseMap.vue";
 import HouseList from "@/components/house/HouseList.vue";
 import HouseDetail from "@/components/house/HouseDetail.vue";
+import { houseList } from "@/api/house.js";
 
 /*
   namespaced: true를 사용했기 때문에 선언해줍니다.
@@ -149,9 +150,14 @@ export default {
         this.CLEAR_MAP();
         this.getHouseList(this.gugunCode);
         console.log("houses ");
+<<<<<<< HEAD
         this.setMarker();
         this.displayMarker(this.houses);
         console.log(this.houses);
+=======
+        console.log(this.houses);
+        this.getHouseList1(this.gugunCode);
+>>>>>>> d8e5fb912322376915048d529ebfaa9268f440a8
       }
     },
     showHospitalList() {
@@ -190,6 +196,32 @@ export default {
       container.style.width = `${size}px`;
       container.style.height = `${size}px`;
       map.relayout();
+    },
+    getHouseList1(gugunCode) {
+      // vue cli enviroment variables 검색
+      //.env.local file 생성.
+      // 반드시 VUE_APP으로 시작해야 한다.
+      const SERVICE_KEY = process.env.VUE_APP_APT_DEAL_API_KEY;
+      //   const SERVICE_KEY =
+      //     "9Xo0vlglWcOBGUDxH8PPbuKnlBwbWU6aO7%2Bk3FV4baF9GXok1yxIEF%2BIwr2%2B%2F%2F4oVLT8bekKU%2Bk9ztkJO0wsBw%3D%3D";
+      const params = {
+        LAWD_CD: gugunCode,
+        DEAL_YMD: "202110",
+        serviceKey: decodeURIComponent(SERVICE_KEY),
+        pageNo: encodeURIComponent("1"),
+        numOfRows: encodeURIComponent("100"),
+      };
+      houseList(
+        params,
+        (response) => {
+          // console.log(response.data.response.body.items.item);
+          this.houses = response.data.response.body.items.item;
+          this.displayMarker(this.houses);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     },
     //검색 결과 목록과 마커를 표출하는 함수입니다
     async displayMarker(houses) {
