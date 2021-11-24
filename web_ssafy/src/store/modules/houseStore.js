@@ -14,12 +14,16 @@ const houseStore = {
     // geocoder: null, // 주소로 장소 표시하기 위한  https://apis.map.kakao.com/web/sample/addr2coord/
     // ps: null, // 장소 검색 객체
     // infowindow: null, // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우
-    // customOverlay: [], // 커스텀 오버레이
+    // customOverlay: [], // 커스텀 오버레이,
   },
 
   getters: {},
 
   mutations: {
+    SET_HOUSE_LIST: (state, houses) => {
+      console.log("SET_HOUSE_LIST");
+      state.houses = houses;
+    },
     SET_SIDO_LIST(state, sidos) {
       sidos.forEach((sido) => {
         state.sidos.push({
@@ -36,30 +40,38 @@ const houseStore = {
         });
       });
     },
-
+    SET_DETAIL_HOUSE: (state, house) => {
+      state.house = house;
+    },
+    SET_MARKER: (state) => {
+      var houses = state.houses;
+      console.log("SET_MARKER");
+      console.log(houses);
+    },
+    CLEAR_HOUSE_LIST: (state) => {
+      state.houses = [];
+    },
     CLEAR_SIDO_LIST: (state) => {
       state.sidos = [{ value: null, text: "선택하세요" }];
       // ADD
-      state.houses = [];
-      state.house = null;
+      // state.houses = [];
+      // state.house = null;
     },
     CLEAR_GUGUN_LIST: (state) => {
       state.guguns = [{ value: null, text: "선택하세요" }];
       // add
-      state.houses = [];
-      state.house = null;
+      // state.houses = [];
+      // state.house = null;
     },
 
-    SET_HOUSE_LIST: (state, houses) => {
-      //   console.log(houses);
-      state.houses = houses;
-    },
-    SET_DETAIL_HOUSE: (state, house) => {
-      state.house = house;
-    },
     // add
     CLEAR_DETAIL_HOUSE: (state) => {
       state.house = null;
+    },
+
+    CLEAR_MAP: (state) => {
+      console.log("CLEAR_MAP");
+      state.map = null;
     },
   },
 
@@ -68,6 +80,9 @@ const houseStore = {
       sidoList(
         ({ data }) => {
           // console.log(data);
+          commit("CLEAR_HOUSE_LIST");
+          commit("CLEAR_SIDO_LIST");
+          commit("CLEAR_GUGUN_LIST");
           commit("SET_SIDO_LIST", data);
         },
         (error) => {
@@ -83,6 +98,7 @@ const houseStore = {
         params,
         ({ data }) => {
           // console.log(commit, response);
+          commit("CLEAR_GUGUN_LIST");
           commit("SET_GUGUN_LIST", data);
         },
         (error) => {
@@ -91,30 +107,6 @@ const houseStore = {
       );
     },
 
-    // async getHouseList({ commit }, gugunCode) {
-    //   // vue cli enviroment variables 검색
-    //   //.env.local file 생성.
-    //   // 반드시 VUE_APP으로 시작해야 한다.
-    //   const SERVICE_KEY = process.env.VUE_APP_APT_DEAL_API_KEY;
-    //   //   const SERVICE_KEY =
-    //   //     "9Xo0vlglWcOBGUDxH8PPbuKnlBwbWU6aO7%2Bk3FV4baF9GXok1yxIEF%2BIwr2%2B%2F%2F4oVLT8bekKU%2Bk9ztkJO0wsBw%3D%3D";
-    //   const params = {
-    //     LAWD_CD: gugunCode,
-    //     DEAL_YMD: "202110",
-    //     serviceKey: decodeURIComponent(SERVICE_KEY),
-    //   };
-    //   await houseList(
-    //     params,
-    //     ({ data }) => {
-    //       // console.log(commit, response);
-    //       //commit("CLEAR_HOUSE_LIST");
-    //       commit("SET_HOUSE_LIST", data);
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //     }
-    //   );
-    // },
     getHouseList: ({ commit }, gugunCode) => {
       // vue cli enviroment variables 검색
       //.env.local file 생성.
@@ -133,12 +125,18 @@ const houseStore = {
         params,
         (response) => {
           // console.log(response.data.response.body.items.item);
+          commit("CLEAR_HOUSE_LIST");
           commit("SET_HOUSE_LIST", response.data.response.body.items.item);
+          commit("SET_MARKER");
         },
         (error) => {
           console.log(error);
         }
       );
+    },
+    setMarker: ({ commit }) => {
+      commit("SET_MARKER");
+      return 0;
     },
     detailHouse: ({ commit }, house) => {
       // 나중에 house.일련번호를 이용하여 API 호출

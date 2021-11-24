@@ -46,6 +46,7 @@ import HospitalList from "@/components/hospital/HospitalList.vue";
 // import HouseMap from "@/components/house/HouseMap.vue";
 import HouseList from "@/components/house/HouseList.vue";
 import HouseDetail from "@/components/house/HouseDetail.vue";
+import { houseList } from "@/api/house.js";
 
 /*
   namespaced: true를 사용했기 때문에 선언해줍니다.
@@ -59,6 +60,8 @@ import HouseDetail from "@/components/house/HouseDetail.vue";
 */
 const houseStore = "houseStore";
 var map;
+//var marker;
+//var markers = [];
 
 export default {
   name: "HouseSearchBar",
@@ -78,19 +81,13 @@ export default {
       //houses: [],
       //dongCode: null,
       markers: [],
+      // map에서 쓸 안자른 이름
+      sidoName2: null,
+      //gugunName2: null,
     };
   },
   computed: {
-    ...mapState(houseStore, [
-      "sidos",
-      "guguns",
-      "houses",
-      // "map",
-      // "ps",
-      // "geocoder",
-      // "infowindow",
-      // "customOverlay",
-    ]),
+    ...mapState(houseStore, ["sidos", "guguns", "houses"]),
     // sidos() {
     //   return this.$store.state.sidos;
     // },
@@ -114,11 +111,15 @@ export default {
     }
   },
   methods: {
-    ...mapActions(houseStore, ["getSido", "getGugun", "getHouseList"]),
+    ...mapActions(houseStore, [
+      "getSido",
+      "getGugun",
+      "getHouseList",
+      "setMarker",
+    ]),
     ...mapMutations(houseStore, [
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
-      //"CLEAR_DONG_LIST",
       "CLEAR_DETAIL_HOUSE",
     ]),
     // sidoList() {
@@ -130,15 +131,22 @@ export default {
       this.gugunCode = null;
       this.getSidoName();
       console.log(this.sidoName);
-      if (this.sidoCode) this.getGugun(this.sidoCode);
+
+      if (this.sidoCode) {
+        this.getGugun(this.sidoCode);
+      }
     },
     searchApt() {
       this.showHospital = false;
       this.getGugunName();
       console.log(this.gugunName);
+
       if (this.gugunCode) {
+        //console.log("gugunCode -> " + this.gugunCode);
         this.getHouseList(this.gugunCode);
-        this.displayMarker(this.houses);
+        console.log("houses ");
+        console.log(this.houses);
+        this.getHouseList1(this.gugunCode);
       }
     },
     showHospitalList() {
@@ -152,6 +160,7 @@ export default {
       this.sidos.forEach((sido) => {
         if (sido.value === this.sidoCode) {
           this.sidoName = sido.text.substring(0, 2);
+          this.sidoName2 = sido.text;
         }
       });
     },
@@ -166,7 +175,7 @@ export default {
       const mapContainer = document.getElementById("map");
       const mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667),
-        level: 6,
+        level: 5,
       };
 
       map = new kakao.maps.Map(mapContainer, mapOption);
@@ -177,21 +186,52 @@ export default {
       container.style.height = `${size}px`;
       map.relayout();
     },
-    displayMarker(houses) {
-      if (this.markers.length > 0) {
-        this.markers.forEach((marker) => marker.setMap(null));
-      }
+    getHouseList1(gugunCode) {
+      // vue cli enviroment variables 검색
+      //.env.local file 생성.
+      // 반드시 VUE_APP으로 시작해야 한다.
+      const SERVICE_KEY = process.env.VUE_APP_APT_DEAL_API_KEY;
+      //   const SERVICE_KEY =
+      //     "9Xo0vlglWcOBGUDxH8PPbuKnlBwbWU6aO7%2Bk3FV4baF9GXok1yxIEF%2BIwr2%2B%2F%2F4oVLT8bekKU%2Bk9ztkJO0wsBw%3D%3D";
+      const params = {
+        LAWD_CD: gugunCode,
+        DEAL_YMD: "202110",
+        serviceKey: decodeURIComponent(SERVICE_KEY),
+        pageNo: encodeURIComponent("1"),
+        numOfRows: encodeURIComponent("100"),
+      };
+      houseList(
+        params,
+        (response) => {
+          // console.log(response.data.response.body.items.item);
+          this.houses = response.data.response.body.items.item;
+          this.displayMarker(this.houses);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+    //검색 결과 목록과 마커를 표출하는 함수입니다
+    async displayMarker(houses) {
+      // if (this.markers.length > 0) {
+      //   this.markers.forEach((marker) => marker.setMap(null));
+      // }
 
-      for (var i = 0; i < this.markers.length; i++) {
-        this.markers[i].setMap(null);
-      }
-      this.markers = [];
+      // 지도에 표시되고 있는 마커를 제거합니다
+      this.removeMarker();
+
+      // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+      // var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
       var positions = [];
 
-      houses.forEach((house) => {
+      await houses.forEach((house) => {
+        console.log("forEach->house");
         console.log(house);
-        const sido = this.sidoName;
+        const sido = this.sidoName2;
+        // const sido = this.sidoName;
+        console.log(sido);
         //const gugun = this.gugunName;
         //const dong = house.법정동;
         const street = house.도로명;
@@ -209,33 +249,75 @@ export default {
       // 주소 -> 좌표 변환 라이브러리
       var geocoder = new kakao.maps.services.Geocoder();
 
-      positions.forEach(function (addr, index) {
-        geocoder.addressSearch(addr, function (result, status) {
-          console.log(result);
-          console.log(addr);
+      if (positions.length > 0) {
+        positions.forEach(function (addr, index) {
+          geocoder.addressSearch(addr, function (result, status) {
+            //console.log(result);
+            console.log(status);
 
-          // 정상적으로 검색이 완료됐으면
-          if (status === kakao.maps.services.Status.OK) {
-            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            // 정상적으로 검색이 완료됐으면
+            if (status === kakao.maps.services.Status.OK) {
+              var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-            // 결과값으로 받은 위치를 마커로 표시합니다
-            var marker = new kakao.maps.Marker({
-              map: map,
-              position: coords,
-            });
+              var imageSrc =
+                "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+              var imageSize = new kakao.maps.Size(24, 35);
+              var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+              // 결과값으로 받은 위치를 마커로 표시합니다
+              var marker = new kakao.maps.Marker({
+                map: map,
+                position: coords,
+                image: markerImage, // 마커이미지 설정
+              });
 
-            marker.setMap(map);
+              marker.setMap(map);
 
-            var infowindow = new kakao.maps.InfoWindow({
-              content:
-                '<div style="width:150px;text-align:center;padding:6px 0;">' +
-                positions[index] +
-                "</div>",
-            });
-            infowindow.open(map, marker);
-          }
+              var infowindow = new kakao.maps.InfoWindow({
+                content:
+                  '<div style="width:150px;text-align:center;padding:6px 0;">' +
+                  positions[index] +
+                  "</div>",
+              });
+              infowindow.open(map, marker);
+              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+              map.setCenter(coords);
+            }
+          });
         });
-      });
+      }
+    },
+    //마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+    // addMarker(position, idx, title) {
+    //   var imageSrc =
+    //       "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    //     imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
+    //     imgOptions = {
+    //       spriteSize: new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+    //       spriteOrigin: new kakao.maps.Point(0, idx * 46 + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+    //       offset: new kakao.maps.Point(13, 37), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+    //     },
+    //     markerImage = new kakao.maps.MarkerImage(
+    //       imageSrc,
+    //       imageSize,
+    //       imgOptions
+    //     ),
+    //     marker = new kakao.maps.Marker({
+    //       position: position, // 마커의 위치
+    //       image: markerImage,
+    //     });
+
+    //   marker.setMap(map); // 지도 위에 마커를 표출합니다
+    //   markers.push(marker); // 배열에 생성된 마커를 추가합니다
+
+    //   return marker;
+    // }, // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+    removeMarker() {
+      console.log("removeMarker");
+      console.log(this.markers.length);
+      for (var i = 0; i < this.markers.length; i++) {
+        this.markers[i].setMap(null);
+      }
+      this.markers = [];
     },
   },
 };
