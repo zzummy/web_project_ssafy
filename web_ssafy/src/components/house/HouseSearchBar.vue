@@ -30,7 +30,7 @@
     <br />
     <b-row>
       <b-col cols="4" align="left">
-        <house-list />
+        <house-list :key="listkey" />
       </b-col>
       <b-col cols="8">
         <div id="map"></div>
@@ -84,6 +84,7 @@ export default {
       // map에서 쓸 안자른 이름
       sidoName2: null,
       //gugunName2: null,
+      listkey: -1,
     };
   },
   computed: {
@@ -121,6 +122,8 @@ export default {
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
       "CLEAR_DETAIL_HOUSE",
+      "CLEAR_HOUSE_LIST",
+      "SET_HOUSE_LIST",
     ]),
     // sidoList() {
     //   this.getSido();
@@ -205,6 +208,8 @@ export default {
         (response) => {
           // console.log(response.data.response.body.items.item);
           this.houses = response.data.response.body.items.item;
+          this.SET_HOUSE_LIST(this.houses);
+          this.listkey *= -1;
           this.displayMarker(this.houses);
         },
         (error) => {
