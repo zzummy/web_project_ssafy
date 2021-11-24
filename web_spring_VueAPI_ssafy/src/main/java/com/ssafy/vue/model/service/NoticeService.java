@@ -13,6 +13,8 @@ public interface NoticeService {
 	public boolean writeNotice(NoticeDto noticeDto) throws Exception;
 
 	public List<NoticeDto> listNotice(NoticeParameterDto noticeParameterDto) throws Exception;
+	
+	public List<NoticeDto> listNoticeAll() throws Exception;
 
 	public PageNavigation makePageNavigation(NoticeParameterDto noticeParameterDto) throws Exception;
 

@@ -16,7 +16,7 @@
     </b-row>
     <b-row>
       <b-col></b-col>
-      <b-col cols="8">
+      <b-col cols="7">
         <b-jumbotron>
           <!-- <template #header>My Page</template>
 

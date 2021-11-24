@@ -13,6 +13,7 @@ public interface NoticeMapper {
 	
 	public int writeNotice(NoticeDto NoticeDto) throws SQLException;
 	public List<NoticeDto> listNotice(NoticeParameterDto noticeParameterDto) throws SQLException;
+	public List<NoticeDto> listNoticeAll() throws SQLException;
 	public int getTotalCount(NoticeParameterDto noticeParameterDto) throws SQLException;
 	public NoticeDto getNotice(int noticeno) throws SQLException;
 	public void updateHit(int noticeno) throws SQLException;

@@ -48,13 +48,20 @@ public class NoticeController {
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "공지사항 글목록", notes = "모든 공지사항의 정보를 반환한다.", response = List.class)
+	@ApiOperation(value = "공지사항 글목록", notes = "부분 공지사항의 정보를 반환한다.", response = List.class)
 	@GetMapping
 	public ResponseEntity<List<NoticeDto>> listNotice(@ApiParam(value = "공지사항을 얻기위한 부가정보.", required = true) NoticeParameterDto noticeParameterDto) throws Exception {
 		logger.info("listNotice - 호출");
 		noticeService.makePageNavigation(noticeParameterDto);
 		int totalPageCount = noticeService.makePageNavigation(noticeParameterDto).getTotalPageCount();
 		return new ResponseEntity<List<NoticeDto>>(noticeService.listNotice(noticeParameterDto), HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "공지사항 글목록", notes = "모든 공지사항의 정보를 반환한다.", response = List.class)
+	@GetMapping("/list")
+	public ResponseEntity<List<NoticeDto>> listNoticeAll() throws Exception {
+		logger.info("listNotice - 호출");
+		return new ResponseEntity<List<NoticeDto>>(noticeService.listNoticeAll(), HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "공지사항 글보기", notes = "글번호에 해당하는 공지사항의 정보를 반환한다.", response = NoticeDto.class)

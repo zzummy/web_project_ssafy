@@ -6,6 +6,10 @@ function listNotice(param, success, fail) {
   api.get(`/notice`, { params: param }).then(success).catch(fail);
 }
 
+function listNoticeAll(success, fail) {
+  api.get(`/notice/list`).then(success).catch(fail);
+}
+
 function writeNotice(notice, success, fail) {
   api.post(`/notice`, JSON.stringify(notice)).then(success).catch(fail);
 }
@@ -22,4 +26,11 @@ function deleteNotice(noticeno, success, fail) {
   api.delete(`/notice/${noticeno}`).then(success).catch(fail);
 }
 
-export { listNotice, writeNotice, getNotice, modifyNotice, deleteNotice };
+export {
+  listNotice,
+  listNoticeAll,
+  writeNotice,
+  getNotice,
+  modifyNotice,
+  deleteNotice,
+};
