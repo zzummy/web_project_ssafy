@@ -60,7 +60,7 @@ const houseStore = "houseStore";
 var map;
 // var overlay;
 //var marker;
-//var markers = [];
+var markers = [];
 export default {
   name: "HouseSearchBar",
   components: {
@@ -78,7 +78,7 @@ export default {
       showHospital: false,
       //houses: [],
       //dongCode: null,
-      markers: [],
+      //markers: [],
       // map에서 쓸 안자른 이름
       sidoName2: null,
       //gugunName2: null,
@@ -206,6 +206,7 @@ export default {
           this.houses = response.data.response.body.items.item;
           this.SET_HOUSE_LIST(this.houses);
           this.listkey *= -1;
+
           this.displayMarker(this.houses);
         },
         (error) => {
@@ -214,22 +215,20 @@ export default {
       );
     },
     //검색 결과 목록과 마커를 표출하는 함수입니다
-    async displayMarker(houses) {
+    displayMarker(houses) {
       console.log("마커지워줘");
-      console.log(this.markers.length);
-      if (this.markers.length > 0) {
-        this.markers.forEach((marker) => marker.setMap(null));
-      }
+      console.log(houses);
+      // console.log(this.markers.length);
 
       // 지도에 표시되고 있는 마커를 제거합니다
-      //this.removeMarker();
+      this.removeMarker();
 
       // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
       // var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
       var positions = [];
       var houseArr = [];
-      await houses.forEach((house) => {
+      houses.forEach((house) => {
         //console.log("forEach->house");
         //console.log(house);
         const sido = this.sidoName2;
@@ -272,6 +271,7 @@ export default {
                 clickable: true,
               });
 
+              markers.push(marker);
               marker.setMap(map);
 
               // 커스텀 오버레이에 표시할 컨텐츠 입니다
@@ -315,14 +315,14 @@ export default {
     },
 
     // }, // 지도 위에 표시되고 있는 마커를 모두 제거합니다
-    // removeMarker() {
-    //   console.log("removeMarker");
-    //   console.log(this.markers.length);
-    //   for (var i = 0; i < this.markers.length; i++) {
-    //     this.markers[i].setMap(null);
-    //   }
-    //   this.markers = [];
-    // },
+    removeMarker() {
+      // console.log("removeMarker");
+      // console.log(markers.length);
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+      }
+      markers = [];
+    },
     // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
     // closeOverlay() {
     //   overlay.setMap(null);

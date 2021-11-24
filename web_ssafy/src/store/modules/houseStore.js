@@ -10,7 +10,7 @@ const houseStore = {
     houses: [],
     house: null,
     map: null, // map 객체
-    markers: [], // markers 마커 담을 객체
+    //markers: [], // markers 마커 담을 객체
     // geocoder: null, // 주소로 장소 표시하기 위한  https://apis.map.kakao.com/web/sample/addr2coord/
     // ps: null, // 장소 검색 객체
     // infowindow: null, // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우
