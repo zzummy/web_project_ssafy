@@ -1,6 +1,7 @@
 package com.ssafy.vue.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -157,6 +158,19 @@ public class MemberController {
 			status = HttpStatus.INTERNAL_SERVER_ERROR;
 		}
 		return new ResponseEntity<String>(result, status);
+	}
+	
+	@ApiOperation(value = "회원정보 리스트", notes = "회원 정보를 담은 리스트을 반환한다.", response = List.class)
+	@GetMapping("/list")
+	public ResponseEntity<List<MemberDto>> listMember(HttpServletRequest request) {
+		HttpStatus status = HttpStatus.OK;
+		try {
+			logger.info("회원정보 조회");
+			return new ResponseEntity<List<MemberDto>>(memberService.listMember(), status);
+		} catch (Exception e) {
+			logger.error("회원정보 조회 에러");
+			return null;
+		}
 	}
 
 }

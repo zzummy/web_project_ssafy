@@ -99,7 +99,7 @@ import { mapState, mapActions } from "vuex";
 const memberStore = "memberStore";
 
 export default {
-  name: "MemberJoin",
+  name: "MemberUpdate",
   data() {
     return {
       user: {

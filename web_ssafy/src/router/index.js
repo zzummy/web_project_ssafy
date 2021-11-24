@@ -8,6 +8,7 @@ import MemberJoin from "@/components/user/MemberJoin.vue";
 import MemberMyPage from "@/components/user/MemberMyPage.vue";
 import MemberUpdate from "@/components/user/MemberUpdate.vue";
 import MemberManage from "@/components/user/MemberManage.vue";
+import MemberUpdateAdmin from "@/components/user/MemberUpdateAdmin.vue";
 
 import Board from "@/views/Board.vue";
 import BoardList from "@/components/board/BoardList.vue";
@@ -74,6 +75,13 @@ const routes = [
         name: "Manage",
         beforeEnter: onlyAuthUser,
         component: MemberManage,
+      },
+      {
+        path: "admin/update",
+        name: "updateInfoAdmin",
+        beforeEnter: onlyAuthUser,
+        component: MemberUpdateAdmin,
+        props: true,
       },
       {
         path: "mypage",
