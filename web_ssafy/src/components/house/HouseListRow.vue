@@ -48,13 +48,9 @@ export default {
     ...mapMutations(houseStore, ["CLEAR_DETAIL_HOUSE"]),
 
     selectHouse() {
-      console.log("listRow : ", this.house);
-      // this.$store.dispatch("getHouse", this.house);
       var housedongcode =
         String(this.house.법정동시군구코드) +
         String(this.house.법정동읍면동코드);
-      console.log("house dongcode : ", housedongcode);
-      console.log(this.userInfo.userid);
       this.detailHouse(this.house);
       if (this.isLogin) {
         http
