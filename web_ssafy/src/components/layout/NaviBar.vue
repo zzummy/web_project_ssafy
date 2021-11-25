@@ -108,7 +108,7 @@ export default {
       if (this.$route.path != "/") this.$router.push({ name: "Home" });
     },
   },
-  created() {
+  updated() {
     if (this.userInfo.userid === "admin") {
       this.isAdmin = true;
     } else this.isAdmin = false;
