@@ -160,8 +160,10 @@ export default {
           .then(({ data }) => {
             console.log(data);
             this.userloc = data;
-            this.showUserLoc = true;
-            this.styleObject.float = "left";
+            if (this.userloc.length > 0) {
+              this.showUserLoc = true;
+              this.styleObject.float = "left";
+            }
           });
       }
     });

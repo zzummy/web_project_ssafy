@@ -15,6 +15,7 @@ import BoardList from "@/components/board/BoardList.vue";
 import BoardWrite from "@/components/board/BoardWrite.vue";
 import BoardView from "@/components/board/BoardView.vue";
 import BoardUpdate from "@/components/board/BoardUpdate.vue";
+import BoardDelete from "@/components/board/BoardDelete.vue";
 
 import House from "@/views/House.vue";
 
@@ -125,6 +126,12 @@ const routes = [
         name: "BoardUpdate",
         beforeEnter: onlyAuthUser,
         component: BoardUpdate,
+      },
+      {
+        path: "delete/:articleno",
+        name: "BoardDelete",
+        beforeEnter: onlyAuthUser,
+        component: BoardDelete,
       },
     ],
   },
