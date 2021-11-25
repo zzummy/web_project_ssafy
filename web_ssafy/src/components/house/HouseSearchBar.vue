@@ -97,7 +97,10 @@ var map;
 // var overlay;
 //var marker;
 var markers = [];
-
+// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+//var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+// 커스텀 오버레이를 생성합니다
+var customOverlay;
 export default {
   name: "HouseSearchBar",
   components: {
@@ -465,6 +468,9 @@ export default {
     //검색 결과 목록과 마커를 표출하는 함수입니다
     displayMarker(houses) {
       // 지도에 표시되고 있는 마커를 제거합니다
+      // var fragment = document.createDocumentFragment();
+      var bounds = new kakao.maps.LatLngBounds();
+
       this.removeMarker();
 
       var positions = [];
@@ -479,27 +485,35 @@ export default {
         //const gugun = this.gugunName;
         //const dong = house.법정동;
         const street = house.도로명;
-        const jibun = house.도로명건물본번호코드;
+        // 00055 잘라보기
+        const code = house.도로명건물본번호코드;
+        const jibun = code.substring(code.lastIndexOf(0) + 1);
+
+        // const jibun = house.도로명건물본번호코드;
         const addr = sido + " " + street + " " + jibun;
         // const addr = sido + " " + gugun + dong + " " + jibun;
         //console.log(addr);
         positions.push(addr);
-        houseArr.push(house);
+        houseArr.push([house, addr]);
       });
 
-      console.log(positions);
+      //console.log(positions);
+      console.log("houseArr");
+      console.log(houseArr);
 
       // 주소 -> 좌표 변환 라이브러리
       var geocoder = new kakao.maps.services.Geocoder();
-      if (positions.length > 0) {
-        positions.forEach(function (addr) {
-          geocoder.addressSearch(addr, function (result, status) {
-            //console.log(result);
+      if (houseArr[0].length > 0) {
+        houseArr.forEach(function (arr) {
+          geocoder.addressSearch(arr[1], function (result, status) {
             console.log(status);
 
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {
               var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+              console.log("lat, lng");
+              console.log(result[0].y + " ," + result[0].x);
+
               var imageSrc =
                 "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
               var imageSize = new kakao.maps.Size(24, 35);
@@ -513,12 +527,70 @@ export default {
                 clickable: true,
               });
 
+              bounds.extend(coords);
               markers.push(marker);
               marker.setMap(map);
 
-              kakao.maps.event.addListener(marker, "click", function () {
-                //overlay.setMap(map);
-              });
+              // 마커와 검색결과 항목에 mouseover 했을때
+              // 해당 장소에 인포윈도우에 장소명을 표시합니다
+              // mouseout 했을 때는 인포윈도우를 닫습니다
+              (function (marker, arr) {
+                kakao.maps.event.addListener(marker, "click", function () {
+                  // 동코드도 0빼주기
+                  // 법정동 0254
+                  var str = arr[0].법정동본번코드;
+                  console.log(str.substring(0, 1));
+                  var dongCode = str;
+                  if (str.substring(0, 1) == "0")
+                    dongCode = str.substring(str.lastIndexOf(0) + 1);
+
+                  // 길찾기로 넘어가기
+                  var url =
+                    "https://map.kakao.com/link/roadview/" +
+                    result[0].y +
+                    "," +
+                    result[0].x;
+
+                  var content =
+                    '<div class="wrap">' +
+                    '    <div class="info">' +
+                    '        <div class="title">' +
+                    arr[0].아파트 +
+                    "        </div>" +
+                    '        <div class="body">' +
+                    '            <div class="img">' +
+                    '                <img src="https://lh3.googleusercontent.com/proxy/eHB2-lZ0Lnm-5MC_9VFB9kOU3kbiSoLjM0nnCSWFoHt4JYCCVCNpenTRiKD1yBYiKmFPaGxq92Yx2VDESWa1kE075j89eInDL8vbLfRPx4rg8-HEH9wY5kWMierT7d0nCA" width="73" height="70" >' +
+                    "           </div>" +
+                    '            <div class="desc">' +
+                    '                <div class="ellipsis">' +
+                    arr[1] +
+                    "</div>" +
+                    '                <div class="jibun ellipsis"><span>(지번) ' +
+                    arr[0].법정동 +
+                    " " +
+                    dongCode +
+                    "</span></div>" +
+                    '                <div><a href="' +
+                    url +
+                    '" target="_blank" class="link">로드뷰</a></div>' +
+                    "            </div>" +
+                    "        </div>" +
+                    "    </div>" +
+                    "</div>";
+                  var position = new kakao.maps.LatLng(
+                    result[0].y,
+                    result[0].x
+                  );
+                  if (customOverlay !== undefined) customOverlay.setMap(null);
+                  customOverlay = new kakao.maps.CustomOverlay({
+                    position: position,
+                    content: content,
+                    xAnchor: 0.3,
+                    yAnchor: 0.91,
+                  });
+                  customOverlay.setMap(map);
+                });
+              })(marker, arr);
 
               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
               map.setCenter(coords);
@@ -682,5 +754,98 @@ export default {
   color: #999;
   font-size: 11px;
   margin-top: 0;
+}
+.wrap {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  width: 288px;
+  height: 132px;
+  margin-left: -144px;
+  text-align: left;
+  overflow: hidden;
+  font-size: 12px;
+  font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
+  line-height: 1.5;
+}
+.wrap * {
+  padding: 0;
+  margin: 0;
+}
+.wrap .info {
+  width: 286px;
+  height: 120px;
+  border-radius: 5px;
+  border-bottom: 2px solid #ccc;
+  border-right: 1px solid #ccc;
+  overflow: hidden;
+  background: #fff;
+}
+.wrap .info:nth-child(1) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
+.info .title {
+  padding: 7px 0 0 10px;
+  height: 40px;
+  background: #8999ac;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: bold;
+  color: #3b3838;
+}
+.info .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #888;
+  width: 17px;
+  height: 17px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png");
+}
+.info .close:hover {
+  cursor: pointer;
+}
+.info .body {
+  position: relative;
+  overflow: hidden;
+}
+.info .desc {
+  position: relative;
+  margin: 13px 0 0 90px;
+  height: 75px;
+}
+.desc .ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.desc .jibun {
+  font-size: 11px;
+  color: #888;
+  margin-top: -2px;
+}
+.info .img {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  width: 73px;
+  height: 71px;
+  /* border: 1px solid #ddd; */
+  color: #888;
+  overflow: hidden;
+}
+.info:after {
+  content: "";
+  position: absolute;
+  margin-left: -12px;
+  left: 50%;
+  bottom: 0;
+  width: 22px;
+  height: 12px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
+}
+.info .link {
+  color: #5085bb;
 }
 </style>
