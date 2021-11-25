@@ -1,6 +1,6 @@
 <template>
-  <b-row class="mb-1">
-    <b-col>
+  <div align="left" style="padding: 0 80px">
+    <!-- <b-col>
       <b-card class="mb-2" border-variant="dark" no-body>
         <template #header>
           <h6 class="text-left">
@@ -26,8 +26,39 @@
           {{ comment }}
         </b-card-body>
       </b-card>
-    </b-col>
-  </b-row>
+    </b-col> -->
+
+    <b-row>
+      <b-col cols="3">
+        <b-icon icon="people-fill"></b-icon>&nbsp;&nbsp; {{ userid }}</b-col
+      >
+      <b-col cols="8" style="padding: 0px 20px">{{ comment }}</b-col>
+      <div v-show="canDelete" v-b-hover="handleHover" style="float: right">
+        <b-icon
+          v-if="isHovered"
+          icon="trash-fill"
+          font-scale="3"
+          style="width: 15px; height: 15px; cursor: pointer"
+          @click="deleteMemo"
+        >
+        </b-icon>
+        <b-icon
+          v-else
+          icon="trash"
+          font-scale="3"
+          style="width: 15px; height: 15px"
+        >
+        </b-icon>
+      </div>
+    </b-row>
+    <b-row>
+      <b-col cols="3"> </b-col>
+      <b-col cols="5" style="color: #8c8c8c"> {{ memotime }}</b-col>
+    </b-row>
+    <br />
+
+    <hr />
+  </div>
 </template>
 <script>
 // import moment from "moment";

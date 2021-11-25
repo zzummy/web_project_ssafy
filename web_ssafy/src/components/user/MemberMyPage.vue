@@ -24,39 +24,35 @@
 
           <!-- <hr class="my-4" /> -->
 
-          <b-container class="mt-4">
-            <b-row>
-              <b-col cols="2"></b-col>
-              <b-col cols="2" align-self="end">아이디</b-col
-              ><b-col cols="4" align-self="start">{{ userInfo.userid }}</b-col>
-              <b-col cols="2"></b-col>
+          <div align="left">
+            <b-row style="margin: 10px">
+              <b-col cols="3"></b-col>
+              <b-col cols="3" align-self="end">아이디</b-col
+              ><b-col cols="4" align-self="start">{{ userInfo.userid }}</b-col
+              ><b-col cols="2"></b-col>
             </b-row>
-            <b-row>
-              <b-col cols="2"></b-col>
-              <b-col cols="2" align-self="end">이름</b-col
-              ><b-col cols="4" align-self="start">{{
-                userInfo.username
-              }}</b-col>
-              <b-col cols="2"></b-col>
+            <b-row style="margin: 10px"
+              ><b-col cols="3"></b-col>
+              <b-col cols="3" align-self="end">이름</b-col
+              ><b-col cols="4" align-self="start">{{ userInfo.username }}</b-col
+              ><b-col cols="2"></b-col>
             </b-row>
-            <b-row>
-              <b-col cols="2"></b-col>
-              <b-col cols="2" align-self="end">이메일</b-col
-              ><b-col cols="4" align-self="start">{{ userInfo.email }}</b-col>
-              <b-col cols="2"></b-col>
+            <b-row style="margin: 10px"
+              ><b-col cols="3"></b-col>
+              <b-col cols="3" align-self="end">이메일</b-col
+              ><b-col cols="4" align-self="start">{{ userInfo.email }}</b-col
+              ><b-col cols="2"></b-col>
             </b-row>
-            <b-row>
-              <b-col cols="2"></b-col>
-              <b-col cols="2" align-self="end">가입일</b-col
-              ><b-col cols="4" align-self="start">{{
-                userInfo.joindate
-              }}</b-col>
-              <b-col cols="2"></b-col>
+            <b-row style="margin: 10px"
+              ><b-col cols="3"></b-col>
+              <b-col cols="3" align-self="end">가입일</b-col
+              ><b-col cols="4" align-self="start">{{ userInfo.joindate }}</b-col
+              ><b-col cols="2"></b-col>
             </b-row>
-          </b-container>
+          </div>
           <br />
           <hr class="my-4" />
-
+          <br />
           <b-button
             style="border: 0px; background-color: #426289"
             @click="updateInfo"
@@ -71,6 +67,7 @@
       </b-col>
       <b-col></b-col>
     </b-row>
+    <br /><br /><br />
   </b-container>
 </template>
 

@@ -7,12 +7,17 @@
       alt="Kitten"
       id="bg"
     />
-    <b-jumbotron id="mainText" style="opacity: 0.8" header="HappyHouse">
+    <b-jumbotron id="mainText" style="opacity: 0.8">
       <br />
-      <h5>마음에 드는 집을 사는 그 날까지</h5>
-      <p>We always be with you</p>
+      <template #header
+        ><span
+          ><b-icon icon="house-door-fill"></b-icon> Happy House</span
+        ></template
+      >
+      <h4>마음에 드는 집을 사는 그 날까지</h4>
+      <h5 class="underline">We always be with you</h5>
     </b-jumbotron>
-    <br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
     <div v-if="showHotLoc" :style="styleObject">
       <b-carousel
         id="carousel-1"
@@ -23,7 +28,7 @@
         background="#ababab"
         img-width="1024"
         img-height="576"
-        style="text-shadow: 1px 1px 2px #333"
+        style="text-shadow: 1px 1px 2px #333; opacity: 0.7"
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
       >
@@ -65,7 +70,7 @@
         background="#ababab"
         img-width="1024"
         img-height="576"
-        style="text-shadow: 1px 1px 2px #333"
+        style="text-shadow: 1px 1px 2px #333; opacity: 0.7"
         @sliding-start="onSlideStart1"
         @sliding-end="onSlideEnd1"
       >
@@ -192,8 +197,29 @@ export default {
   z-index: 2;
   margin-top: 100px;
   position: relative;
+  font-family: IBMPlexSansKR-Bold;
 }
 #carousel-1 {
   text-shadow: 3px 3px 4px black !important;
+}
+.underline {
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(45, 72, 121, 0.3) 30%
+  );
+}
+h1,
+h3,
+h5 {
+  font-family: IBMPlexSansKR-Bold;
+}
+@font-face {
+  font-family: "IBMPlexSansKR-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Bold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 </style>

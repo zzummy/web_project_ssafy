@@ -1,6 +1,6 @@
 <template>
-  <b-row class="mb-1">
-    <b-col style="text-align: left">
+  <b-row align="left" style="padding: 0 80px">
+    <b-col style="text-align: right">
       <b-form @submit="onSubmit" @reset="onReset">
         <b-form-group id="comment-group" label-for="comment">
           <b-form-textarea
@@ -22,6 +22,7 @@
           >초기화</b-button
         >
       </b-form>
+      <br />
     </b-col>
   </b-row>
 </template>
