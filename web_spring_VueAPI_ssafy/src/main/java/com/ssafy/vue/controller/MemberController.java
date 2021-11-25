@@ -183,28 +183,33 @@ public class MemberController {
 	
 	@ApiOperation(value = "관심 목록 등록", notes = "관심 목록을 등록한다.", response = String.class)
 	@PostMapping("/interest/register")
-	public ResponseEntity<String> interest(@RequestParam("dong") String dong, @RequestParam("userid") String userId) throws Exception {
-		UserLocDto userLocDto = new UserLocDto(userId, dong, 0);
+	public ResponseEntity<String> interest(@RequestBody @ApiParam(value = "관심목록 등록를 하기 위한 정보", required = true) UserLocDto userLocDto) {
+		logger.info(userLocDto.getUserid());
+		logger.info(userLocDto.getDongcode());
 		try {
 			if (interestService.interestCheck(userLocDto) == 0) {
+				logger.info(userLocDto.getUserid());
+				logger.info(userLocDto.getDongcode());
 				interestService.registerInterest(userLocDto);
-				logger.info("관심 목록 등록 성공 : {}", dong);
+				logger.info("관심 목록 등록 성공 : {}", userLocDto.getUserid());
 				return new ResponseEntity<String>(SUCCESS, HttpStatus.ACCEPTED);
 			}
 			else {
-				logger.error("관심 목록 등록 실패");
-				return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
+				logger.info("dddd");
+				interestService.plusHit(userLocDto);
+				logger.info("관심 목록 조회+1 성공 : {}", userLocDto.getUserid());
+				return new ResponseEntity<String>(SUCCESS, HttpStatus.ACCEPTED);
 			}
 		} catch (Exception e) {
-			logger.error("관심 목록 등록 에러");
+			logger.error("관심 목록 등록 에러 : {}", e);
 			return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
 		}
 	}
 	
 	@ApiOperation(value = "관심 목록", notes = "관심 목록을 반환한다.", response = List.class)
-	@GetMapping("/interest/list")
-	public ResponseEntity<List<BaseAddressDto>> interests(@RequestParam("userid") String userId) throws Exception {
-		return new ResponseEntity<List<BaseAddressDto>>(interestService.getInterests(userId), HttpStatus.OK);
+	@PostMapping("/interest/list")
+	public ResponseEntity<List<BaseAddressDto>> interests(@RequestBody @ApiParam(value = "관심목록 조회를 하기 위한 정보", required = true) UserLocDto userLocDto) throws Exception {
+		return new ResponseEntity<List<BaseAddressDto>>(interestService.getInterests(userLocDto.getUserid()), HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "top 관심 목록", notes = "top 관심 목록을 반환한다.", response = List.class)

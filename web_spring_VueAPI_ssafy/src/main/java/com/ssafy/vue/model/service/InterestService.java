@@ -12,5 +12,6 @@ public interface InterestService {
 	public List<BaseAddressDto> getTops() throws Exception;
 	public List<BaseAddressDto> getInterests(String userId) throws Exception;
 	public void registerInterest(UserLocDto userLocDto) throws Exception;
+	public void plusHit(UserLocDto userLocDto) throws Exception;
 	//void deleteInterest() throws Exception;
 }

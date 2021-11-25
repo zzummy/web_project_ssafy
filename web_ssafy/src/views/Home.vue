@@ -7,29 +7,173 @@
       alt="Kitten"
       id="bg"
     />
-    <b-jumbotron
-      id="mainText"
-      style="opacity: 0.8"
-      header="HappyHouse"
-      lead="마음에 드는 집을 사는 그날까지"
-    >
+    <b-jumbotron id="mainText" style="opacity: 0.8" header="HappyHouse">
+      <br />
+      <h5>마음에 드는 집을 사는 그 날까지</h5>
       <p>We always be with you</p>
     </b-jumbotron>
-    <b-jumbotron header="ㅇㅇㅇ">
-      <p>우앵~~~~~~~~~~</p>
-      <p>우앵~~~~~~~~~~</p>
-      <p>우앵~~~~~~~~~~</p>
-      <p>우앵~~~~~~~~~~</p>
-      <p>우앵~~~~~~~~~~</p>
-    </b-jumbotron>
+    <br /><br /><br /><br />
+    <div v-if="showHotLoc" :style="styleObject">
+      <b-carousel
+        id="carousel-1"
+        v-model="slide"
+        :interval="4000"
+        controls
+        indicators
+        background="#ababab"
+        img-width="1024"
+        img-height="576"
+        style="text-shadow: 1px 1px 2px #333"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
+      >
+        <!-- Text slides with image -->
+        <b-carousel-slide :img-src="require(`@/assets/slidehouse1.jpg`)">
+          <h1>인기 지역 순위 1</h1>
+          <br />
+          <h5>{{ hotloc[0].sidoName + " " + hotloc[0].gugunName }}</h5>
+          <h3>{{ hotloc[0].dongName }}</h3>
+          <br />
+        </b-carousel-slide>
+
+        <!-- Slides with custom text -->
+        <b-carousel-slide :img-src="require(`@/assets/slidehouse2.jpg`)">
+          <h1>인기 지역 순위 2</h1>
+          <br />
+          <h5>{{ hotloc[1].sidoName + " " + hotloc[1].gugunName }}</h5>
+          <h3>{{ hotloc[1].dongName }}</h3>
+          <br />
+        </b-carousel-slide>
+
+        <!-- Slides with image only -->
+        <b-carousel-slide :img-src="require(`@/assets/slidehouse3.jpg`)">
+          <h1>인기 지역 순위 3</h1>
+          <br />
+          <h5>{{ hotloc[2].sidoName + " " + hotloc[2].gugunName }}</h5>
+          <h3>{{ hotloc[2].dongName }}</h3>
+          <br />
+        </b-carousel-slide>
+      </b-carousel>
+    </div>
+    <div v-if="showUserLoc" style="width: 48%; float: right">
+      <b-carousel
+        id="carousel-1"
+        v-model="slide1"
+        :interval="4000"
+        controls
+        indicators
+        background="#ababab"
+        img-width="1024"
+        img-height="576"
+        style="text-shadow: 1px 1px 2px #333"
+        @sliding-start="onSlideStart1"
+        @sliding-end="onSlideEnd1"
+      >
+        <!-- Text slides with image -->
+        <b-carousel-slide
+          v-if="userloc.length > 0"
+          :img-src="require(`@/assets/slidehouse4.jpg`)"
+          ><h1>내가 찾아 본 지역 1</h1>
+          <br />
+          <h5>{{ userloc[0].sidoName + " " + userloc[0].gugunName }}</h5>
+          <h3>{{ userloc[0].dongName }}</h3>
+          <br
+        /></b-carousel-slide>
+
+        <!-- Slides with custom text -->
+        <b-carousel-slide
+          v-if="userloc.length > 1"
+          :img-src="require(`@/assets/slidehouse5.jpg`)"
+        >
+          <h1>내가 찾아 본 지역 2</h1>
+          <br />
+          <h5>{{ userloc[1].sidoName + " " + userloc[1].gugunName }}</h5>
+          <h3>{{ userloc[1].dongName }}</h3>
+          <br />
+        </b-carousel-slide>
+
+        <!-- Slides with image only -->
+        <b-carousel-slide
+          v-if="userloc.length > 2"
+          :img-src="require(`@/assets/slidehouse6.jpg`)"
+          ><h1>내가 찾아 본 지역 3</h1>
+          <br />
+          <h5>{{ userloc[2].sidoName + " " + userloc[2].gugunName }}</h5>
+          <h3>{{ userloc[2].dongName }}</h3>
+          <br
+        /></b-carousel-slide>
+      </b-carousel>
+    </div>
+    <div style="clear: both"></div>
+    <br />
   </b-container>
 </template>
 
 <script>
+import http from "@/util/http-common";
+import { mapState } from "vuex";
+
+const memberStore = "memberStore";
+
 export default {
   name: "Main",
+  data() {
+    return {
+      hotloc: [],
+      userloc: [],
+      showHotLoc: false,
+      showUserLoc: false,
+      slide: 0,
+      sliding: null,
+      slide1: 0,
+      sliding1: null,
+      styleObject: {
+        width: "48%",
+        float: "center",
+        margin: "auto",
+      },
+    };
+  },
   props: {
     msg: String,
+  },
+  computed: {
+    ...mapState(memberStore, ["isLogin", "userInfo"]),
+  },
+  created() {
+    http.get(`/user/interest/top`).then(({ data }) => {
+      console.log(data);
+      this.hotloc = data;
+      this.showHotLoc = true;
+      if (this.isLogin) {
+        http
+          .post(`/user/interest/list`, {
+            userid: this.userInfo.userid,
+            dongcode: "",
+            hit: 0,
+          })
+          .then(({ data }) => {
+            console.log(data);
+            this.userloc = data;
+            this.showUserLoc = true;
+            this.styleObject.float = "left";
+          });
+      }
+    });
+  },
+  methods: {
+    onSlideStart() {
+      this.sliding = true;
+    },
+    onSlideEnd() {
+      this.sliding = false;
+    },
+    onSlideStart1() {
+      this.sliding1 = true;
+    },
+    onSlideEnd1() {
+      this.sliding1 = false;
+    },
   },
 };
 </script>
@@ -48,5 +192,8 @@ export default {
   z-index: 2;
   margin-top: 100px;
   position: relative;
+}
+#carousel-1 {
+  text-shadow: 3px 3px 4px black !important;
 }
 </style>
