@@ -1,0 +1,1292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>140</y>
+      <w>210</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.util::PageNavigation
+--
+-startRange: boolean
+-endRange: boolean
+-totalCount: int
+-newCount: int
+-totalPageCount: int
+-currentPage: int
+-naviSize: int
+-countPerPage: int
+-navigator: String
+--
++isStartRange: boolean
++setStartRange: void
++isEndRange: boolean
++setEndRange: void
++getTotalCount: int
++setTotalCount: void
++getNewCount: int
++setNewCount: void
++getTotalPageCount: int
++setTotalPageCount: void
++getCurrentPage: int
++setCurrentPage: void
++getNaviSize: int
++setNaviSize: void
++getNavigator: String
++getCountPerPage: int
++setCountPerPage: void
++makeNavigator: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>1050</y>
+      <w>260</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.config::DatabaseConfig
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>1050</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.config::JwtConfig
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>900</y>
+      <w>300</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.config::SwaggerConfig
+--
+-version = "V1": String
+-title = "SSAFY VUEJS API " + version: String
+--
++postsApi: Docket
+-postPaths: Predicate&lt;String&gt;
+-apiInfo: ApiInfo
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>900</y>
+      <w>230</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.config::WebConfig
+--
+--
++addCorsMappings: void
++addResourceHandlers: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>1180</y>
+      <w>430</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.controller::BoardController
+--
+-logger = LoggerFactory.getLogger(BoardController.class): Logger
+-SUCCESS = "success": String
+-FAIL = "fail": String
+-boardService: BoardService
+--
++listMemo: ResponseEntity&lt;List&lt;MemoDto&gt;&gt;
++writeMemo: ResponseEntity&lt;String&gt;
++deleteMemo: ResponseEntity&lt;String&gt;
++writeArticle: ResponseEntity&lt;String&gt;
++listArticle: ResponseEntity&lt;List&lt;BoardDto&gt;&gt;
++getArticle: ResponseEntity&lt;BoardDto&gt;
++modifyArticle: ResponseEntity&lt;String&gt;
++deleteArticle: ResponseEntity&lt;String&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>1500</y>
+      <w>440</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.controller::HospitalController
+--
+-logger = LoggerFactory.getLogger(HospitalController.class): Logger
+-hospitalService: HospitalService
+--
++listHospital: ResponseEntity&lt;List&lt;HospitalDto&gt;&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>1500</y>
+      <w>460</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.controller::HouseMapController
+--
+-logger = LoggerFactory.getLogger(HouseMapController.class): Logger
+-haHouseMapService: HouseMapService
+--
++sido: ResponseEntity&lt;List&lt;SidoGugunCodeDto&gt;&gt;
++gugun: ResponseEntity&lt;List&lt;SidoGugunCodeDto&gt;&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>1180</y>
+      <w>450</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.controller::MemberController
+--
++logger = LoggerFactory.getLogger(MemberController.class): Logger
+-SUCCESS = "success": String
+-FAIL = "fail": String
+-jwtService: JwtServiceImpl
+-memberService: MemberService
+-interestService: InterestService
+--
++login: ResponseEntity&lt;Map&lt;String, Object&gt;&gt;
++registerMember: ResponseEntity&lt;String&gt;
++updateMember: ResponseEntity&lt;String&gt;
++getInfo: ResponseEntity&lt;Map&lt;String, Object&gt;&gt;
++deleteMember: ResponseEntity&lt;String&gt;
++listMember: ResponseEntity&lt;List&lt;MemberDto&gt;&gt;
++interest: ResponseEntity&lt;String&gt;
++interests: ResponseEntity&lt;List&lt;BaseAddressDto&gt;&gt;
++tops: ResponseEntity&lt;List&lt;BaseAddressDto&gt;&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>1180</y>
+      <w>430</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.controller::NoticeController
+--
+-logger = LoggerFactory.getLogger(NoticeController.class): Logger
+-SUCCESS = "success": String
+-FAIL = "fail": String
+-noticeService: NoticeService
+--
++writeNotice: ResponseEntity&lt;String&gt;
++listNotice: ResponseEntity&lt;List&lt;NoticeDto&gt;&gt;
++listNoticeAll: ResponseEntity&lt;List&lt;NoticeDto&gt;&gt;
++getNotice: ResponseEntity&lt;NoticeDto&gt;
++modifyNotice: ResponseEntity&lt;String&gt;
++deleteNotice: ResponseEntity&lt;String&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>1670</y>
+      <w>340</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.exception::UnAuthorizedException
+--
+-serialVersionUID = -2238030302650813813L: long
+--
++UnAuthorizedException: ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>1800</y>
+      <w>420</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.interceptor::JwtInterceptor
+--
++logger = LoggerFactory.getLogger(JwtInterceptor.class): Logger
+-HEADER_AUTH = "auth-token": String
+-jwtService: JwtService
+--
++preHandle: boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>1960</y>
+      <w>260</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::BaseAddressDto
+--
+-sidoName: String
+-gugunName: String
+-dongName: String
+-dongCode: String
+-lat: String
+-lng: String
+--
++BaseAddressDto: ctor
++getSidoName: String
++setSidoName: void
++getGugunName: String
++setGugunName: void
++getDongName: String
++setDongName: void
++getDongCode: String
++setDongCode: void
++getLat: String
++setLat: void
++getLng: String
++setLng: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>1960</y>
+      <w>220</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::BoardDto
+--
+-articleno: int
+-userid: String
+-subject: String
+-content: String
+-hit: int
+-regtime: String
+--
++getArticleno: int
++setArticleno: void
++getUserid: String
++setUserid: void
++getSubject: String
++setSubject: void
++getContent: String
++setContent: void
++getHit: int
++setHit: void
++getRegtime: String
++setRegtime: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>2690</y>
+      <w>280</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::BoardParameterDto
+--
+-pg: int
+-spp: int
+-start: int
+-key: String
+-word: String
+--
++BoardParameterDto: ctor
++getPg: int
++setPg: void
++getSpp: int
++setSpp: void
++getStart: int
++setStart: void
++getKey: String
++setKey: void
++getWord: String
++setWord: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>1960</y>
+      <w>230</w>
+      <h>720</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::HospitalDto
+--
+-hospitalno: int
+-regtime: String
+-sidoName: String
+-gugunName: String
+-hospitalName: String
+-address: String
+-optimeWeekday: String
+-optimeSat: String
+-optimeSun: String
+-phonenumber: String
+-hcenter: String
+-hcenterContact: String
+-etc: String
+--
++getHospitalno: int
++setHospitalno: void
++getRegtime: String
++setRegtime: void
++getSidoName: String
++setSidoName: void
++getGugunName: String
++setGugunName: void
++getHospitalName: String
++setHospitalName: void
++getAddress: String
++setAddress: void
++getOptimeWeekday: String
++setOptimeWeekday: void
++getOptimeSat: String
++setOptimeSat: void
++getOptimeSun: String
++setOptimeSun: void
++getPhonenumber: String
++setPhonenumber: void
++getHcenter: String
++setHcenter: void
++getHcenterContact: String
++setHcenterContact: void
++getEtc: String
++setEtc: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>1960</y>
+      <w>240</w>
+      <h>670</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::HouseInfoDto
+--
+-aptCode: int
+-aptName: String
+-dongCode: String
+-dongName: String
+-sidoName: String
+-gugunName: String
+-buildYear: int
+-jibun: String
+-lat: String
+-lng: String
+-img: String
+-recentPrice: String
+--
++getAptCode: int
++setAptCode: void
++getAptName: String
++setAptName: void
++getDongCode: String
++setDongCode: void
++getDongName: String
++setDongName: void
++getSidoName: String
++setSidoName: void
++getGugunName: String
++setGugunName: void
++getBuildYear: int
++setBuildYear: void
++getJibun: String
++setJibun: void
++getLat: String
++setLat: void
++getLng: String
++setLng: void
++getImg: String
++setImg: void
++getRecentPrice: String
++setRecentPrice: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>3300</y>
+      <w>290</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.mapper::BoardMapper
+--
+--
++writeArticle: int
++listArticle: List&lt;BoardDto&gt;
++getTotalCount: int
++getArticle: BoardDto
++updateHit: void
++modifyArticle: int
++deleteMemo: boolean
++deleteArticle: int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>3710</y>
+      <w>310</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.mapper::HospitalMapper
+--
+--
++listHospital: List&lt;HospitalDto&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>3520</y>
+      <w>320</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.mapper::HouseMapMapper
+--
+--
+~getSido: List&lt;SidoGugunCodeDto&gt;
+~getGugunInSido: List&lt;SidoGugunCodeDto&gt;
+~getDongInGugun: List&lt;HouseInfoDto&gt;
+~getAptInDong: List&lt;HouseInfoDto&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>3300</y>
+      <w>300</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.mapper::InterestMapper
+--
+--
+~interestCheck: int
+~getAddress: BaseAddressDto
+~getInterest: List&lt;UserLocDto&gt;
+~getInterests: List&lt;BaseAddressDto&gt;
+~getTops: List&lt;BaseAddressDto&gt;
+~registerInterest: void
+~plusHit: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>3520</y>
+      <w>310</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.mapper::MemberMapper
+--
+--
++login: MemberDto
++userInfo: MemberDto
++registerMember: boolean
++updateMember: boolean
++deleteMember: boolean
++listMember: List&lt;MemberDto&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>3520</y>
+      <w>300</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.mapper::MemoMapper
+--
+--
++writeMemo: boolean
++listMemo: List&lt;MemoDto&gt;
++getMemo: MemoDto
++modifyMemo: int
++deleteMemo: boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>3300</y>
+      <w>300</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.mapper::NoticeMapper
+--
+--
++writeNotice: int
++listNotice: List&lt;NoticeDto&gt;
++listNoticeAll: List&lt;NoticeDto&gt;
++getTotalCount: int
++getNotice: NoticeDto
++updateHit: void
++modifyNotice: int
++deleteNotice: int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>2690</y>
+      <w>230</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::MemberDto
+--
+-userid: String
+-username: String
+-userpwd: String
+-email: String
+-joindate: String
+--
++getUserid: String
++setUserid: void
++getUsername: String
++setUsername: void
++getUserpwd: String
++setUserpwd: void
++getEmail: String
++setEmail: void
++getJoindate: String
++setJoindate: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>2690</y>
+      <w>220</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::MemoDto
+--
+-memono: int
+-userid: String
+-comment: String
+-memotime: String
+-articleno: int
+--
++getMemono: int
++setMemono: void
++getUserid: String
++setUserid: void
++getComment: String
++setComment: void
++getMemotime: String
++setMemotime: void
++getArticleno: int
++setArticleno: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>1960</y>
+      <w>220</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::NoticeDto
+--
+-noticeno: int
+-userid: String
+-subject: String
+-content: String
+-hit: int
+-regtime: String
+--
++getNoticeno: int
++setNoticeno: void
++getUserid: String
++setUserid: void
++getSubject: String
++setSubject: void
++getContent: String
++setContent: void
++getHit: int
++setHit: void
++getRegtime: String
++setRegtime: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>2690</y>
+      <w>280</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::NoticeParameterDto
+--
+-pg: int
+-spp: int
+-start: int
+-key: String
+-word: String
+--
++NoticeParameterDto: ctor
++getPg: int
++setPg: void
++getSpp: int
++setSpp: void
++getStart: int
++setStart: void
++getKey: String
++setKey: void
++getWord: String
++setWord: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>3860</y>
+      <w>290</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.service::BoardService
+--
+--
++writeArticle: boolean
++listArticle: List&lt;BoardDto&gt;
++makePageNavigation: PageNavigation
++getArticle: BoardDto
++updateHit: void
++modifyArticle: boolean
++deleteArticle: boolean
++writeMemo: boolean
++listMemo: List&lt;MemoDto&gt;
++getMemo: MemoDto
++modifyMemo: int
++deleteMemo: boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>3860</y>
+      <w>320</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model.service::BoardServiceImpl
+--
+-sqlSession: SqlSession
+--
++writeArticle: boolean
++listArticle: List&lt;BoardDto&gt;
++makePageNavigation: PageNavigation
++getArticle: BoardDto
++updateHit: void
++modifyArticle: boolean
++deleteArticle: boolean
++writeMemo: boolean
++listMemo: List&lt;MemoDto&gt;
++getMemo: MemoDto
++modifyMemo: int
++deleteMemo: boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>4540</y>
+      <w>300</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.service::HospitalService
+--
+--
++listHospital: List&lt;HospitalDto&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>4540</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model.service::HospitalServiceImpl
+--
+-sqlSession: SqlSession
+--
++listHospital: List&lt;HospitalDto&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>4350</y>
+      <w>320</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.service::HouseMapService
+--
+--
+~getSido: List&lt;SidoGugunCodeDto&gt;
+~getGugunInSido: List&lt;SidoGugunCodeDto&gt;
+~getDongInGugun: List&lt;HouseInfoDto&gt;
+~getAptInDong: List&lt;HouseInfoDto&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>4350</y>
+      <w>350</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model.service::HouseMapServiceImpl
+--
+-sqlSession: SqlSession
+--
++getSido: List&lt;SidoGugunCodeDto&gt;
++getGugunInSido: List&lt;SidoGugunCodeDto&gt;
++getDongInGugun: List&lt;HouseInfoDto&gt;
++getAptInDong: List&lt;HouseInfoDto&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>4150</y>
+      <w>300</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.service::InterestService
+--
+--
++interestCheck: int
++getAddress: BaseAddressDto
++getInterest: List&lt;UserLocDto&gt;
++getTops: List&lt;BaseAddressDto&gt;
++getInterests: List&lt;BaseAddressDto&gt;
++registerInterest: void
++plusHit: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>4150</y>
+      <w>330</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model.service::InterestServiceImpl
+--
+-sqlSession: SqlSession
+--
++interestCheck: int
++getAddress: BaseAddressDto
++getInterest: List&lt;UserLocDto&gt;
++getInterests: List&lt;BaseAddressDto&gt;
++registerInterest: void
++getTops: List&lt;BaseAddressDto&gt;
++plusHit: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1050</x>
+      <y>4350</y>
+      <w>270</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.service::JwtService
+--
+--
+~create: String
+~get: Map&lt;String, Object&gt;
+~getUserId: String
+~isUsable: boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>670</x>
+      <y>4150</y>
+      <w>430</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model.service::JwtServiceImpl
+--
++logger = LoggerFactory.getLogger(JwtServiceImpl.class): Logger
+-SALT = "ssafySecret": String
+-EXPIRE_MINUTES = 60: int
+--
++create: String
+-generateKey: byte[]
++isUsable: boolean
++get: Map&lt;String, Object&gt;
++getUserId: String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>4150</y>
+      <w>300</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.service::MemberService
+--
+--
++login: MemberDto
++userInfo: MemberDto
++registerMember: boolean
++updateMember: boolean
++deleteMember: boolean
++listMember: List&lt;MemberDto&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>4350</y>
+      <w>330</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model.service::MemberServiceImpl
+--
+-sqlSession: SqlSession
+--
++login: MemberDto
++userInfo: MemberDto
++registerMember: boolean
++updateMember: boolean
++deleteMember: boolean
++listMember: List&lt;MemberDto&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>3860</y>
+      <w>290</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+com.ssafy.vue.model.service::NoticeService
+--
+--
++writeNotice: boolean
++listNotice: List&lt;NoticeDto&gt;
++listNoticeAll: List&lt;NoticeDto&gt;
++makePageNavigation: PageNavigation
++getNotice: NoticeDto
++updateHit: void
++modifyNotice: boolean
++deleteNotice: boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>950</x>
+      <y>3860</y>
+      <w>320</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model.service::NoticeServiceImpl
+--
+-sqlSession: SqlSession
+--
++writeNotice: boolean
++listNotice: List&lt;NoticeDto&gt;
++listNoticeAll: List&lt;NoticeDto&gt;
++makePageNavigation: PageNavigation
++getNotice: NoticeDto
++updateHit: void
++modifyNotice: boolean
++deleteNotice: boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1070</x>
+      <y>2690</y>
+      <w>280</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::SidoGugunCodeDto
+--
+-sidoCode: String
+-sidoName: String
+-gugunCode: String
+-gugunName: String
+--
++getSidoCode: String
++setSidoCode: void
++getSidoName: String
++setSidoName: void
++getGugunCode: String
++setGugunCode: void
++getGugunName: String
++setGugunName: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>3030</y>
+      <w>230</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model::UserLocDto
+--
+-userid: String
+-dongcode: String
+-hit: int
+--
++getUserid: String
++setUserid: void
++getDongcode: String
++setDongcode: void
++getHit: int
++setHit: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>700</y>
+      <w>240</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue::ServletInitializer
+--
+--
+#configure: SpringApplicationBuilder
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>700</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue::VueApiApplication
+--
+--
++main: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>30</y>
+      <w>280</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.axios::AxiosApiApplicationTests
+--
+--
+~contextLoads: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>780</y>
+      <w>260</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue::VueApiApplicationTests
+--
+--
+~contextLoads: void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>0</y>
+      <w>300</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.axios
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>110</y>
+      <w>230</w>
+      <h>550</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.util
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>670</y>
+      <w>500</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>870</y>
+      <w>560</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.config
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>1150</y>
+      <w>1350</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.controller
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>1640</y>
+      <w>360</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.exception
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>1770</y>
+      <w>440</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.interceptor
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>1930</y>
+      <w>1350</w>
+      <h>1330</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>3270</y>
+      <w>970</w>
+      <h>550</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model.mapper
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>3830</y>
+      <w>1410</w>
+      <h>830</h>
+    </coordinates>
+    <panel_attributes>com.ssafy.vue.model.service
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
