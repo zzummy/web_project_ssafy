@@ -526,3 +526,5 @@ Caused by: java.lang.NoClassDefFoundError: com.ssafy.vue.model.service.InterestS
 [2m2021-11-25 02:51:52.184[0;39m [32m INFO[0;39m [35m50048[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m:[0;39m Initializing Servlet 'dispatcherServlet'
 [2m2021-11-25 02:51:52.186[0;39m [32m INFO[0;39m [35m50048[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m:[0;39m Completed initialization in 1 ms
 [2m2021-11-25 02:51:52.188[0;39m [32m INFO[0;39m [35m50048[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 02:53:05.582[0;39m [32m INFO[0;39m [35m50048[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 02:53:07.040[0;39m [32m INFO[0;39m [35m50048[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
