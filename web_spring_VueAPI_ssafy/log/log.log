@@ -2878,3 +2878,17 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 [2m2021-11-25 16:20:31.213[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m ssafy
 [2m2021-11-25 16:20:31.213[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1123010200
 [2m2021-11-25 16:20:31.220[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 등록 성공 : ssafy
+[2m2021-11-25 16:35:47.247[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-9][0;39m [36mc.ssafy.vue.controller.NoticeController [0;39m [2m:[0;39m listNotice - 호출
+[2m2021-11-25 16:35:50.875[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.ssafy.vue.controller.BoardController  [0;39m [2m:[0;39m listArticle - 호출
+[2m2021-11-25 16:35:53.235[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[io-9999-exec-10][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 16:35:54.747[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 16:35:58.290[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m ssafy
+[2m2021-11-25 16:35:58.290[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1111017500
+[2m2021-11-25 16:35:58.292[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m ssafy
+[2m2021-11-25 16:35:58.292[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1111017500
+[2m2021-11-25 16:35:58.298[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 등록 성공 : ssafy
+[2m2021-11-25 16:36:06.786[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.s.vue.controller.HospitalController   [0;39m [2m:[0;39m hospital sido - 서울
+[2m2021-11-25 16:36:06.786[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.s.vue.controller.HospitalController   [0;39m [2m:[0;39m hospital gugun - 종로구
+[2m2021-11-25 16:36:25.504[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-8][0;39m [36mc.ssafy.vue.controller.BoardController  [0;39m [2m:[0;39m listArticle - 호출
+[2m2021-11-25 16:36:26.158[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.NoticeController [0;39m [2m:[0;39m listNotice - 호출
+[2m2021-11-25 16:36:26.928[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-2][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
