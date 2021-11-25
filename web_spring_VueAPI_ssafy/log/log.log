@@ -1070,3 +1070,9 @@
 [2m2021-11-25 16:04:48.104[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-9][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
 [2m2021-11-25 16:05:04.542[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-8][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
 [2m2021-11-25 16:05:04.547[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[io-9999-exec-10][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 16:08:22.043[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.NoticeController [0;39m [2m:[0;39m listNotice - 호출
+[2m2021-11-25 16:08:28.514[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.BoardController  [0;39m [2m:[0;39m listArticle - 호출
+[2m2021-11-25 16:08:33.918[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 16:08:35.861[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 16:08:57.279[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-9][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 16:09:01.360[0;39m [32m INFO[0;39m [35m24944[0;39m [2m---[0;39m [2m[nio-9999-exec-8][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
