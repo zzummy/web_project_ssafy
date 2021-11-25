@@ -14,7 +14,7 @@
         </p>
       </b-col>
     </b-row>
-    <b-row class="mb-1">
+    <b-row align="left" style="padding: 0 80px">
       <b-col class="text-left">
         <b-button
           style="border: 0px; background-color: #8999ac"
@@ -36,23 +36,38 @@
         >
       </b-col>
     </b-row>
-    <br />
-    <b-row class="mb-1">
-      <b-col>
-        <b-card
-          :header-html="`<h3>${article.articleno}.
-          ${article.subject} [${article.hit}]</h3><div><h6>${article.userid}</div><div>${article.regtime}</h6></div>`"
-          class="mb-2"
-          border-variant="dark"
-          no-body
+    <br /><br />
+    <div align="left" style="padding: 0 80px">
+      <b-row>
+        <b-col cols="2" align="center"> 글 번호 </b-col>
+        <b-col cols="5">{{ article.articleno }}</b-col>
+        <b-col cols="2" align="center"> 조회수 </b-col>
+        <b-col cols="2">{{ article.hit }}</b-col>
+      </b-row>
+      <hr />
+      <b-row>
+        <b-col cols="2" align="center"> 작성자 </b-col>
+        <b-col cols="5">{{ article.userid }}</b-col>
+        <b-col cols="2" align="center"> 등록일 </b-col>
+        <b-col cols="3">{{ article.regtime }}</b-col>
+      </b-row>
+      <hr />
+      <b-row>
+        <b-col cols="2" align="center"> 제목 </b-col>
+        <b-col cols="10">{{ article.subject }}</b-col>
+      </b-row>
+      <hr />
+      <b-row>
+        <b-col
+          style="height: 150px; padding: 20px 50px; white-space: pre-line"
+          align="center"
+          >{{ article.content }}</b-col
         >
-          <b-card-body class="text-left">
-            <div v-html="message"></div>
-          </b-card-body>
-        </b-card>
-      </b-col>
-    </b-row>
-    <b-row class="mb-1">
+      </b-row>
+      <hr />
+    </div>
+    <br />
+    <b-row align="left" style="padding: 0 80px">
       <b-col class="text-left">
         <div><strong>댓글(QnA) 목록</strong></div>
       </b-col>
@@ -71,6 +86,7 @@
         >
       </b-col>
     </b-row>
+    <br />
     <memo-write-form v-if="isShowMemo"></memo-write-form>
     <memo-list-row v-for="(memo, index) in memos" :key="index" v-bind="memo" />
   </b-container>

@@ -14,7 +14,7 @@
         </p>
       </b-col>
     </b-row>
-    <b-row class="mb-1">
+    <b-row align="left" style="padding: 0 80px">
       <b-col class="text-left">
         <b-button
           @click="listNotice"
@@ -37,21 +37,36 @@
       </b-col>
     </b-row>
     <br />
-    <b-row class="mb-1">
-      <b-col>
-        <b-card
-          :header-html="`<h3>${notice.noticeno}.
-          ${notice.subject} [${notice.hit}]</h3><div><h6>${notice.userid}</div><div>${notice.regtime}</h6></div>`"
-          class="mb-2"
-          border-variant="dark"
-          no-body
+    <br />
+    <div align="left" style="padding: 0 80px">
+      <b-row>
+        <b-col cols="2" align="center"> 글 번호 </b-col>
+        <b-col cols="5">{{ notice.noticeno }}</b-col>
+        <b-col cols="2" align="center"> 조회수 </b-col>
+        <b-col cols="2">{{ notice.hit }}</b-col>
+      </b-row>
+      <hr />
+      <b-row>
+        <b-col cols="2" align="center"> 작성자 </b-col>
+        <b-col cols="5">{{ notice.userid }}</b-col>
+        <b-col cols="2" align="center"> 등록일 </b-col>
+        <b-col cols="3">{{ notice.regtime }}</b-col>
+      </b-row>
+      <hr />
+      <b-row>
+        <b-col cols="2" align="center"> 제목 </b-col>
+        <b-col cols="10">{{ notice.subject }}</b-col>
+      </b-row>
+      <hr />
+      <b-row>
+        <b-col
+          style="padding: 20px 50px; white-space: pre-line"
+          align="center"
+          >{{ notice.content }}</b-col
         >
-          <b-card-body class="text-left">
-            <div v-html="message"></div>
-          </b-card-body>
-        </b-card>
-      </b-col>
-    </b-row>
+      </b-row>
+      <hr />
+    </div>
   </b-container>
 </template>
 
