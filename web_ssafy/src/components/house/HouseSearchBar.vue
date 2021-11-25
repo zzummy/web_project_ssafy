@@ -538,11 +538,14 @@ export default {
                 kakao.maps.event.addListener(marker, "click", function () {
                   // 동코드도 0빼주기
                   // 법정동 0254
-                  var str = arr[0].법정동본번코드;
-                  console.log(str.substring(0, 1));
-                  var dongCode = str;
-                  if (str.substring(0, 1) == "0")
-                    dongCode = str.substring(str.lastIndexOf(0) + 1);
+                  console.log(arr[0].법정동본번코드);
+                  var str = arr[0].법정동본번코드.toString();
+                  var a = str.substring(0, 1);
+                  //console.log(a);
+
+                  var dongCode;
+                  if (a == 0) dongCode = str.substring(str.lastIndexOf(0) + 1);
+                  else dongCode = str;
 
                   // 길찾기로 넘어가기
                   var url =
