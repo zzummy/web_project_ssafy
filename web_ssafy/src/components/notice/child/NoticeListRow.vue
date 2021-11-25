@@ -1,10 +1,10 @@
 <template>
   <b-tr>
     <b-td>{{ noticeno }}</b-td>
-    <b-th class="text-left">
+    <b-th>
       <router-link
         :to="{ name: 'NoticeView', params: { noticeno: noticeno } }"
-        style="color: #426289"
+        style="color: #5b6f88"
         >{{ subject }}</router-link
       >
     </b-th>
