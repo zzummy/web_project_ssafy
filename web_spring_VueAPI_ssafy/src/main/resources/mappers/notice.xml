@@ -45,7 +45,7 @@
 				where subject like concat('%', #{word}, '%')
 			</if>
 			<if test="key != 'subject'">
-				where ${key} = #{word}
+				where ${key} like concat('%', #{word}, '%')
 			</if>
 		</if>
 	</select>
