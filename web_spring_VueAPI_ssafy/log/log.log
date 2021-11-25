@@ -146,3 +146,4 @@
 [2m2021-11-26 00:20:07.260[0;39m [32m INFO[0;39m [35m1560[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m dddd
 [2m2021-11-26 00:20:07.262[0;39m [32m INFO[0;39m [35m1560[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 조회+1 성공 : 123
 [2m2021-11-26 00:20:19.514[0;39m [32m INFO[0;39m [35m1560[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.NoticeController [0;39m [2m:[0;39m listNotice - 호출
+[2m2021-11-26 00:21:52.494[0;39m [32m INFO[0;39m [35m1560[0;39m [2m---[0;39m [2m[nio-9999-exec-2][0;39m [36mc.ssafy.vue.controller.NoticeController [0;39m [2m:[0;39m listNotice - 호출
