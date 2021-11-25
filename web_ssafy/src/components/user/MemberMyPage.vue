@@ -95,6 +95,9 @@ export default {
         ({ data }) => {
           if (data === "success") {
             alert(msg);
+            this.SET_IS_LOGIN(false);
+            this.SET_USER_INFO(null);
+            sessionStorage.removeItem("access-token");
             this.$router.push({ name: "Home" });
           } else {
             msg = "회원 탈퇴 오류";

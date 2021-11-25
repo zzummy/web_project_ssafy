@@ -23,19 +23,19 @@
           > -->
           <b-nav-item href="#"
             ><router-link :to="{ name: 'NoticeList' }" class="link"
-              ><b-icon icon="magnifier" font-scale="1"></b-icon>
+              ><b-icon icon="bell" font-scale="1"></b-icon>
               공지사항</router-link
             ></b-nav-item
           >
           <b-nav-item href="#"
             ><router-link :to="{ name: 'BoardList' }" class="link"
-              ><b-icon icon="journal" font-scale="1"></b-icon>
+              ><b-icon icon="chat-square-dots" font-scale="1"></b-icon>
               게시판</router-link
             ></b-nav-item
           >
           <b-nav-item href="#"
             ><router-link :to="{ name: 'House' }" class="link"
-              ><b-icon icon="house-fill" font-scale="1"></b-icon>
+              ><b-icon icon="house-door" font-scale="1"></b-icon>
               아파트정보</router-link
             ></b-nav-item
           >
@@ -43,9 +43,10 @@
 
         <b-navbar-nav class="ml-auto" v-if="userInfo">
           <b-nav-item class="align-self-center"
-            >{{ userInfo.username }}({{ userInfo.userid }})님
-            환영합니다.</b-nav-item
-          >
+            ><span style="font-weight: bold; color: #426289" class="underline"
+              >{{ userInfo.username }}({{ userInfo.userid }})</span
+            >님 환영합니다. <b-icon icon="suit-heart-fill"></b-icon
+          ></b-nav-item>
           <b-nav-item class="align-self-center" v-if="isAdmin"
             ><router-link
               :to="{ name: 'Manage' }"
@@ -124,5 +125,13 @@ export default {
 .link {
   color: #426289;
   font-weight: bold;
+}
+.underline {
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(45, 72, 121, 0.3) 30%
+  );
 }
 </style>
