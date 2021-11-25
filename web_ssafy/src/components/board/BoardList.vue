@@ -72,14 +72,25 @@
       <b-col></b-col>
       <b-col>
         <!-- Pagination 처리 -->
-        <b-pagination
+        <!-- <b-pagination
           v-model="currentPage"
           :total-rows="totalrows"
           :per-page="perPage"
           aria-controls="items"
           align="center"
           @page-click="pageClick"
+        ></b-pagination> -->
+        <br /><br />
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="totalrows"
+          :per-page="perPage"
+          pills
+          aria-controls="items"
+          align="center"
+          @page-click="pageClick"
         ></b-pagination>
+        <br /><br />
       </b-col>
       <b-col></b-col>
     </b-row>

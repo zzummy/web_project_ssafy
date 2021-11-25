@@ -13,7 +13,7 @@ public class UserLocDto {
 		super();
 		this.userId = userId;
 		this.dongCode = dongCode;
-		this.setHit(hit);
+		this.hit = hit;
 	}
 	public String getUserId() {
 		return userId;

@@ -184,7 +184,7 @@ public class MemberController {
 	@ApiOperation(value = "관심 목록 등록", notes = "관심 목록을 등록한다.", response = String.class)
 	@PostMapping("/interest/register")
 	public ResponseEntity<String> interest(@RequestParam("dong") String dong, @RequestParam("userid") String userId) throws Exception {
-		UserLocDto userLocDto = new UserLocDto(userId, dong);
+		UserLocDto userLocDto = new UserLocDto(userId, dong, 0);
 		try {
 			if (interestService.interestCheck(userLocDto) == 0) {
 				interestService.registerInterest(userLocDto);
