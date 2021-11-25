@@ -7,7 +7,7 @@
             font-weight: bold;
             font-size: 2em;
             color: #3b3838;
-            margin: 40px 0px;
+            margin: 80px 0px;
           "
         >
           회원관리
@@ -19,6 +19,20 @@
       <b-col cols="10">
         <b-jumbotron>
           <b-container fluid>
+            <b-row align="right"
+              ><b-col
+                ><b-button
+                  size="sm"
+                  style="margin-right: 10px"
+                  @click="onModify"
+                >
+                  수정 </b-button
+                ><b-button size="sm" @click="onClickWithdrawal">
+                  삭제
+                </b-button></b-col
+              ></b-row
+            >
+            <br />
             <b-table
               :items="user"
               :fields="fields"
@@ -47,30 +61,20 @@
               </template>
             </b-table>
             <!-- User Interface controls -->
-            <b-row>
-              <b-col></b-col>
-              <b-col sm="7" md="6" class="my-1">
-                <b-pagination
-                  v-model="currentPage"
-                  :total-rows="totalRows"
-                  :per-page="perPage"
-                  align="fill"
-                  size="sm"
-                  class="my-0"
-                ></b-pagination>
-              </b-col>
-              <b-col
-                ><b-button
-                  size="sm"
-                  style="margin-right: 10px"
-                  @click="onModify"
-                >
-                  수정 </b-button
-                ><b-button size="sm" @click="onClickWithdrawal">
-                  삭제
-                </b-button></b-col
-              >
-            </b-row>
+
+            <!-- <b-col></b-col> -->
+            <br />
+            <b-col>
+              <b-pagination
+                v-model="currentPage"
+                :total-rows="totalRows"
+                :per-page="perPage"
+                align="center"
+                class="my-0"
+                pills
+                aria-controls="items"
+              ></b-pagination>
+            </b-col>
           </b-container>
         </b-jumbotron>
       </b-col>
