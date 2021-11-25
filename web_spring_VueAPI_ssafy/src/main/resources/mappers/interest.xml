@@ -7,8 +7,14 @@
 	<select id="interestCheck" parameterType="UserLocDto" resultType="int">
 		select count(userid)
 		from userloc
-		where userid = #{userId} and dongcode = #{dongCode}
+		where userid = #{userid} and dongcode = #{dongcode}
 	</select>
+	
+	<update id="plusHit" parameterType="UserLocDto">
+		update userloc
+		set hit = hit + 1
+		where userid = #{userid} and dongcode = #{dongcode}
+	</update>
 	
 	<select id="getAddress" parameterType="BaseAddressDto" resultType="BaseAddressDto">
 		select sidoName, gugunName, dongName, dongCode, lat, lng
@@ -16,24 +22,27 @@
 		where sidoName=#{sidoName} and gugunName=#{gugunName} and dongName=#{dongName}
 	</select>
 	
-	<select id="getInterests" parameterType="string" resultType="BaseAddressDto">
+	<select id="getInterests" parameterType="UserLocDto" resultType="BaseAddressDto">
 		select b.sidoName, b.gugunName, b.dongName, b.dongCode, b.lat, b.lng
-		from baseaddress b, userloc ul
-		where ul.userid = #{userId} and ul.dongCode = b.dongCode
+		from baseaddress b, (SELECT dongcode, SUM(hit) FROM userloc
+		where userid = #{userid}
+		GROUP BY dongcode
+		order by SUM(hit) desc) d
+		where d.dongcode = b.dongCode
 	</select>
 
 	<select id="getTops" resultType="BaseAddressDto">
 		select b.sidoName, b.gugunName, b.dongName, b.dongCode, b.lat, b.lng
-		from baseaddress b, (SELECT dongcode, COUNT(dongcode) FROM userloc
+		from baseaddress b, (SELECT dongcode, SUM(hit) FROM userloc
 		GROUP BY dongcode
-		order by COUNT(dongcode) desc
+		order by SUM(hit) desc
 		limit 3) d
 		where d.dongcode = b.dongCode
 	</select>
 
 	<insert id="registerInterest" parameterType="UserLocDto">
-		insert into userloc (userid, dongcode)
-		values (#{userId}, #{dongCode})
+		insert into userloc (userid, dongcode, hit)
+		values (#{userid}, #{dongcode}, 0)
 	</insert>
 
 	

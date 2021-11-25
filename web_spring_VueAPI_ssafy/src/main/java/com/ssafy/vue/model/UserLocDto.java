@@ -1,31 +1,28 @@
 package com.ssafy.vue.model;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(value = "UserLocDto : 유저 관심 지역 정보", description = "유저 관심 지역 정보를 나타낸다.")
 public class UserLocDto {
-	
-	private String userId;
-	private String dongCode;
+	@ApiModelProperty(value = "유저 아이디")
+	private String userid;
+	@ApiModelProperty(value = "관심 동코드")
+	private String dongcode;
+	@ApiModelProperty(value = "조회수")
 	private int hit;
 	
-	public UserLocDto(String userId, String dongCode, int hit) {
-		super();
-		this.userId = userId;
-		this.dongCode = dongCode;
-		this.setHit(hit);
+	public String getUserid() {
+		return userid;
 	}
-	public String getUserId() {
-		return userId;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public String getDongcode() {
+		return dongcode;
 	}
-	public String getDongCode() {
-		return dongCode;
-	}
-	public void setDongCode(String dongCode) {
-		this.dongCode = dongCode;
+	public void setDongcode(String dongcode) {
+		this.dongcode = dongcode;
 	}
 	public int getHit() {
 		return hit;

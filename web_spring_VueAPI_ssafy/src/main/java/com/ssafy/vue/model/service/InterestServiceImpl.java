@@ -46,4 +46,9 @@ public class InterestServiceImpl implements InterestService {
 		return sqlSession.getMapper(InterestMapper.class).getTops();
 	}
 
+	@Override
+	public void plusHit(UserLocDto userLocDto) throws Exception {
+		sqlSession.getMapper(InterestMapper.class).plusHit(userLocDto);
+	}
+
 }

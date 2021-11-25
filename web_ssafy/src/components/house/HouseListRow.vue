@@ -20,10 +20,12 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
+import http from "@/util/http-common";
 //import HouseDetail from "@/components/house/HouseDetail.vue";
 
 const houseStore = "houseStore";
+const memberStore = "memberStore";
 
 export default {
   name: "HouseListRow",
@@ -38,6 +40,9 @@ export default {
   props: {
     house: Object,
   },
+  computed: {
+    ...mapState(memberStore, ["isLogin", "userInfo"]),
+  },
   methods: {
     ...mapActions(houseStore, ["detailHouse"]),
     ...mapMutations(houseStore, ["CLEAR_DETAIL_HOUSE"]),
@@ -45,7 +50,27 @@ export default {
     selectHouse() {
       console.log("listRow : ", this.house);
       // this.$store.dispatch("getHouse", this.house);
+      var housedongcode =
+        String(this.house.법정동시군구코드) +
+        String(this.house.법정동읍면동코드);
+      console.log("house dongcode : ", housedongcode);
+      console.log(this.userInfo.userid);
       this.detailHouse(this.house);
+      if (this.isLogin) {
+        http
+          .post(`/user/interest/register`, {
+            userid: this.userInfo.userid,
+            dongcode: housedongcode,
+            hit: 0,
+          })
+          .then(({ data }) => {
+            var msg = "조회 + 1 실패";
+            if (data === "success") {
+              msg = "조회 + 1 성공";
+            }
+            console.log(msg);
+          });
+      }
     },
 
     colorChange(flag) {
