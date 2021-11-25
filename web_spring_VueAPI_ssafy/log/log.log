@@ -2810,3 +2810,71 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 [2m2021-11-25 16:14:43.193[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m dddd
 [2m2021-11-25 16:14:43.212[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 조회+1 성공 : user3
 [2m2021-11-25 16:15:10.732[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-8][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 16:15:51.370[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 16:15:52.737[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[io-9999-exec-10][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 16:15:55.031[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:15:55.031[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 2611010100
+[2m2021-11-25 16:15:55.033[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:15:55.033[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 2611010100
+[2m2021-11-25 16:15:55.038[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 등록 성공 : user3
+[2m2021-11-25 16:15:56.030[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:15:56.030[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 2611010100
+[2m2021-11-25 16:15:56.031[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m dddd
+[2m2021-11-25 16:15:56.051[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 조회+1 성공 : user3
+[2m2021-11-25 16:15:57.233[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.s.vue.controller.HospitalController   [0;39m [2m:[0;39m hospital sido - 부산
+[2m2021-11-25 16:15:57.233[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.s.vue.controller.HospitalController   [0;39m [2m:[0;39m hospital gugun - 중구
+[2m2021-11-25 16:16:00.223[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:16:00.223[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 2611010100
+[2m2021-11-25 16:16:00.225[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m dddd
+[2m2021-11-25 16:16:00.231[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 조회+1 성공 : user3
+[2m2021-11-25 16:16:13.640[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:16:13.640[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 2611010100
+[2m2021-11-25 16:16:13.642[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m dddd
+[2m2021-11-25 16:16:13.648[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 조회+1 성공 : user3
+[2m2021-11-25 16:16:16.037[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-9][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 16:16:17.819[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 16:16:19.622[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[io-9999-exec-10][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 16:16:21.838[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:16:21.839[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1111011800
+[2m2021-11-25 16:16:21.841[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:16:21.841[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1111011800
+[2m2021-11-25 16:16:21.849[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 등록 성공 : user3
+[2m2021-11-25 16:16:22.912[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:16:22.912[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1111013300
+[2m2021-11-25 16:16:22.914[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m dddd
+[2m2021-11-25 16:16:22.918[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 조회+1 성공 : user3
+[2m2021-11-25 16:16:24.031[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:16:24.031[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1111016200
+[2m2021-11-25 16:16:24.035[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m dddd
+[2m2021-11-25 16:16:24.039[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 조회+1 성공 : user3
+[2m2021-11-25 16:16:24.623[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:16:24.623[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1111016200
+[2m2021-11-25 16:16:24.624[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m dddd
+[2m2021-11-25 16:16:24.629[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 조회+1 성공 : user3
+[2m2021-11-25 16:16:26.271[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:16:26.271[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1111017500
+[2m2021-11-25 16:16:26.273[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m user3
+[2m2021-11-25 16:16:26.273[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1111017500
+[2m2021-11-25 16:16:26.279[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 등록 성공 : user3
+[2m2021-11-25 16:16:33.826[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-8][0;39m [36mc.s.vue.controller.HospitalController   [0;39m [2m:[0;39m hospital sido - 서울
+[2m2021-11-25 16:16:33.826[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-8][0;39m [36mc.s.vue.controller.HospitalController   [0;39m [2m:[0;39m hospital gugun - 종로구
+[2m2021-11-25 16:16:39.288[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.ssafy.vue.controller.NoticeController [0;39m [2m:[0;39m listNotice - 호출
+[2m2021-11-25 16:16:40.184[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[io-9999-exec-10][0;39m [36mc.ssafy.vue.controller.BoardController  [0;39m [2m:[0;39m listArticle - 호출
+[2m2021-11-25 16:16:41.770[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.ssafy.vue.controller.NoticeController [0;39m [2m:[0;39m listNotice - 호출
+[2m2021-11-25 16:16:42.632[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.BoardController  [0;39m [2m:[0;39m listArticle - 호출
+[2m2021-11-25 16:16:44.524[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.ssafy.vue.controller.NoticeController [0;39m [2m:[0;39m listNotice - 호출
+[2m2021-11-25 16:16:47.134[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.ssafy.vue.controller.BoardController  [0;39m [2m:[0;39m listArticle - 호출
+[2m2021-11-25 16:16:49.576[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.BoardController  [0;39m [2m:[0;39m getArticle - 호출 : 7
+[2m2021-11-25 16:16:49.576[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-8][0;39m [36mc.ssafy.vue.controller.BoardController  [0;39m [2m:[0;39m listMemo - 호출 : 7
+[2m2021-11-25 16:16:51.816[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-2][0;39m [36mc.ssafy.vue.controller.BoardController  [0;39m [2m:[0;39m listArticle - 호출
+[2m2021-11-25 16:20:11.445[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-7][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 16:20:12.766[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-6][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 16:20:25.299[0;39m [32mDEBUG[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 로그인 토큰정보 : eyJ0eXAiOiJKV1QiLCJyZWdEYXRlIjoxNjM3ODI0ODI1Mjk5LCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzc4Mjg0MjUsInN1YiI6ImFjY2Vzcy10b2tlbiIsInVzZXJpZCI6InNzYWZ5In0.M7wjE6NY9yeVzLNiqk3QP1KSkWuLd-u7gVHZqg_yndU
+[2m2021-11-25 16:20:25.328[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 사용 가능한 토큰!!!
+[2m2021-11-25 16:20:28.364[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[io-9999-exec-10][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
+[2m2021-11-25 16:20:29.679[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-4][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m gugun - 호출
+[2m2021-11-25 16:20:31.211[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m ssafy
+[2m2021-11-25 16:20:31.211[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1123010200
+[2m2021-11-25 16:20:31.213[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m ssafy
+[2m2021-11-25 16:20:31.213[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1123010200
+[2m2021-11-25 16:20:31.220[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-5][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 등록 성공 : ssafy
