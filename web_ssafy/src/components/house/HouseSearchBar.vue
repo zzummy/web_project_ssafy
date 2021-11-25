@@ -562,7 +562,9 @@ export default {
                     "        </div>" +
                     '        <div class="body">' +
                     '            <div class="img">' +
-                    '                <img src="https://lh3.googleusercontent.com/proxy/eHB2-lZ0Lnm-5MC_9VFB9kOU3kbiSoLjM0nnCSWFoHt4JYCCVCNpenTRiKD1yBYiKmFPaGxq92Yx2VDESWa1kE075j89eInDL8vbLfRPx4rg8-HEH9wY5kWMierT7d0nCA" width="73" height="70" >' +
+                    "                <img src=" +
+                    require("@/assets/apt.png") +
+                    ' width="73" height="70" >' +
                     "           </div>" +
                     '            <div class="desc">' +
                     '                <div class="ellipsis">' +
