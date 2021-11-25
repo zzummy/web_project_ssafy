@@ -2809,3 +2809,4 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 [2m2021-11-25 16:14:43.192[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 1120010200
 [2m2021-11-25 16:14:43.193[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m dddd
 [2m2021-11-25 16:14:43.212[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-3][0;39m [36mc.ssafy.vue.controller.MemberController [0;39m [2m:[0;39m 관심 목록 조회+1 성공 : user3
+[2m2021-11-25 16:15:10.732[0;39m [32m INFO[0;39m [35m39904[0;39m [2m---[0;39m [2m[nio-9999-exec-8][0;39m [36mc.s.vue.controller.HouseMapController   [0;39m [2m:[0;39m sido - 호출
